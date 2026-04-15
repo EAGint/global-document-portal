@@ -1,0 +1,116 @@
+"use client";
+
+import Link from "next/link";
+import { useParams } from "next/navigation";
+
+export default function Hero() {
+  const params = useParams();
+  const locale = params?.locale || "en";
+
+  return (
+    <>
+      <section 
+        className="relative min-h-[90vh] flex items-center bg-cover bg-center bg-no-repeat text-white"
+        style={{ backgroundImage: 'url("/img/hero.jpg")' }}
+      >
+              View Projects
+            </Link>
+            <Link
+              href={`/${locale}/contact`}
+              className="bg-transparent border-2 border-white hover:bg-white hover:text-[#0a192d] text-white px-8 py-3.5 rounded-md font-semibold transition-all"
+            >
+              Work With Us
+            </Link>
+          </div>
+        </div>
+
+        {/* Hero Statistics Grid */}
+        <div className="grid grid-cols-2 gap-6 w-full lg:w-auto shrink-0">
+          <div className="bg-white/[0.08] backdrop-blur-sm p-6 md:p-8 rounded-xl text-center border border-white/10 hover:-translate-y-1 transition-transform duration-300 shadow-xl">
+            <h2 className="text-4xl md:text-[42px] font-black text-[#00aeef] mb-2">24+</h2>
+            <p className="text-sm font-semibold text-gray-200">Years Experience</p>
+          </div>
+          <div className="bg-white/[0.08] backdrop-blur-sm p-6 md:p-8 rounded-xl text-center border border-white/10 hover:-translate-y-1 transition-transform duration-300 shadow-xl">
+            <h2 className="text-4xl md:text-[42px] font-black text-[#00aeef] mb-2">9500+</h2>
+            <p className="text-sm font-semibold text-gray-200">Projects Delivered</p>
+          </div>
+          <div className="bg-white/[0.08] backdrop-blur-sm p-6 md:p-8 rounded-xl text-center border border-white/10 hover:-translate-y-1 transition-transform duration-300 shadow-xl">
+            <h2 className="text-4xl md:text-[42px] font-black text-[#00aeef] mb-2">50+</h2>
+            <p className="text-sm font-semibold text-gray-200">Partners</p>
+          </div>
+          <div className="bg-white/[0.08] backdrop-blur-sm p-6 md:p-8 rounded-xl text-center border border-white/10 hover:-translate-y-1 transition-transform duration-300 shadow-xl">
+            <h2 className="text-4xl md:text-[42px] font-black text-[#00aeef] mb-2">13</h2>
+            <p className="text-sm font-semibold text-gray-200">Operational Divisions</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* Experience at a Glance Section */}
+    <section className="py-24 bg-[#f4f7fa] dark:bg-[#0B1727] transition-colors duration-500 border-b border-gray-200 dark:border-slate-800">
+      <div className="container max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center reveal">
+        
+        {/* Text Content */}
+        <div>
+          <h2 className="text-3xl md:text-[36px] font-black text-[#0f2b46] dark:text-white mb-6 tracking-tight">
+            Experience at a Glance
+          </h2>
+          <p className="text-lg text-[#4d5b68] dark:text-slate-400 mb-6 leading-relaxed">
+            EL ALI GROUP INTERNATIONAL LTD (EAGint) is a multi-sector infrastructure,
+            logistics, and humanitarian services platform operating across Somalia
+            and East Africa.
+          </p>
+          <p className="text-lg text-[#4d5b68] dark:text-slate-400 mb-6 leading-relaxed">
+            With more than two decades of operational experience, EAGint supports
+            governments, United Nations agencies, international NGOs, development
+            partners, and private sector investors through integrated service
+            delivery across infrastructure development, logistics, procurement,
+            energy systems, and humanitarian response.
+          </p>
+          <p className="text-lg text-[#4d5b68] dark:text-slate-400 mb-10 leading-relaxed">
+            Our operating model integrates technical divisions, governance
+            frameworks, and ESG standards to ensure that projects are delivered
+            efficiently, transparently, and sustainably.
+          </p>
+          <Link
+            href={`/${locale}/about`}
+            className="inline-block bg-[#00AEEF] hover:bg-sky-500 text-white px-8 py-4 rounded-lg font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-1"
+          >
+            Learn More About EAGint
+          </Link>
+        </div>
+
+        {/* Feature Boxes */}
+        <div className="grid sm:grid-cols-2 gap-6">
+          <div className="bg-white dark:bg-[#121c2e] p-8 rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.05)] dark:shadow-none border border-transparent dark:border-slate-800 hover:-translate-y-1 transition-transform">
+            <h3 className="font-bold text-xl text-[#0f2b46] dark:text-white mb-3">Integrated Platform</h3>
+            <p className="text-sm text-[#6c7a86] dark:text-slate-400 leading-relaxed">
+              13 operational divisions delivering infrastructure, logistics, energy, humanitarian services, and digital systems.
+            </p>
+          </div>
+          <div className="bg-white dark:bg-[#121c2e] p-8 rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.05)] dark:shadow-none border border-transparent dark:border-slate-800 hover:-translate-y-1 transition-transform">
+            <h3 className="font-bold text-xl text-[#0f2b46] dark:text-white mb-3">Multi-Sector Expertise</h3>
+            <p className="text-sm text-[#6c7a86] dark:text-slate-400 leading-relaxed">
+              Supporting government, humanitarian, development, and private-sector projects in fragile and complex environments.
+            </p>
+          </div>
+          <div className="bg-white dark:bg-[#121c2e] p-8 rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.05)] dark:shadow-none border border-transparent dark:border-slate-800 hover:-translate-y-1 transition-transform">
+            <h3 className="font-bold text-xl text-[#0f2b46] dark:text-white mb-3">Compliance & Governance</h3>
+            <p className="text-sm text-[#6c7a86] dark:text-slate-400 leading-relaxed">
+              Operations aligned with international standards, safeguarding frameworks, and donor compliance requirements.
+            </p>
+          </div>
+          <div className="bg-white dark:bg-[#121c2e] p-8 rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.05)] dark:shadow-none border border-transparent dark:border-slate-800 hover:-translate-y-1 transition-transform">
+            <h3 className="font-bold text-xl text-[#0f2b46] dark:text-white mb-3">Operational Reach</h3>
+            <p className="text-sm text-[#6c7a86] dark:text-slate-400 leading-relaxed">
+              Projects implemented across Somalia and East Africa with strong local partnerships and field logistics capacity.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    </>
+  );
+}

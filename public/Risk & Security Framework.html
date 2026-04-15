@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Risk & Security Framework | EL ALI GROUP INTERNATIONAL LTD (EAGint)</title>
+    <meta name="description" content="EAGint operates under a structured Risk & Security Framework integrating enterprise risk management, operational security, safeguarding, and business continuity systems.">
+    <meta name="author" content="EL ALI GROUP INTERNATIONAL LTD">
+
+    <!-- ================= SECURITY HEADERS ================= -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com data:;">
+
+    <!-- ================= JSON-LD SCHEMA ================= -->
+    <script type="application/ld+json">
+    {
+     "@context": "https://schema.org",
+     "@type": "Organization",
+     "name": "EL ALI GROUP INTERNATIONAL LTD",
+     "url": "https://www.eagint.com",
+     "description": "Enterprise Risk Management and Operational Security Framework."
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BASE TYPOGRAPHY & COLORS */
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; line-height: 1.6; color: #334155; }
+        h1, h2, h3, h4, h5, h6, .nav-link, .btn { font-family: 'Montserrat', sans-serif; }
+        
+        :root { 
+            --color-primary-navy: #0F2B46; 
+            --color-primary-cyan: #00AEEF; 
+            --color-light-gray: #F3F4F6;
+        }
+
+        /* UTILITIES */
+        .text-navy { color: var(--color-primary-navy); }
+        .bg-navy { background-color: var(--color-primary-navy); }
+        .text-cyan { color: var(--color-primary-cyan); }
+        .bg-cyan { background-color: var(--color-primary-cyan); }
+
+        /* Focus States */
+        :focus-visible { outline: 3px solid var(--color-primary-cyan); outline-offset: 2px; }
+        
+        /* Utility Bar */
+        .utility-bar { background: #0a1e31; color: #cbd5e1; font-size: 11px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); text-transform: uppercase; letter-spacing: 0.5px; }
+        .utility-bar a { color: #cbd5e1; text-decoration: none; margin-left: 20px; transition: color 0.2s; }
+        .utility-bar a:hover { color: white; }
+
+        /* Navbar */
+        .navbar { background: var(--color-primary-navy); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); min-height: 80px; }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; height: 80px; max-width: 1400px; margin: 0 auto; padding: 0 20px; position: relative; }
+        .logo { color: white; font-weight: 800; font-size: 26px; text-decoration: none; letter-spacing: -0.5px; }
+        .main-nav { display: flex; align-items: center; gap: 28px; }
+        .nav-trigger { color: white; background: none; border: none; cursor: pointer; font-size: 13px; font-weight: 600; padding: 28px 0; border-bottom: 3px solid transparent; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; }
+        .nav-trigger:hover { color: var(--color-primary-cyan); border-bottom-color: var(--color-primary-cyan); }
+        .nav-cta { background: var(--color-primary-cyan); padding: 12px 24px; border-radius: 4px; color: white !important; font-weight: 700; font-size: 13px; text-transform: uppercase; transition: background 0.2s; letter-spacing: 0.5px; text-decoration: none; }
+        .nav-cta:hover { background-color: #009ad4; }
+
+        /* Mega Menu */
+        .nav-item { position: static; }
+        .mega-menu { position: absolute; left: 0; right: 0; top: 80px; width: 100%; background: white; padding: 40px; display: none; grid-template-columns: 280px 1fr; gap: 60px; border-top: 1px solid #e2e8f0; border-bottom: 4px solid var(--color-primary-navy); box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 1001; }
+        .mega-menu.active { display: grid; animation: slideDown 0.2s ease-out; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .mega-intro { padding-right: 30px; border-right: 1px solid #e2e8f0; }
+        .mega-intro h4 { color: var(--color-primary-navy); font-size: 20px; font-weight: 700; margin-bottom: 15px; }
+        .mega-intro p { font-size: 14px; color: #64748b; margin-bottom: 25px; line-height: 1.6; }
+        .mega-intro .btn-link { color: var(--color-primary-cyan); font-weight: 700; font-size: 13px; text-decoration: none; border-bottom: 2px solid transparent; transition: all 0.2s; text-transform: uppercase; }
+        .mega-intro .btn-link:hover { border-bottom-color: var(--color-primary-cyan); }
+        
+        .mega-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .mega-col h5 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+        .mega-col a { display: block; color: #334155; font-size: 14px; text-decoration: none; margin-bottom: 12px; transition: all 0.2s; font-weight: 500; }
+        .mega-col a:hover { color: var(--color-primary-cyan); transform: translateX(5px); }
+
+        /* HERO SECTION */
+        .hero-section {
+            background: linear-gradient(rgba(15, 43, 70, 0.9), rgba(15, 43, 70, 0.8)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0 120px;
+            text-align: center;
+            color: white;
+        }
+        .hero-title { font-size: 36px; md:font-size: 48px; font-weight: 800; margin-bottom: 20px; letter-spacing: -0.5px; }
+        .hero-subtitle { font-size: 18px; max-width: 800px; margin: 0 auto; color: #e2e8f0; font-weight: 500; }
+
+        /* CONTENT SECTIONS */
+        .section-title { font-size: 30px; font-weight: 700; color: var(--color-primary-navy); margin-bottom: 20px; }
+        .card-hover { transition: all 0.3s ease; border: 1px solid #e2e8f0; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border-color: var(--color-primary-cyan); }
+        .risk-icon { width: 50px; height: 50px; background: #f0f9ff; color: var(--color-primary-cyan); display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 20px; margin-bottom: 20px; }
+
+        /* Mobile */
+        .mobile-toggle { display: none; color: white; font-size: 24px; background: none; border: none; cursor: pointer; }
+        @media (max-width: 1024px) {
+            .utility-bar { display: none; }
+            .main-nav { display: none; position: absolute; top: 80px; left: 0; width: 100%; background: var(--color-primary-navy); flex-direction: column; align-items: flex-start; padding: 20px; height: calc(100vh - 80px); overflow-y: auto; }
+            .main-nav.is-open { display: flex; }
+            .mobile-toggle { display: block; }
+            .mega-menu { position: static; display: none; width: 100%; padding: 20px; border: none; box-shadow: none; grid-template-columns: 1fr; gap: 0; background: rgba(255,255,255,0.05); margin-bottom: 10px; }
+            .mega-menu.active { display: block; }
+            .mega-intro { display: none; }
+            .mega-grid { grid-template-columns: 1fr; gap: 20px; }
+            .mega-col h5 { color: #cbd5e1; margin-top: 10px; border-color: rgba(255,255,255,0.1); }
+            .mega-col a { color: #94a3b8; }
+            .nav-trigger { width: 100%; text-align: left; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
+        }
+    </style>
+</head>
+<body class="antialiased bg-white">
+
+    <!-- Utility Bar -->
+    <div class="utility-bar">
+        <div class="max-w-[1400px] mx-auto px-5 flex justify-end items-center">
+            <a href="/partners/">Partners</a>
+            <a href="/work-with-us/">Careers</a>
+            <a href="/insights/">Insights</a>
+            <span class="ml-5 text-gray-500">|</span>
+            <a href="/en/" class="text-white font-bold">EN</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="nav-wrapper">
+            <a href="/" class="logo">EAGint</a>
+            <nav class="main-nav">
+                <a href="/about/" class="nav-trigger">About</a>
+                <a href="/divisions/" class="nav-trigger">Divisions</a>
+                <a href="/sectors/" class="nav-trigger">Sectors</a>
+                <a href="/esg/" class="nav-trigger" style="color: var(--color-primary-cyan); border-bottom-color: var(--color-primary-cyan);">Governance</a>
+                <a href="/portfolio/" class="nav-trigger">Projects</a>
+                <a href="/work-with-us/submit-tender/" class="nav-cta">Submit Tender</a>
+            </nav>
+            <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="max-w-[1400px] mx-auto px-5 relative z-10">
+            <h1 class="hero-title">Risk & Security Framework</h1>
+            <p class="hero-subtitle">Structured enterprise risk management and operational security systems.</p>
+        </div>
+    </section>
+
+    <!-- Enterprise Risk Management -->
+    <section class="py-24 bg-white">
+        <div class="max-w-[1400px] mx-auto px-5">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Enterprise Risk Management (ERM)</h2>
+                <div class="h-1 w-20 bg-cyan mx-auto mb-6"></div>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                    EAGint applies a structured Enterprise Risk Management framework across all divisions. Risk identification, mitigation, monitoring, and reporting mechanisms are integrated at project and corporate levels.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-6 bg-slate-50 rounded border border-slate-100 hover:shadow-md transition">
+                    <h4 class="font-bold text-navy mb-2">Corporate Risk Register</h4>
+                    <p class="text-sm text-slate-600">Centralized monitoring of strategic and operational risks.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded border border-slate-100 hover:shadow-md transition">
+                    <h4 class="font-bold text-navy mb-2">Project Assessment</h4>
+                    <p class="text-sm text-slate-600">Site-specific risk mitigation planning and analysis.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded border border-slate-100 hover:shadow-md transition">
+                    <h4 class="font-bold text-navy mb-2">Financial Oversight</h4>
+                    <p class="text-sm text-slate-600">Internal controls ensuring fiscal integrity and solvency.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded border border-slate-100 hover:shadow-md transition">
+                    <h4 class="font-bold text-navy mb-2">Regulatory Tracking</h4>
+                    <p class="text-sm text-slate-600">Compliance monitoring across multiple jurisdictions.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded border border-slate-100 hover:shadow-md transition">
+                    <h4 class="font-bold text-navy mb-2">Social Screening</h4>
+                    <p class="text-sm text-slate-600">Environmental and social impact due diligence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operational Security -->
+    <section class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-[1400px] mx-auto px-5">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Operational Security in Complex Environments</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-200 card-hover">
+                    <div class="risk-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Field Security Protocols</h3>
+                    <p class="text-slate-600">Structured site-level security planning, access control, and coordination with local authorities.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-200 card-hover">
+                    <div class="risk-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Staff Safety & Duty of Care</h3>
+                    <p class="text-slate-600">Clear duty-of-care standards, security briefings, and incident response procedures for all personnel.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-200 card-hover">
+                    <div class="risk-icon"><i class="fas fa-route"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Supply Chain Risk Control</h3>
+                    <p class="text-slate-600">Transport risk assessments, route planning, and contingency logistics systems for secure movement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safeguarding & BCP -->
+    <section class="py-24 bg-white">
+        <div class="max-w-[1400px] mx-auto px-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- Safeguarding -->
+                <div class="bg-navy text-white p-10 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-6">Safeguarding & SEAH</h3>
+                    <p class="text-slate-300 mb-6">
+                        Safeguarding and prevention of Sexual Exploitation, Abuse, and Harassment (SEAH) are embedded within risk systems. All staff, contractors, and partners must adhere to strict compliance standards.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan"></i> Confidential Reporting Channels</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan"></i> Safeguarding Risk Assessments</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan"></i> Mandatory Code of Conduct Compliance</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-cyan"></i> Training & Awareness Programs</li>
+                    </ul>
+                </div>
+
+                <!-- BCP -->
+                <div>
+                    <h3 class="text-2xl font-bold text-navy mb-6">Business Continuity & Crisis Management</h3>
+                    <ul class="space-y-4">
+                        <li class="p-4 border-l-4 border-cyan bg-slate-50">
+                            <strong class="block text-navy">Business Continuity Planning (BCP)</strong>
+                        </li>
+                        <li class="p-4 border-l-4 border-cyan bg-slate-50">
+                            <strong class="block text-navy">Emergency Response Protocols</strong>
+                        </li>
+                        <li class="p-4 border-l-4 border-cyan bg-slate-50">
+                            <strong class="block text-navy">Data & Information Security Controls</strong>
+                        </li>
+                        <li class="p-4 border-l-4 border-cyan bg-slate-50">
+                            <strong class="block text-navy">Contingency Procurement & Logistics</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insurance -->
+    <section class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-[1000px] mx-auto px-5 text-center">
+            <h2 class="text-3xl font-bold text-navy mb-6">Insurance & Risk Transfer</h2>
+            <p class="text-slate-600 mb-10">EAGint maintains appropriate insurance coverage aligned with institutional requirements.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-4 py-2 bg-white shadow-sm border border-slate-200 rounded font-bold text-slate-700">General Liability Coverage</span>
+                <span class="px-4 py-2 bg-white shadow-sm border border-slate-200 rounded font-bold text-slate-700">Professional Indemnity</span>
+                <span class="px-4 py-2 bg-white shadow-sm border border-slate-200 rounded font-bold text-slate-700">Contractor’s All Risk (CAR)</span>
+                <span class="px-4 py-2 bg-white shadow-sm border border-slate-200 rounded font-bold text-slate-700">Marine & Transit Insurance</span>
+                <span class="px-4 py-2 bg-white shadow-sm border border-slate-200 rounded font-bold text-slate-700">Worker Protection</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 bg-navy text-white text-center">
+        <div class="max-w-[1400px] mx-auto px-5">
+            <h2 class="text-3xl font-bold mb-6">Request Risk & Security Documentation</h2>
+            <p class="text-slate-300 mb-10 text-lg">Access risk policies, insurance certificates, and compliance documentation.</p>
+            <a href="/downloads/" class="bg-cyan text-white px-10 py-4 rounded font-bold hover:bg-sky-600 transition text-sm uppercase tracking-wide inline-block">Visit Download Center</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#081a2d] text-slate-400 py-16 border-t border-slate-800 text-sm">
+        <div class="max-w-[1400px] mx-auto px-5 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <strong class="text-white text-lg block mb-4">EAGint</strong>
+                <p class="mb-4 text-xs">EL ALI GROUP INTERNATIONAL LTD</p>
+                <p class="text-xs">UNGM: #262897 | IATA TIDS</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-wider">Company</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="/about/" class="hover:text-white">About Us</a></li>
+                    <li><a href="/divisions/" class="hover:text-white">Divisions</a></li>
+                    <li><a href="/portfolio/" class="hover:text-white">Projects</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-wider">Compliance</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="/safeguarding/" class="hover:text-white">Safeguarding</a></li>
+                    <li><a href="/esg/" class="hover:text-white">ESG</a></li>
+                    <li><a href="/anti-corruption/" class="hover:text-white">Code of Conduct</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-wider">Contact</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="/contact/" class="hover:text-white">Contact Corporate Office</a></li>
+                    <li><a href="mailto:tenders@eagint.com" class="hover:text-white">tenders@eagint.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-[1400px] mx-auto px-5 mt-12 pt-8 border-t border-slate-900 text-center md:text-left text-[10px] uppercase">
+            <p>&copy; 2026 EL ALI GROUP INTERNATIONAL LTD. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Nav Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.querySelector('.mobile-toggle');
+            const nav = document.querySelector('.main-nav');
+            
+            // Mega Menu Logic (Desktop)
+            const triggers = document.querySelectorAll('.nav-trigger');
+            const menus = document.querySelectorAll('.mega-menu');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    if (window.innerWidth < 1024) return; // Only desktop
+                    const targetId = trigger.getAttribute('aria-controls');
+                    const targetMenu = document.getElementById(targetId);
+                    
+                    if(targetMenu) {
+                        menus.forEach(m => { if(m !== targetMenu) m.classList.remove('active'); });
+                        targetMenu.classList.toggle('active');
+                        e.stopPropagation();
+                    }
+                });
+            });
+
+            document.addEventListener('click', () => {
+                menus.forEach(m => m.classList.remove('active'));
+            });
+
+            if(mobileBtn) {
+                mobileBtn.addEventListener('click', () => {
+                    nav.classList.toggle('is-open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

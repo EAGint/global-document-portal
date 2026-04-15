@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAGint 2026 | Master Interactive Platform</title>
+    
+    <!-- Chosen Palette: Institutional Navy & Cyan -->
+    <!-- Primary: Deep Navy (#0f2b46), Accent: Cyan (#00aeef), Secondary: Muted Olive (#a4a74e), Background: Slate 50 (#f8fafc) -->
+
+    <!-- Application Structure Plan: 
+    This SPA translates the EAGint 2026 corporate reports into an "Institutional Intelligence Hub". 
+    Instead of static scrolling pages, the architecture is divided into four task-oriented views to serve donors, investors, and partners:
+    1. Executive Dashboard (Home): Provides immediate institutional authority, high-level metrics, and the Vision 2060 summary.
+    2. Operational Capabilities: An interactive, filterable grid organizing the 13 specialized divisions, allowing users to drill down into specific sector expertise via modals without leaving the context.
+    3. Impact & ESG: Centralizes quantitative results. Uses Chart.js to visualize historical delivery volume across sectors and interactive tiles to map SDG alignment.
+    4. Governance & Risk: A dedicated compliance hub for due diligence, presenting ISO certifications, safeguarding protocols, and ERM frameworks in an organized, toggleable layout.
+    This structure reduces cognitive load, groups related institutional data, and allows non-linear exploration. 
+    -->
+
+    <!-- Visualization & Content Choices: 
+    1. Key Performance Indicators -> Goal: Establish immediate scale -> Method: JS animated number counters -> Justification: Dynamic counting creates a sense of active, ongoing operations.
+    2. 13 Divisions Portfolio -> Goal: Organize complex service offerings -> Method: CSS Grid with JS Category Filtering and Detail Modals -> Justification: Prevents overwhelming the user with text; allows targeted exploration based on user interest (e.g., viewing only 'Logistics' divisions). NO SVG used; relies on CSS shapes and Unicode.
+    3. Delivery Volume Analysis -> Goal: Compare operational scale across sectors -> Method: Chart.js Responsive Bar Chart -> Justification: Best for comparing discrete categories (WASH vs Infra vs Logistics) clearly. Confirmed NO SVG.
+    4. SDG Alignment -> Goal: Inform on sustainability goals -> Method: CSS-styled numeric tiles -> Justification: Replaces standard images with lightweight, accessible HTML/CSS blocks reflecting official UN SDG colors.
+    5. Governance Framework -> Goal: Organize dense policy text -> Method: Interactive HTML/CSS Accordions -> Justification: Keeps the UI clean while providing deep-dive access to critical compliance data.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy-900: #0f2b46;
+            --navy-800: #163e63;
+            --cyan-500: #00aeef;
+            --cyan-600: #009cd6;
+            --olive-500: #a4a74e;
+            --slate-50: #f8fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            background-color: var(--slate-50);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .font-heading { font-family: 'Montserrat', sans-serif; }
+
+        /* SPA View Management */
+        .spa-view { display: none; animation: fadeIn 0.4s ease-out forwards; }
+        .spa-view.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Chart Container Requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        @media (max-width: 768px) {
+            .chart-container { height: 280px; }
+        }
+
+        /* Hero Background - Pure CSS Pattern to avoid external images/SVGs */
+        .hero-pattern {
+            background-color: var(--navy-900);
+            background-image: 
+                radial-gradient(circle at 100% 150%, var(--navy-800) 24%, white 24%, white 28%, transparent 28%, transparent 36%, white 36%, white 40%, transparent 40%, transparent),
+                radial-gradient(circle at 0    150%, var(--navy-800) 24%, white 24%, white 28%, transparent 28%, transparent 36%, white 36%, white 40%, transparent 40%, transparent),
+                radial-gradient(circle at 50%  100%, var(--cyan-600) 10%, transparent 10%, transparent 23%, var(--cyan-600) 23%, var(--cyan-600) 30%, transparent 30%, transparent);
+            background-size: 100px 100px;
+            background-blend-mode: multiply;
+        }
+
+        /* Card Interactions */
+        .interactive-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #e2e8f0; }
+        .interactive-card:hover { transform: translateY(-5px); border-color: var(--cyan-500); box-shadow: 0 15px 30px -5px rgba(0, 174, 239, 0.15); }
+
+        /* Unicode Icons & CSS Shapes (NO SVG) */
+        .css-icon-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 10px;
+            font-size: 20px; line-height: 1; font-weight: bold;
+        }
+        
+        .btn-primary { background: var(--cyan-500); color: white; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; transition: 0.3s; cursor: pointer; border: none; }
+        .btn-primary:hover { background: var(--cyan-600); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 174, 239, 0.3); }
+
+        .btn-outline { border: 2px solid var(--navy-900); color: var(--navy-900); padding: 10px 26px; border-radius: 6px; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; transition: 0.3s; cursor: pointer; background: transparent; }
+        .btn-outline:hover { background: var(--navy-900); color: white; }
+
+        .filter-btn { border: 1px solid #cbd5e1; color: #475569; padding: 8px 20px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.2s; cursor: pointer; background: white;}
+        .filter-btn.active { background: var(--navy-900); color: white; border-color: var(--navy-900); }
+
+        /* Accordion */
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary .expand-icon { transform: rotate(45deg); }
+
+        .counter { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- TOP CREDENTIALS BAR -->
+    <div class="bg-[var(--navy-900)] text-white text-[10px] font-bold uppercase tracking-widest py-2 border-b border-white/10 z-50 relative">
+        <div class="container mx-auto px-6 flex flex-wrap justify-between items-center gap-2">
+            <div class="flex gap-6">
+                <span class="flex items-center gap-2"><span class="text-[var(--cyan-500)] text-sm">✓</span> UNGM Lvl 2: 262897</span>
+                <span class="flex items-center gap-2 hidden sm:flex"><span class="text-[var(--cyan-500)] text-sm">✈</span> IATA: 96172915</span>
+                <span class="flex items-center gap-2"><span class="text-[var(--olive-500)] text-sm">★</span> ISO-Aligned IMS</span>
+            </div>
+            <div class="hidden md:block">
+                <span class="opacity-70">Strict Confidence: </span><a href="#" class="text-red-400 hover:text-red-300 ml-2">Safeguarding Desk</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <header class="sticky top-0 w-full z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="app.navigate('home')">
+                <div class="w-10 h-10 bg-[var(--navy-900)] text-white flex items-center justify-center font-black rounded-lg text-lg shadow-inner">EAG</div>
+                <div class="flex flex-col">
+                    <span class="text-[15px] font-black tracking-tighter text-[var(--navy-900)] uppercase leading-none">EAGint</span>
+                    <span class="text-[8px] font-bold text-[var(--olive-500)] uppercase tracking-[0.2em] mt-1">Institutional Platform</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav -->
+            <ul class="hidden lg:flex items-center space-x-2 text-[11px] font-bold uppercase tracking-widest text-slate-600">
+                <li><button onclick="app.navigate('home')" class="nav-link px-4 py-2 hover:text-[var(--cyan-500)] transition rounded-md">Dashboard</button></li>
+                <li><button onclick="app.navigate('capabilities')" class="nav-link px-4 py-2 hover:text-[var(--cyan-500)] transition rounded-md">Capabilities</button></li>
+                <li><button onclick="app.navigate('impact')" class="nav-link px-4 py-2 hover:text-[var(--cyan-500)] transition rounded-md">ESG & Impact</button></li>
+                <li><button onclick="app.navigate('governance')" class="nav-link px-4 py-2 hover:text-[var(--cyan-500)] transition rounded-md">Governance</button></li>
+                <li><button onclick="app.navigate('contact')" class="ml-4 bg-[var(--navy-900)] text-white px-6 py-2.5 rounded hover:bg-[var(--navy-800)] transition shadow-md">Partner Desk</button></li>
+            </ul>
+
+            <button class="lg:hidden text-2xl text-[var(--navy-900)] font-bold" onclick="app.toggleMobileMenu()">☰</button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 p-6 shadow-xl flex-col gap-2 text-xs font-bold uppercase tracking-widest text-slate-600">
+             <button onclick="app.navigate('home'); app.toggleMobileMenu()" class="text-left py-3 border-b border-slate-100 w-full">Dashboard</button>
+             <button onclick="app.navigate('capabilities'); app.toggleMobileMenu()" class="text-left py-3 border-b border-slate-100 w-full">Capabilities (13 Divs)</button>
+             <button onclick="app.navigate('impact'); app.toggleMobileMenu()" class="text-left py-3 border-b border-slate-100 w-full">ESG & Impact</button>
+             <button onclick="app.navigate('governance'); app.toggleMobileMenu()" class="text-left py-3 border-b border-slate-100 w-full">Governance</button>
+             <button onclick="app.navigate('contact'); app.toggleMobileMenu()" class="text-left py-3 text-[var(--cyan-500)] w-full">Partner Desk</button>
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        
+        <!-- ========================================== -->
+        <!-- VIEW: HOME (EXECUTIVE DASHBOARD)           -->
+        <!-- ========================================== -->
+        <div id="view-home" class="spa-view active">
+            <!-- Hero -->
+            <section class="hero-pattern py-20 md:py-32 text-white relative">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl">
+                        <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
+                            <span class="text-[var(--cyan-500)]">⬢</span> Since 2002
+                        </div>
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-6 tracking-tighter">
+                            Integrated Infrastructure & <br><span class="text-[var(--cyan-500)]">Logistics Platform</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed font-light mb-10 border-l-2 border-[var(--cyan-500)] pl-6">
+                            Delivering structured, compliant, and ESG-aligned solutions across complex operating environments. Bridging the gap between emergency response and sustainable development in East Africa.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="app.navigate('capabilities')" class="btn-primary">Explore Our 13 Divisions</button>
+                            <button onclick="app.navigate('governance')" class="btn-outline border-white/40 text-white hover:bg-white hover:text-[var(--navy-900)]">View Compliance Standards</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Metrics Strip -->
+            <section class="py-12 bg-white border-b border-slate-200 -mt-8 relative z-10 mx-4 md:mx-12 rounded-xl shadow-lg">
+                <div class="container mx-auto px-6">
+                    <h2 class="sr-only">Key Performance Indicators</h2>
+                    <p class="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Verified Delivery Baseline</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <span class="block text-4xl font-black text-[var(--navy-900)] mb-1"><span class="counter" data-target="9531">0</span>+</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Projects Executed</span>
+                        </div>
+                        <div>
+                            <span class="block text-4xl font-black text-[var(--navy-900)] mb-1"><span class="counter" data-target="151">0</span>M+</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Water Deliveries</span>
+                        </div>
+                        <div>
+                            <span class="block text-4xl font-black text-[var(--navy-900)] mb-1"><span class="counter" data-target="24">0</span>+</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Years Experience</span>
+                        </div>
+                        <div>
+                            <span class="block text-4xl font-black text-[var(--cyan-500)] mb-1">13</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Integrated Divisions</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Executive Summary & Model -->
+            <section class="py-24 bg-[var(--slate-50)]">
+                <div class="container mx-auto px-6">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <h4 class="text-[var(--cyan-500)] font-black uppercase tracking-widest text-[10px] mb-4">Strategic Positioning</h4>
+                            <h2 class="text-3xl md:text-4xl font-bold text-[var(--navy-900)] mb-6 leading-tight">Built in Complexity.<br>Structured for Delivery.</h2>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                EAGint operates at the intersection of high-risk operational corridors and international compliance standards. Unlike traditional contractors, we integrate engineering, logistics, and humanitarian response into a single, bankable platform.
+                            </p>
+                            <p class="text-slate-600 leading-relaxed mb-8">
+                                Our development delivery model is designed to move communities and institutions from crisis response to long-term stability.
+                            </p>
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                                <h5 class="text-xs font-bold uppercase tracking-widest text-[var(--navy-900)] mb-3 border-b pb-2">The HDP Nexus Framework</h5>
+                                <ul class="space-y-3 text-sm font-medium text-slate-700">
+                                    <li class="flex items-start gap-3"><span class="text-[var(--cyan-500)]">⬢</span> <strong>Relief:</strong> Rapid emergency logistics & life-saving supplies.</li>
+                                    <li class="flex items-start gap-3"><span class="text-[var(--olive-500)]">⬢</span> <strong>Recovery:</strong> Infrastructure rehab & supply-chain stabilization.</li>
+                                    <li class="flex items-start gap-3"><span class="text-[var(--navy-900)]">⬢</span> <strong>Resilience:</strong> Sustainable PPPs & institutional capacity.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- CEO Message Block -->
+                        <div class="bg-[var(--navy-900)] p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
+                            <div class="absolute -top-10 -right-10 w-40 h-40 bg-[var(--cyan-500)] rounded-full blur-[80px] opacity-30"></div>
+                            <span class="text-4xl font-serif text-[var(--olive-500)] leading-none absolute top-10 left-8">"</span>
+                            <div class="relative z-10">
+                                <p class="text-lg text-blue-100 leading-relaxed italic font-light mb-8 pt-4">
+                                    As we look toward Vision 2060, our purpose has evolved but not changed. It reflects our belief that infrastructure, logistics, trade, and development must be delivered with discipline, ethics, and respect for people and the environment. We are building systems that last.
+                                </p>
+                                <div class="border-t border-white/10 pt-6">
+                                    <p class="font-bold text-white text-base">Ahmed Ahmed</p>
+                                    <p class="text-[10px] uppercase tracking-widest text-[var(--olive-500)] mt-1">Chairman & Group CEO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VIEW: CAPABILITIES (DIVISIONS)             -->
+        <!-- ========================================== -->
+        <div id="view-capabilities" class="spa-view">
+            <section class="py-20 bg-white border-b border-slate-200">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto text-center mb-12">
+                        <p class="text-[var(--slate-500)] mb-4 text-sm font-medium">This section outlines EAGint's 13 operational units, demonstrating our capacity to integrate technical execution across diverse sectors under a single governance framework.</p>
+                        <h2 class="text-3xl md:text-5xl font-bold text-[var(--navy-900)] mb-8">Integrated Delivery Architecture</h2>
+                        
+                        <!-- Filters -->
+                        <div class="flex flex-wrap justify-center gap-3" id="division-filters">
+                            <button class="filter-btn active" data-filter="all">All Divisions</button>
+                            <button class="filter-btn" data-filter="infrastructure">Infrastructure</button>
+                            <button class="filter-btn" data-filter="logistics">Logistics & Trade</button>
+                            <button class="filter-btn" data-filter="services">Social & Humanitarian</button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="divisions-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Sector Matrix Synopsis -->
+            <section class="py-16 bg-[var(--slate-50)]">
+                <div class="container mx-auto px-6 max-w-5xl">
+                    <h3 class="text-center text-xl font-bold text-[var(--navy-900)] mb-8">Sectors We Serve</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm"><span class="text-2xl block mb-2">🏛️</span><span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Governments</span></div>
+                        <div class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm"><span class="text-2xl block mb-2">🌐</span><span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">UN & IFIs</span></div>
+                        <div class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm"><span class="text-2xl block mb-2">🤝</span><span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Humanitarian NGOs</span></div>
+                        <div class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm"><span class="text-2xl block mb-2">💼</span><span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Private Sector & PPP</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VIEW: IMPACT & ESG                         -->
+        <!-- ========================================== -->
+        <div id="view-impact" class="spa-view">
+            <section class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <p class="text-[var(--slate-500)] mb-4 text-sm font-medium">Quantitative visualization of EAGint’s delivery track record. Data is sourced from verified completion certificates and institutional audits.</p>
+                        <h2 class="text-3xl md:text-5xl font-bold text-[var(--navy-900)]">Impact & Performance Data</h2>
+                    </div>
+
+                    <!-- Chart.js Container -->
+                    <div class="mb-24">
+                        <h3 class="text-center font-bold text-slate-700 mb-6 uppercase tracking-widest text-xs">Verified Project Volume by Sector Focus</h3>
+                        <div class="chart-container">
+                            <canvas id="impactChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- SDG Alignment -->
+                    <div class="border-t border-slate-200 pt-20">
+                        <div class="text-center mb-12">
+                            <h3 class="text-2xl font-bold text-[var(--navy-900)] mb-4">SDG Alignment & Localization</h3>
+                            <p class="text-slate-500 text-sm max-w-2xl mx-auto">We map our operations directly to Sustainable Development Goals, preventing impact inflation by maintaining strict, evidence-based alignment.</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="bg-[var(--slate-50)] p-8 rounded-2xl border border-slate-200 interactive-card text-center">
+                                <div class="flex justify-center gap-2 mb-6">
+                                    <!-- Using CSS styled boxes instead of SVGs/Images for UN SDGs -->
+                                    <div class="w-12 h-12 bg-[#c5192d] text-white flex items-center justify-center font-black rounded shadow">1</div>
+                                    <div class="w-12 h-12 bg-[#26bde2] text-white flex items-center justify-center font-black rounded shadow">6</div>
+                                    <div class="w-12 h-12 bg-[#4c9f38] text-white flex items-center justify-center font-black rounded shadow">3</div>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-2">Humanitarian & Social</h4>
+                                <p class="text-xs text-slate-600">Poverty reduction, WASH systems, and primary healthcare infrastructure.</p>
+                            </div>
+                            
+                            <div class="bg-[var(--slate-50)] p-8 rounded-2xl border border-slate-200 interactive-card text-center">
+                                <div class="flex justify-center gap-2 mb-6">
+                                    <div class="w-12 h-12 bg-[#a21942] text-white flex items-center justify-center font-black rounded shadow">8</div>
+                                    <div class="w-12 h-12 bg-[#fd6925] text-white flex items-center justify-center font-black rounded shadow">9</div>
+                                    <div class="w-12 h-12 bg-[#fd9d24] text-white flex items-center justify-center font-black rounded shadow">11</div>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-2">Infrastructure & Economy</h4>
+                                <p class="text-xs text-slate-600">Decent work, resilient infrastructure, and sustainable urban development.</p>
+                            </div>
+
+                            <div class="bg-[var(--slate-50)] p-8 rounded-2xl border border-slate-200 interactive-card text-center">
+                                <div class="flex justify-center gap-2 mb-6">
+                                    <div class="w-12 h-12 bg-[#3f7e44] text-white flex items-center justify-center font-black rounded shadow">13</div>
+                                    <div class="w-12 h-12 bg-[#00689d] text-white flex items-center justify-center font-black rounded shadow">16</div>
+                                    <div class="w-12 h-12 bg-[#19486a] text-white flex items-center justify-center font-black rounded shadow">17</div>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-2">Governance & Climate</h4>
+                                <p class="text-xs text-slate-600">Climate action, strong institutions, and multi-stakeholder partnerships (PPPs).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VIEW: GOVERNANCE & COMPLIANCE              -->
+        <!-- ========================================== -->
+        <div id="view-governance" class="spa-view">
+            <section class="py-20 bg-[var(--navy-900)] text-white">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto text-center mb-16">
+                        <p class="text-blue-200 mb-4 text-sm font-medium">Centralized compliance hub detailing our regulatory alignment, risk management frameworks, and zero-tolerance policies. Essential for IFI and Donor due diligence.</p>
+                        <h2 class="text-3xl md:text-5xl font-bold text-white">Governance & Compliance</h2>
+                    </div>
+
+                    <!-- ISO Framework -->
+                    <div class="bg-white/5 border border-white/10 rounded-3xl p-10 mb-12">
+                        <h3 class="text-xl font-bold mb-8 text-[var(--cyan-500)] text-center">Integrated Management System (ISO Aligned)</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                            <div class="p-4 bg-white/10 rounded-xl"><span class="block font-black text-lg mb-1">9001</span><span class="text-[10px] uppercase tracking-widest text-blue-200">Quality Mgmt</span></div>
+                            <div class="p-4 bg-white/10 rounded-xl"><span class="block font-black text-lg mb-1">14001</span><span class="text-[10px] uppercase tracking-widest text-green-300">Environmental</span></div>
+                            <div class="p-4 bg-white/10 rounded-xl"><span class="block font-black text-lg mb-1">45001</span><span class="text-[10px] uppercase tracking-widest text-red-300">Health & Safety</span></div>
+                            <div class="p-4 bg-white/10 rounded-xl"><span class="block font-black text-lg mb-1">27001</span><span class="text-[10px] uppercase tracking-widest text-slate-300">Info Security</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Policies Accordion -->
+                    <div class="max-w-3xl mx-auto space-y-4">
+                        <h3 class="text-lg font-bold mb-6 text-center border-b border-white/10 pb-4">Corporate Policies & Risk Management</h3>
+                        
+                        <details class="bg-white/5 border border-white/10 rounded-xl group" open>
+                            <summary class="p-5 font-bold text-sm uppercase tracking-widest flex justify-between items-center hover:text-[var(--cyan-500)]">
+                                Safeguarding & PSEA (Zero Tolerance)
+                                <span class="expand-icon text-xl transition-transform duration-300">＋</span>
+                            </summary>
+                            <div class="p-5 pt-0 text-sm text-blue-100/80 leading-relaxed border-t border-white/5 mt-2">
+                                EAGint enforces strict prohibition of sexual exploitation, abuse, and harassment. Safeguarding obligations apply at all times to Board members, employees, contractors, and partners. Survivor-centered approaches and 'Do No Harm' principles dictate our community interactions.
+                            </div>
+                        </details>
+
+                        <details class="bg-white/5 border border-white/10 rounded-xl group">
+                            <summary class="p-5 font-bold text-sm uppercase tracking-widest flex justify-between items-center hover:text-[var(--cyan-500)]">
+                                Anti-Fraud & Procurement Integrity
+                                <span class="expand-icon text-xl transition-transform duration-300">＋</span>
+                            </summary>
+                            <div class="p-5 pt-0 text-sm text-blue-100/80 leading-relaxed border-t border-white/5 mt-2">
+                                Clear segregation of duties, competitive tendering, and strict conflict of interest declarations. We adhere to the UN Supplier Code of Conduct and actively screen for sanctions and compliance breaches.
+                            </div>
+                        </details>
+
+                        <details class="bg-white/5 border border-white/10 rounded-xl group">
+                            <summary class="p-5 font-bold text-sm uppercase tracking-widest flex justify-between items-center hover:text-[var(--cyan-500)]">
+                                Enterprise Risk Management (ERM)
+                                <span class="expand-icon text-xl transition-transform duration-300">＋</span>
+                            </summary>
+                            <div class="p-5 pt-0 text-sm text-blue-100/80 leading-relaxed border-t border-white/5 mt-2">
+                                Structured mitigation across four dimensions: Operational (route security, fleet monitoring), Financial (milestone payments, BoQ validation), Environmental (climate impact mapping), and Compliance (audit-ready documentation).
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VIEW: CONTACT / PARTNER DESK               -->
+        <!-- ========================================== -->
+        <div id="view-contact" class="spa-view">
+            <section class="py-24 bg-white text-center">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <h4 class="text-[var(--cyan-500)] font-black uppercase tracking-widest text-[10px] mb-4">Contact & Transparency Hub</h4>
+                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--navy-900)] mb-8">Work With a Trusted Partner</h2>
+                    <p class="text-slate-600 mb-12">Whether you represent a government authority, UN agency, donor institution, NGO, or private investor — EAGint is structured to deliver compliant and resilient solutions.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 text-left mb-16">
+                        <div class="p-8 bg-[var(--slate-50)] border border-slate-200 rounded-2xl">
+                            <h3 class="font-bold text-[var(--navy-900)] mb-2 text-lg">Partnerships & Tenders</h3>
+                            <p class="text-xs text-slate-500 mb-4">For RFPs, PPP structures, and commercial supply frameworks.</p>
+                            <span class="text-sm font-bold text-[var(--cyan-600)]">partnerships@eagint.com</span>
+                        </div>
+                        <div class="p-8 bg-red-50 border border-red-100 rounded-2xl">
+                            <h3 class="font-bold text-red-900 mb-2 text-lg">Safeguarding & Ethics</h3>
+                            <p class="text-xs text-slate-500 mb-4">Confidential reporting channel for compliance or SEAH concerns.</p>
+                            <span class="text-sm font-bold text-red-700">safeguarding@eagint.com</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" onclick="alert('Submission form would open here.')">Submit General Inquiry</button>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- UNIVERSAL FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-16 text-[10px] font-bold uppercase tracking-widest">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 border-b border-white/10 pb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <h5 class="text-white mb-4 text-sm font-black">EAGint</h5>
+                    <p class="leading-relaxed opacity-60 normal-case font-normal text-sm max-w-sm">Integrated infrastructure, logistics, governance, and humanitarian solutions across Somalia, East Africa, and emerging markets.</p>
+                </div>
+                <div>
+                    <h5 class="text-white mb-4">Compliance</h5>
+                    <ul class="space-y-3 opacity-60">
+                        <li>UNGM ID: 262897</li>
+                        <li>IATA TIDS: 96172915</li>
+                        <li>ISO-Aligned IMS</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white mb-4">Legal & Reporting</h5>
+                    <ul class="space-y-3 opacity-60">
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Use</a></li>
+                        <li><a href="#" class="text-red-400 hover:text-red-300 transition">Whistleblowing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center opacity-50">
+                &copy; 2026 EL ALI GROUP INTERNATIONAL LTD. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- DYNAMIC MODAL FOR DIVISIONS -->
+    <div id="division-modal" class="fixed inset-0 bg-[var(--navy-900)]/90 backdrop-blur-sm z- hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-[var(--slate-50)]">
+                <div class="flex items-center gap-3">
+                    <span id="modal-num" class="css-icon-badge bg-[var(--navy-900)] text-white text-xs"></span>
+                    <h3 id="modal-title" class="font-bold text-lg text-[var(--navy-900)]"></h3>
+                </div>
+                <button onclick="app.closeModal()" class="text-slate-400 hover:text-red-500 font-black text-xl px-2">&times;</button>
+            </div>
+            <div class="p-8 overflow-y-auto">
+                <p id="modal-desc" class="text-sm text-slate-600 leading-relaxed mb-6"></p>
+                
+                <h4 class="text-xs font-bold uppercase tracking-widest text-[var(--cyan-600)] mb-3">Key Capabilities</h4>
+                <ul id="modal-list" class="space-y-2 text-sm text-slate-700 mb-8 border-l-2 border-[var(--cyan-500)] pl-4"></ul>
+                
+                <div class="bg-slate-50 p-4 rounded-lg text-xs text-slate-500 border border-slate-200">
+                    <strong>Governance Note:</strong> This division operates strictly under EAGint's enterprise-wide IMS, ensuring audit readiness and compliance with donor/IFI standards.
+                </div>
+            </div>
+            <div class="p-6 border-t border-slate-100 bg-[var(--slate-50)] flex justify-end">
+                <button onclick="app.closeModal()" class="btn-outline">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLICATION LOGIC -->
+    <script>
+        const app = {
+            // Data Model for the 13 Divisions
+            divisions: [
+                { id: 1, cat: 'infrastructure', name: "Marine & Port Infrastructure", desc: "Specialized services for ports, coastal, and marine environments, including marine engineering support and maritime logistics coordination.", capabilities: ["Berth & terminal construction support", "Dredging coordination", "Marine logistics for Oil & Gas"] },
+                { id: 2, cat: 'services', name: "Capacity Development & Governance", desc: "Design and delivery of capacity-building programs and institutional strengthening for public institutions and NGOs.", capabilities: ["Organizational assessments", "Vocational training programs", "PFM & Policy support"] },
+                { id: 3, cat: 'logistics', name: "Trade & Global Procurement", desc: "End-to-end international trade facilitation, sourcing, and global procurement services compliant with donor requirements.", capabilities: ["Global supplier pre-qualification", "Customs coordination", "Sanctions & Risk compliance"] },
+                { id: 4, cat: 'logistics', name: "Commercial Supply", desc: "Provision of goods and institutional supplies via framework agreements and LTAs.", capabilities: ["Bulk procurement distribution", "LTA management", "Quality assurance inspections"] },
+                { id: 5, cat: 'infrastructure', name: "Infrastructure & Construction", desc: "Planning, construction, and rehabilitation of civil works and climate-resilient infrastructure projects.", capabilities: ["Public buildings & facilities", "Rehabilitation & retrofitting", "Real estate asset management"] },
+                { id: 6, cat: 'logistics', name: "Logistics & Supply Chain", desc: "Integrated logistics covering land, sea, and air transport; warehousing; cold chain; and project cargo.", capabilities: ["Heavy-lift & OOG cargo", "Nationwide distribution", "Fleet & yard management"] },
+                { id: 7, cat: 'infrastructure', name: "Energy & Environmental Solutions", desc: "Renewable and hybrid energy systems, environmental services, and sustainability-focused solutions.", capabilities: ["Solar PV & Hybrid power", "Environmental impact screening", "Waste management systems"] },
+                { id: 8, cat: 'services', name: "Technology & Digital Solutions", desc: "ICT, telecommunications infrastructure, digital platforms, and technology-enabled service delivery.", capabilities: ["AI Fleet Routing", "Real-time GPS telematics", "Cloud WMS integration"] },
+                { id: 9, cat: 'services', name: "Agriculture & Livestock", desc: "Support to food security through agriculture, livestock health, and climate-resilient value chains.", capabilities: ["Seed & fertilizer systems", "Veterinary supply & campaigns", "Value chain development"] },
+                { id: 10, cat: 'logistics', name: "Tenders & Procurement Services", desc: "Specialized tendering, bid management, and procurement advisory for institutional programs.", capabilities: ["Bid management", "Procurement advisory", "Compliance support"] },
+                { id: 11, cat: 'services', name: "Humanitarian & Social Services", desc: "Implementation of humanitarian response, early recovery, and social protection programs.", capabilities: ["Emergency response logistics", "Health, Nutrition & WASH", "Cash-based assistance"] },
+                { id: 12, cat: 'services', name: "Hospitality & Camp Management", desc: "Comprehensive life-support, accommodation, and travel services for remote field operations.", capabilities: ["Camp design & construction", "Catering & food safety", "Workforce travel logistics"] },
+                { id: 13, cat: 'infrastructure', name: "Education Infrastructure", desc: "Development and rehabilitation of safe, inclusive education facilities and learning environments.", capabilities: ["School construction", "Education WASH facilities", "Inclusive/Accessible design"] }
+            ],
+            
+            chartInstance: null,
+
+            // Initialize Application
+            init() {
+                this.renderDivisions('all');
+                this.setupFilters();
+                this.initCounters();
+                
+                // Set nav link active states based on hash on load if present
+                if(window.location.hash) {
+                    const viewId = window.location.hash.substring(1);
+                    if(document.getElementById('view-' + viewId)) {
+                        this.navigate(viewId);
+                    }
+                } else {
+                    this.navigate('home');
+                }
+            },
+
+            // Navigation State Management
+            navigate(viewId) {
+                // Update views
+                document.querySelectorAll('.spa-view').forEach(v => v.classList.remove('active'));
+                const targetView = document.getElementById('view-' + viewId);
+                if (targetView) {
+                    targetView.classList.add('active');
+                } else {
+                    document.getElementById('view-home').classList.add('active');
+                }
+
+                // Update Nav Highlights
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('text-[var(--cyan-500)]'));
+                const activeLink = document.querySelector(`.nav-link[onclick*="${viewId}"]`);
+                if(activeLink) activeLink.classList.add('text-[var(--cyan-500)]');
+
+                // Initialize specific view scripts
+                if (viewId === 'impact') {
+                    setTimeout(() => this.renderChart(), 100); // slight delay for DOM to render display:block
+                }
+
+                window.scrollTo(0, 0);
+                history.replaceState(null, null, '#' + viewId);
+            },
+
+            toggleMobileMenu() {
+                const menu = document.getElementById('mobile-menu');
+                if(menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                }
+            },
+
+            // Capabilities View: Render Grid
+            renderDivisions(filterCat) {
+                const grid = document.getElementById('divisions-grid');
+                if(!grid) return;
+                
+                grid.innerHTML = '';
+                
+                const filteredData = filterCat === 'all' 
+                    ? this.divisions 
+                    : this.divisions.filter(d => d.cat === filterCat);
+
+                filteredData.forEach(div => {
+                    // Create card
+                    const card = document.createElement('div');
+                    card.className = 'interactive-card bg-white p-8 rounded-2xl cursor-pointer flex flex-col h-full';
+                    card.onclick = () => this.openModal(div.id);
+                    
+                    // Format category name for badge
+                    let catName = div.cat;
+                    if(catName === 'services') catName = 'Social/Humanitarian';
+                    else if(catName === 'logistics') catName = 'Logistics/Trade';
+                    else catName = 'Infrastructure';
+
+                    card.innerHTML = `
+                        <div class="flex items-center gap-3 mb-4 border-b border-slate-100 pb-3">
+                            <span class="css-icon-badge bg-[var(--slate-50)] text-[var(--cyan-600)] text-xs">D${String(div.id).padStart(2, '0')}</span>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400">${catName}</span>
+                        </div>
+                        <h3 class="font-bold text-sm text-[var(--navy-900)] mb-3 leading-snug">${div.name}</h3>
+                        <p class="text-[11px] text-slate-500 leading-relaxed mt-auto line-clamp-3">${div.desc}</p>
+                    `;
+                    grid.appendChild(card);
+                });
+            },
+
+            // Capabilities View: Filters
+            setupFilters() {
+                const btns = document.querySelectorAll('.filter-btn');
+                btns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        btns.forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.renderDivisions(e.target.dataset.filter);
+                    });
+                });
+            },
+
+            // Capabilities View: Modal
+            openModal(id) {
+                const div = this.divisions.find(d => d.id === id);
+                if(!div) return;
+
+                document.getElementById('modal-num').textContent = `D${String(div.id).padStart(2, '0')}`;
+                document.getElementById('modal-title').textContent = div.name;
+                document.getElementById('modal-desc').textContent = div.desc;
+                
+                const ul = document.getElementById('modal-list');
+                ul.innerHTML = div.capabilities.map(cap => `<li><span class="text-[var(--cyan-500)] font-bold mr-2">⬢</span> ${cap}</li>`).join('');
+
+                const modal = document.getElementById('division-modal');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            },
+
+            closeModal() {
+                const modal = document.getElementById('division-modal');
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            },
+
+            // Impact View: Chart.js Rendering
+            renderChart() {
+                const canvas = document.getElementById('impactChart');
+                if(!canvas) return;
+                
+                if (this.chartInstance) {
+                    this.chartInstance.destroy();
+                }
+
+                const ctx = canvas.getContext('2d');
+                
+                // Data synthesized from reports
+                const data = {
+                    labels: ['WASH & Water', 'Civil Infra', 'Logistics/Transport', 'Health Supply', 'Education Infra', 'Energy'],
+                    datasets: [{
+                        label: 'Verified Projects Delivered (Cumulative)',
+                        data:, // Sum approximates 9531
+                        backgroundColor: '#00aeef',
+                        hoverBackgroundColor: '#0f2b46',
+                        borderRadius: 4,
+                        barPercentage: 0.6
+                    }]
+                };
+
+                this.chartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false, // CRITICAL for filling the constrained container
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: '#0f2b46',
+                                titleFont: { family: 'Inter', size: 13 },
+                                bodyFont: { family: 'Inter', size: 12 },
+                                padding: 12,
+                                cornerRadius: 4,
+                                callbacks: {
+                                    label: function(context) {
+                                        return ` ${context.raw.toLocaleString()} Projects`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: '#f1f5f9', drawBorder: false },
+                                ticks: { font: { family: 'Inter', size: 10, weight: '600' }, color: '#94a3b8' }
+                            },
+                            x: {
+                                grid: { display: false, drawBorder: false },
+                                ticks: { 
+                                    font: { family: 'Inter', size: 10, weight: '600' }, 
+                                    color: '#64748b',
+                                    maxRotation: 45,
+                                    minRotation: 45
+                                }
+                            }
+                        },
+                        animation: {
+                            duration: 1500,
+                            easing: 'easeOutQuart'
+                        }
+                    }
+                });
+            },
+
+            // Home View: Number Counters
+            initCounters() {
+                const counters = document.querySelectorAll('.counter');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target;
+                            const target = parseInt(el.getAttribute('data-target'));
+                            let count = 0;
+                            const duration = 2000; // ms
+                            const increment = target / (duration / 16); // 60fps
+                            
+                            const update = () => {
+                                count += increment;
+                                if (count < target) {
+                                    el.innerText = Math.ceil(count).toLocaleString();
+                                    requestAnimationFrame(update);
+                                } else {
+                                    el.innerText = target.toLocaleString();
+                                }
+                            };
+                            update();
+                            observer.unobserve(el);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                counters.forEach(c => observer.observe(c));
+            }
+        };
+
+        // Boot
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+        });
+    </script>
+</body>
+</html>

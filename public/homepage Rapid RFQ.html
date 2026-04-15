@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAGint | El Ali Group International Ltd</title>
+    <meta name="description" content="EAGint: Integrated Infrastructure, Logistics & Humanitarian Solutions across East Africa and Global Corridors.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-blue: #0A2540; /* Deep Institutional Blue */
+            --brand-light: #F1F5F9;
+            --brand-accent: #2563EB; /* UN Blue style accent */
+        }
+        body { font-family: 'Inter', sans-serif; }
+        
+        .bg-brand { background-color: var(--brand-blue); }
+        .text-brand { color: var(--brand-blue); }
+        
+        /* Sticky Header Transition */
+        #main-header { transition: all 0.3s ease; }
+        #main-header.scrolled { padding-top: 10px; padding-bottom: 10px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-white text-slate-800 antialiased">
+
+    <header id="main-header" class="bg-white fixed w-full top-0 z-50 py-5 border-b border-slate-200">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-black tracking-tighter text-[#0A2540]">
+                EAG<span class="text-blue-600">int</span>
+            </a>
+
+            <nav class="hidden xl:flex space-x-3 2xl:space-x-4 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-wide text-slate-600 items-center">
+                <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+                <a href="#about" class="hover:text-blue-600 transition">About</a>
+                <a href="#divisions" class="hover:text-blue-600 transition flex items-center gap-1">Divisions <i class="fa-solid fa-angle-down"></i></a>
+                <a href="#sectors" class="hover:text-blue-600 transition">Sectors</a>
+                <a href="#esg" class="hover:text-blue-600 transition">ESG</a>
+                <a href="#solutions" class="hover:text-blue-600 transition">Solutions</a>
+                <a href="#portfolio" class="hover:text-blue-600 transition">Portfolio</a>
+                <a href="#media" class="hover:text-blue-600 transition">MEDIA</a>
+                <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
+                <a href="#governance" class="hover:text-blue-600 transition">Governance</a>
+                <a href="#partnerships" class="hover:text-blue-600 transition">Partnerships</a>
+                <a href="#insights" class="hover:text-blue-600 transition">Insights</a>
+                <a href="#careers" class="hover:text-blue-600 transition">Careers</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="hidden md:inline-block bg-[#0A2540] text-white px-5 py-2.5 rounded text-xs font-bold uppercase tracking-wider hover:bg-blue-700 transition">
+                    Work With Us
+                </a>
+                <button class="xl:hidden text-2xl text-[#0A2540]"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-[#060C17] text-white overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-7 xl:col-span-7">
+                    <div class="inline-block border border-slate-700/80 bg-slate-800/40 rounded-full px-4 py-1.5 text-xs font-medium text-slate-300 mb-6">
+                        Since 2002 &middot; UN & INGO Trusted &middot; ISO-ready
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl xl:text-[3.25rem] font-black text-white mb-6 leading-[1.15] tracking-tight">
+                        Logistics & General Supply, Construction, and Humanitarian Services for Somalia & East Africa
+                    </h1>
+                    
+                    <p class="text-slate-400 text-lg leading-relaxed mb-10 max-w-2xl">
+                        EL ALI GROUP INTERNATIONAL (EAGint) delivers end-to-end 
+                        <strong class="text-slate-200 font-semibold">Transportation & Supply Chain, General Procurement, Construction & Engineering, WASH, Aviation & Ground Handling</strong>, and 
+                        <strong class="text-slate-200 font-semibold">Humanitarian Support</strong> with safety, compliance, and sustainability at the core.
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center gap-4 mb-10">
+                        <a href="#contact" class="bg-[#1D84FF] hover:bg-blue-500 text-white px-7 py-3 rounded-lg font-semibold transition shadow-lg shadow-blue-900/20">
+                            Get a Quote
+                        </a>
+                        <a href="https://wa.me/25261555901" target="_blank" class="border border-slate-700 bg-slate-800/30 hover:bg-slate-800 text-slate-300 px-6 py-3 rounded-lg font-medium transition flex items-center gap-2">
+                            WhatsApp: +252 615 55901
+                        </a>
+                        <a href="https://wa.me/25261552901" target="_blank" class="border border-slate-700 bg-slate-800/30 hover:bg-slate-800 text-slate-300 px-6 py-3 rounded-lg font-medium transition flex items-center gap-2">
+                            WhatsApp: +252 615 52901
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="border border-slate-800 bg-[#0B1425] rounded-xl p-5 text-center hover:border-slate-600 transition">
+                            <div class="text-2xl font-bold text-white mb-1">24+ years</div>
+                            <div class="text-sm text-slate-400 font-medium">Experience</div>
+                        </div>
+                        <div class="border border-slate-800 bg-[#0B1425] rounded-xl p-5 text-center hover:border-slate-600 transition">
+                            <div class="text-2xl font-bold text-white mb-1">24/7</div>
+                            <div class="text-sm text-slate-400 font-medium">Operations</div>
+                        </div>
+                        <div class="border border-slate-800 bg-[#0B1425] rounded-xl p-5 text-center hover:border-slate-600 transition flex flex-col justify-center">
+                            <div class="text-lg font-bold text-white leading-tight mb-1">AAIA &middot;<br>Mogadishu</div>
+                            <div class="text-xs text-slate-400 font-medium">Airport Access</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Form -->
+                <div class="lg:col-span-5 xl:col-span-5 lg:pl-6">
+                    <div class="bg-[#0D182B] border border-slate-800 rounded-2xl p-8 shadow-2xl relative">
+                        <h3 class="text-2xl font-bold text-white mb-3">Rapid RFQ</h3>
+                        <p class="text-sm text-slate-400 mb-6 leading-relaxed">Tell us your route, Incoterms, and timeline. We'll prepare options for air, sea, and road with customs support.</p>
+                        
+                        <form action="#" method="POST" class="space-y-4">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-2 font-medium">Service Needed</label>
+                                <select class="w-full bg-[#132036] border border-slate-700/80 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-[#1D84FF] focus:ring-1 focus:ring-[#1D84FF] appearance-none text-sm transition">
+                                    <option>International Freight (Air/Sea)</option>
+                                    <option>Local Transport & Distribution</option>
+                                    <option>Construction & Engineering</option>
+                                    <option>General Procurement</option>
+                                    <option>Aviation & Ground Handling</option>
+                                    <option>Humanitarian WASH Services</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-2 font-medium">From / To (City, Country)</label>
+                                <input type="text" placeholder="Istanbul, TR &rarr; Mogadishu, SO" class="w-full bg-[#132036] border border-slate-700/80 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-[#1D84FF] focus:ring-1 focus:ring-[#1D84FF] placeholder-slate-500 text-sm transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-2 font-medium">Volume / Weight</label>
+                                <input type="text" placeholder="e.g., 3x40' HQ &middot; 58,000 kg" class="w-full bg-[#132036] border border-slate-700/80 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-[#1D84FF] focus:ring-1 focus:ring-[#1D84FF] placeholder-slate-500 text-sm transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-2 font-medium">Your Email</label>
+                                <input type="email" placeholder="info@eagint.com" class="w-full bg-[#132036] border border-slate-700/80 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-[#1D84FF] focus:ring-1 focus:ring-[#1D84FF] placeholder-slate-500 text-sm transition">
+                            </div>
+                            <button type="submit" class="w-full bg-[#1D84FF] hover:bg-blue-500 text-white font-semibold py-3.5 rounded-lg transition shadow-lg shadow-blue-900/20 mt-4">
+                                Send RFQ
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-8 border-b border-slate-100 shadow-sm relative z-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center md:justify-between items-center gap-6 text-xs md:text-sm font-bold text-slate-600 uppercase tracking-widest">
+                <div class="flex items-center gap-2"><i class="fa-solid fa-handshake-simple text-blue-600 text-lg"></i> UN & Donor Ready</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-calendar-check text-blue-600 text-lg"></i> 24+ Years Experience</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-blue-600 text-lg"></i> 13 Integrated Divisions</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-certificate text-blue-600 text-lg"></i> ISO-Aligned Systems</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-shield-heart text-blue-600 text-lg"></i> Safeguarding & Do No Harm</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="text-blue-600 font-bold uppercase tracking-widest text-xs mb-2 block">Who We Are</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0A2540] mb-6">About EAGint</h2>
+                <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                    EAGint is an international multisector services group delivering infrastructure, logistics, supply chain, humanitarian, and development solutions in complex and fragile environments. 
+                </p>
+                <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                    Our integrated delivery platform ensures accountability, compliance, and long-term value for our partners.
+                </p>
+                <a href="#" class="text-[#0A2540] font-bold border-b-2 border-blue-600 pb-1 hover:text-blue-600 transition">Learn More About Us <i class="fa-solid fa-arrow-right ml-2"></i></a>
+            </div>
+            <div class="relative">
+                 <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=1769&auto=format&fit=crop" class="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition duration-500">
+                <div class="absolute -bottom-6 -left-6 bg-[#0A2540] text-white p-6 rounded shadow-lg hidden md:block">
+                    <p class="font-bold text-xl">Est. 2002</p>
+                    <p class="text-xs uppercase text-slate-400">Founded in Somalia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#0A2540] mb-2">24+</div>
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Years of Operations</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#0A2540] mb-2">13</div>
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Specialized Divisions</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#0A2540] mb-2">Multi</div>
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sector Portfolio</div>
+            </div>
+            <div>
+                <div class="text-4xl md:text-5xl font-black text-[#0A2540] mb-2">Global</div>
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Somalia & East Africa Reach</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sectors" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <h2 class="text-3xl font-bold text-[#0A2540]">Sectors We Serve</h2>
+                <a href="#" class="text-sm font-bold text-blue-600 hover:underline">View All Sectors</a>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="p-8 border border-slate-200 rounded hover:shadow-xl transition group bg-white">
+                    <i class="fa-solid fa-building-columns text-4xl text-slate-300 group-hover:text-blue-600 mb-6 transition"></i>
+                    <h3 class="font-bold text-lg mb-2">Governments</h3>
+                    <p class="text-sm text-slate-500">Public Institutions & Ministries</p>
+                </div>
+                <div class="p-8 border border-slate-200 rounded hover:shadow-xl transition group bg-white">
+                    <i class="fa-solid fa-earth-africa text-4xl text-slate-300 group-hover:text-blue-600 mb-6 transition"></i>
+                    <h3 class="font-bold text-lg mb-2">UN & IFIs</h3>
+                    <p class="text-sm text-slate-500">United Nations & Intl. Financial Institutions</p>
+                </div>
+                <div class="p-8 border border-slate-200 rounded hover:shadow-xl transition group bg-white">
+                    <i class="fa-solid fa-hands-holding-circle text-4xl text-slate-300 group-hover:text-blue-600 mb-6 transition"></i>
+                    <h3 class="font-bold text-lg mb-2">NGOs</h3>
+                    <p class="text-sm text-slate-500">Humanitarian Actors & Civil Society</p>
+                </div>
+                <div class="p-8 border border-slate-200 rounded hover:shadow-xl transition group bg-white">
+                    <i class="fa-solid fa-briefcase text-4xl text-slate-300 group-hover:text-blue-600 mb-6 transition"></i>
+                    <h3 class="font-bold text-lg mb-2">Private Sector</h3>
+                    <p class="text-sm text-slate-500">PPPs & Commercial Enterprise</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="divisions" class="py-24 bg-[#0A2540] text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Integrated Divisions</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Operating 13 specialized verticals to ensure complete project lifecycle management. Explore our core divisions below.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                <a href="division-1.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-anchor text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">1. Marine, Port & Aviation</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Integrated infrastructure solutions enabling trade, logistics connectivity, and humanitarian access.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-2.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-chalkboard-user text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">2. Capacity Development & Governance</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Strengthening institutions, systems, and people for sustainable, accountable outcomes.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-3.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-globe text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">3. Trade, Import, Export & Procurement</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Secure, compliant cross-border trade and sourcing in complex and fragile environments.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-4.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-boxes-stacked text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">4. Commercial Supply & General Trading</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Reliable, scalable bulk supply and framework agreements for institutional partners.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-5.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-helmet-safety text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">5. Infrastructure, Construction & Real Estate</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">End-to-end civil works, building construction, and rehabilitation for fragile environments.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-6.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-truck-fast text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">6. Logistics, Transportation & Supply Chain</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Reliable movement of goods across air, sea, and land corridors in remote contexts.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-7.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-solar-panel text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">7. Industrial, Energy & Environmental</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Integrated energy systems and environmental solutions for reliable, off-grid operations.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-8.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-satellite-dish text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">8. Technology, Telecom & Digital Solutions</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Secure, resilient ICT and telecom systems for low-infrastructure environments.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-9.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-wheat-awn text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">9. Agriculture, Livestock & Agro-Veterinary</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Integrated agricultural production, livestock health, and agro-supply chains.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-10.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-file-signature text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">10. Tenders & Procurement Services</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">End-to-end support for competitive bidding and institutional procurement processes.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-11.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-hand-holding-heart text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">11. Humanitarian & Social Services</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Integrated, people-centered assistance across emergency response, early recovery, and development.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-12.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-tents text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">12. Hospitality & Camp Management</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Comprehensive life-support, accommodation, and travel services for remote field operations.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+
+                <a href="division-13.html" class="bg-[#112d4a] p-6 border border-slate-700 hover:border-blue-500 transition cursor-pointer group flex flex-col h-full">
+                    <i class="fa-solid fa-school text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                    <h3 class="font-bold text-lg mb-2 text-white leading-tight">13. Education Infrastructure</h3>
+                    <p class="text-xs text-slate-400 mb-6 flex-grow">Safe, inclusive, and resilient learning environments enabling access to quality education.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide group-hover:text-white transition mt-auto">View Division &rarr;</span>
+                </a>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border border-slate-600 text-slate-300 px-8 py-3 rounded text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-[#0A2540] transition">
+                    View Complete Matrix
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners" class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center mb-12">
+            <h2 class="text-3xl font-bold text-[#0A2540] mb-4">Trusted Partnerships</h2>
+            <p class="text-slate-600 max-w-3xl mx-auto">We collaborate with governments, UN agencies, NGOs, and private partners to deliver transparent, compliant, and scalable solutions in complex environments.</p>
+        </div>
+        
+        <div class="container mx-auto px-6 overflow-hidden">
+            <div class="flex justify-between items-center opacity-40 grayscale gap-8 flex-wrap md:flex-nowrap">
+                <i class="fa-solid fa-building-ngo text-6xl"></i>
+                <i class="fa-solid fa-flag-usa text-6xl"></i>
+                <i class="fa-solid fa-building-columns text-6xl"></i>
+                <i class="fa-solid fa-truck-plane text-6xl"></i>
+                <i class="fa-solid fa-hand-holding-heart text-6xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-100">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="w-48 h-48 flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1740&auto=format&fit=crop" class="w-full h-full object-cover rounded-full shadow-xl border-4 border-white">
+                </div>
+                <div class="text-center md:text-left">
+                    <i class="fa-solid fa-quote-left text-4xl text-blue-200 mb-4"></i>
+                    <h3 class="text-xl md:text-2xl font-serif italic text-slate-700 leading-relaxed mb-6">
+                        “EAGint was built on trust, responsibility, and delivery in the most challenging environments. Our commitment is to provide ethical, compliant, and impactful solutions that support humanitarian and development outcomes.”
+                    </h3>
+                    <div>
+                        <p class="font-bold text-[#0A2540] uppercase tracking-widest text-sm">CEO & Founder</p>
+                        <p class="text-slate-500 text-xs">EAG International Ltd</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#0A2540]">Our Work in Action</h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-4 h-96">
+                <img src="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover rounded hover:opacity-90 transition">
+                <img src="https://images.unsplash.com/photo-1581094794329-cd132c4a9195?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover rounded hover:opacity-90 transition">
+                <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover rounded hover:opacity-90 transition">
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover rounded hover:opacity-90 transition">
+            </div>
+            <div class="text-center mt-8">
+                <a href="#" class="text-blue-600 font-bold hover:underline">View Full Gallery &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl font-bold text-[#0A2540] mb-10 text-center">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details class="bg-white p-6 rounded shadow-sm cursor-pointer group">
+                    <summary class="font-bold text-slate-800 flex justify-between items-center">
+                        Are you UN registered? 
+                        <span class="text-blue-600 group-open:rotate-180 transition"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-600">Yes, EAGint is a fully registered vendor with the UNGM (United Nations Global Marketplace) and holds active vendor IDs with major agencies.</p>
+                </details>
+                <details class="bg-white p-6 rounded shadow-sm cursor-pointer group">
+                    <summary class="font-bold text-slate-800 flex justify-between items-center">
+                        Do you meet donor compliance standards?
+                        <span class="text-blue-600 group-open:rotate-180 transition"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-600">Absolutely. We maintain ISO certifications and strictly adhere to safeguarding, anti-corruption, and PSEA (Protection from Sexual Exploitation and Abuse) policies.</p>
+                </details>
+                <details class="bg-white p-6 rounded shadow-sm cursor-pointer group">
+                    <summary class="font-bold text-slate-800 flex justify-between items-center">
+                        Where do you operate?
+                        <span class="text-blue-600 group-open:rotate-180 transition"><i class="fa-solid fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-600">Our headquarters are in Somalia, with extensive operations across East Africa and established supply chain corridors globally.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-[#0A2540] text-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-black mb-6">Let’s Work Together</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-8 mb-10 text-slate-300">
+                <div><i class="fa-solid fa-envelope text-blue-400 mr-2"></i> info@eagint.com</div>
+                <div><i class="fa-solid fa-globe text-blue-400 mr-2"></i> www.eagint.com</div>
+                <div><i class="fa-solid fa-location-dot text-blue-400 mr-2"></i> Somalia | East Africa | Global</div>
+            </div>
+            <button class="bg-blue-600 text-white px-10 py-4 rounded font-bold uppercase tracking-wide hover:bg-white hover:text-[#0A2540] transition shadow-lg">
+                Contact Us Today
+            </button>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800 text-sm">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest mb-6">Company</h4>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="#about" class="hover:text-white">About EAGint</a></li>
+                    <li><a href="#divisions" class="hover:text-white">Divisions</a></li>
+                    <li><a href="#gallery" class="hover:text-white">Projects</a></li>
+                    <li><a href="#" class="hover:text-white">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest mb-6">Compliance</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-white">Safeguarding</a></li>
+                    <li><a href="#" class="hover:text-white">ESG & Impact</a></li>
+                    <li><a href="#" class="hover:text-white">Policies</a></li>
+                    <li><a href="#" class="hover:text-white">Code of Conduct</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest mb-6">Resources</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-white">Insights</a></li>
+                    <li><a href="#" class="hover:text-white">Downloads</a></li>
+                    <li><a href="#" class="hover:text-white">FAQs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest mb-6">Connect</h4>
+                <ul class="space-y-3">
+                    <li>Email: info@eagint.com</li>
+                    <li><a href="#" class="hover:text-white"><i class="fa-brands fa-linkedin text-xl"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+            <p>&copy; 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint)</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

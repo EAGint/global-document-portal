@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sectors We Serve & Investor Dashboard | EAGint</title>
+<meta name="description" content="EAGint supports governments, MDBs, UN agencies, NGOs, private sector, and humanitarian partners. View our live tender dashboard, ESG metrics, and PPP platform.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Chart.js for ESG Performance Dashboard -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+/* --- CORE STYLES --- */
+:root {
+    /* Existing Variables */
+    --primary:#0f2b46;
+    --accent:#00aeef; 
+    --light:#f4f7fb;
+    --dark:#0b1f33;
+    --text:#333;
+
+    /* Brand Colors (New) */
+    --primary-navy:#0f2b46;
+    --secondary-blue:#0077cc;
+    --accent-olive:#8a8f2a;
+
+    /* Neutral */
+    --gray-light:#f7f9fb;
+    --gray-border:#e5e7eb;
+
+    /* Typography */
+    --font-main:'Inter', sans-serif;
+
+    /* Spacing */
+    --section-padding:80px 8%;
+
+    /* Radius */
+    --radius-md:8px;
+    --radius-lg:14px;
+
+    /* Shadow */
+    --shadow-soft:0 10px 30px rgba(0,0,0,0.05);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+    font-family: var(--font-main);
+    color:var(--text);
+    line-height:1.7;
+    padding-top:75px; 
+    background: var(--gray-light); 
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Accessibility Focus States */
+a:focus, button:focus, input:focus, select:focus {
+  outline: 3px solid var(--secondary-blue);
+  outline-offset: 3px;
+}
+
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--primary);}
+h2 {margin-bottom: 20px; font-size: 32px;}
+h3 {margin-bottom: 15px; font-size: 20px;}
+p {margin-bottom: 15px;}
+a{text-decoration:none;transition:0.3s;}
+
+.container{width:90%;max-width:1200px;margin:auto;}
+.text-center{text-align:center;}
+.text-left{text-align:left;}
+.section {padding: 90px 0;}
+
+.btn{padding:12px 28px;border-radius:6px;font-weight:600;display:inline-block;transition:transform 0.2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-outline{border:2px solid var(--primary);color:var(--primary); background: transparent;}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+.btn-dark{background:var(--primary);color:#fff;}
+
+/* --- MAIN HEADER --- */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 5%;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 999;
+  transition: background 0.3s, border-color 0.3s;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  max-width: 1600px;
+  margin: auto;
+  gap: 20px;
+}
+.logo img { height: 45px; }
+.primary-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.primary-nav a {
+  text-decoration: none;
+  color: #0f2b46;
+  font-weight: 600;
+  font-size: 13px;
+  transition: 0.3s;
+}
+.primary-nav a:hover { color: #0077cc; }
+.cta-btn {
+  background: #0077cc;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+/* --- NAV ANIMATIONS & UTILITIES --- */
+.main-nav {
+  display: none;
+  flex-direction: column;
+  background: white;
+  position: absolute;
+  width: 100%;
+  top: 70px;
+  left: 0;
+  padding: 20px;
+  box-shadow: var(--shadow-soft);
+}
+.main-nav.open {
+  display: flex;
+}
+
+@media(min-width: 1024px) {
+  .main-nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    background: none;
+    width: auto;
+    padding: 0;
+    box-shadow: none;
+  }
+  .hamburger {
+    display: none !important;
+  }
+}
+
+.main-nav a, .main-nav button.mega-btn {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--primary-navy);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+.main-nav a::after, .main-nav button.mega-btn::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: var(--accent);
+  transition: 0.3s;
+}
+.main-nav a:hover::after, .main-nav button.mega-btn:hover::after {
+  width: 100%;
+}
+
+.header-utils { display: flex; align-items: center; gap: 15px; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.search-bar {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  font-size: 13px;
+  background: var(--light);
+  color: var(--text);
+}
+.language-switch {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  outline: none;
+}
+.dark-toggle {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.dark-toggle:hover { transform: scale(1.1); }
+.goog-te-gadget-simple {
+  background-color: #fff !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  padding: 4px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* --- MEGA MENU --- */
+.mega-dropdown { position: relative; }
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  width: 900px;
+  background: white;
+  display: grid;
+  padding: 40px;
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-md);
+  z-index: 1000;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: left;
+  opacity: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+.mega-dropdown:hover .mega-menu,
+.mega-dropdown:focus-within .mega-menu { 
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+.mega-column h4 {
+  margin-bottom: 15px;
+  color: var(--primary-navy);
+  font-size: 15px;
+  border-bottom: 2px solid var(--gray-border);
+  padding-bottom: 8px;
+}
+.mega-column a { display: block; color: var(--text) !important; padding: 8px 0; font-size: 13px; font-weight: 500; }
+.mega-column a::after { display: none; }
+.mega-column a:hover { color: var(--accent) !important; padding-left: 5px; }
+
+.hamburger {
+  display: block; 
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+/* --- HERO INNER --- */
+.hero-inner{
+    padding: 120px 0 80px;
+    background:linear-gradient(rgba(15,43,70,0.9),rgba(15,43,70,0.9)),
+    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+    color:#fff;
+    text-align:center;
+}
+.hero-inner h1{font-size:42px;margin-bottom:20px;color:#fff;}
+.hero-inner p{font-size:18px;font-weight:400;color:#e0e6ef;max-width: 800px; margin: auto;}
+
+/* --- SECTOR HERO BANNERS --- */
+.sector-hero {
+  height: 60vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.overlay {
+  background: rgba(15,43,70,0.75);
+  padding: 60px;
+  color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.overlay h1 { color: #fff; font-size: 38px; margin-bottom: 15px; }
+.overlay p { color: #e0e6ef; font-size: 18px; max-width: 700px; }
+
+.government-hero { background-image: url('https://images.unsplash.com/photo-1541888087611-e7f0800b7d30?auto=format&fit=crop&w=1920&q=80'); }
+.un-hero { background-image: url('https://images.unsplash.com/photo-1593118247619-e2d6f056869e?auto=format&fit=crop&w=1920&q=80'); }
+.mdb-hero { background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80'); }
+
+/* --- GRIDS & CARDS --- */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.std-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+.std-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+.std-card h3 { color: var(--primary); font-size: 18px; margin-bottom: 12px; }
+.std-card p { color: #555; font-size: 14.5px; margin-bottom: 20px; flex-grow: 1; }
+.std-card canvas { background: #fff; border-radius: 8px; padding: 10px; border: 1px solid #f0f0f0; }
+
+.download-btn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  font-size: 13px;
+  transition: 0.3s;
+  text-align: center;
+  border: 1px solid var(--accent);
+}
+.download-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+/* --- TENDER TABLE & EVALUATION --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+.table-wrapper {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    padding: 20px;
+    height: 100%;
+}
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th { padding: 15px; border-bottom: 2px solid var(--light); color: var(--primary); font-family: 'Montserrat', sans-serif; font-weight: 700; }
+td { padding: 15px; border-bottom: 1px solid var(--light); font-size: 14.5px; }
+.status-badge { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.status-submitted { background: #e3f2fd; color: #1565c0; }
+.status-prep { background: #fff3e0; color: #ef6c00; }
+
+.form-group { margin-bottom: 15px; text-align: left;}
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--primary); }
+.form-group select, .form-group input { width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-family: 'Inter', sans-serif; outline: none; }
+.score-result { font-size: 24px; font-weight: 800; color: var(--accent); margin-top: 10px; }
+
+.checklist { list-style: none; padding: 0; margin: 0; text-align: left; font-size: 14px; }
+.checklist li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: #555; }
+.check-icon { font-size: 18px; }
+.check-complete { color: #4CAF50; }
+.check-pending { color: #ef6c00; }
+
+/* KPI Grid */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.kpi-card {
+    background: var(--light);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e0e6ef;
+    transition: 0.3s;
+}
+.kpi-value { font-size: 32px; font-weight: 800; color: var(--primary); }
+.kpi-label { font-size: 13px; color: #555; text-transform: uppercase; font-weight: 700; margin-top: 5px; }
+.kpi-alert { color: #e74c3c; }
+
+/* ERP Tag */
+.erp-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 5px;
+}
+
+/* --- GOVERNANCE DASHBOARD NAV --- */
+.governance-nav {
+    background: var(--primary-navy);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.governance-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+.governance-nav a {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.governance-nav a:hover, .governance-nav a.active {
+    background: var(--accent);
+}
+
+/* --- RISK HEATMAP --- */
+.risk-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+.risk-box {
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+    font-size: 13px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.risk-box.low { background: #2e7d32; }
+.risk-box.medium { background: #f59e0b; }
+.risk-box.high { background: #dc2626; }
+
+/* --- DIGITAL TWIN MAP --- */
+.digital-twin {
+    background: var(--dark);
+    color: #fff;
+    padding: 60px 5%;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.map-nodes-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.map-node {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.map-node:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* --- COLORED SDG TAGS --- */
+.sdg-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+.sdg {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: white;
+    font-weight: 700;
+}
+.sdg1 { background: #e5243b; }
+.sdg2 { background: #dda63a; }
+.sdg3 { background: #4c9f38; }
+.sdg4 { background: #c5192d; }
+.sdg5 { background: #ff3a21; }
+.sdg6 { background: #26bde2; }
+.sdg7 { background: #fcc30b; color: #333;}
+.sdg8 { background: #a21942; }
+.sdg9 { background: #fd9d24; }
+.sdg10 { background: #dd1367; }
+.sdg11 { background: #fd9d24; }
+.sdg12 { background: #bf8b2e; }
+.sdg13 { background: #3f7e44; }
+.sdg16 { background: #00689d; }
+.sdg17 { background: #19486a; }
+
+.filter-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.filter-btn {
+    padding: 8px 20px;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+.filter-btn:hover, .filter-btn.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+.sector-category {
+    margin-bottom: 80px;
+    transition: opacity 0.4s ease;
+}
+
+/* --- DELIVERY ARCHITECTURE MATRIX --- */
+.matrix-section {
+    padding: 80px 5%;
+    background: #ffffff;
+    border-top: 1px solid var(--gray-border);
+}
+.section-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+.section-intro h2 {
+    font-size: 32px;
+    color: var(--primary-navy);
+    margin-bottom: 15px;
+}
+.section-intro p {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.matrix-controls {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.matrix-controls select {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: var(--font-main);
+    color: var(--primary-navy);
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    background: var(--gray-light);
+}
+.matrix-wrapper {
+    overflow-x: auto;
+    box-shadow: var(--shadow-soft);
+    border-radius: var(--radius-md);
+}
+.delivery-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 800px;
+}
+.delivery-matrix th {
+    background: var(--primary-navy);
+    color: white;
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+.delivery-matrix td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--gray-border);
+    font-size: 14px;
+    color: #444;
+}
+.delivery-matrix tr {
+    transition: background 0.2s;
+}
+.delivery-matrix tr:hover {
+    background: #f0f4f8;
+}
+.matrix-summary {
+    max-width: 900px;
+    margin: 30px auto 0;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+/* --- NEW ARCHITECTURE & RISK STYLES --- */
+.architecture-diagram {
+    padding: 20px 0 40px;
+    text-align: center;
+}
+.layer {
+    margin: 15px 0;
+}
+.pill {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 50px;
+    background: #e5e7eb;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-navy);
+}
+.pill.highlight {
+    background: var(--primary-navy);
+    color: white;
+}
+.arrow {
+    font-size: 24px;
+    color: var(--accent);
+    line-height: 1;
+}
+.risk {
+    font-weight: 700;
+    font-size: 13px;
+}
+.risk.low { color: #2e7d32; }
+.risk.medium { color: #f59e0b; }
+.risk.high { color: #dc2626; }
+
+.investor-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.investor-matrix th {
+    background: var(--light);
+    color: var(--primary-navy);
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+}
+.investor-matrix td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--gray-border);
+    font-size: 13px;
+}
+
+/* --- MAIN FOOTER --- */
+.main-footer {
+  background: #0f2b46;
+  color: #ffffff;
+  padding: 60px 8% 30px;
+}
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+.footer-col h4 { margin-bottom: 15px; font-size: 16px; color: var(--accent); }
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col ul li { margin-bottom: 8px; }
+.footer-col a { color: #d0d7de; text-decoration: none; font-size: 14px; transition: 0.3s; }
+.footer-col a:hover { color: #ffffff; }
+.footer-bottom { text-align: center; margin-top: 40px; font-size: 13px; opacity: 0.7; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+/* --- MODALS --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: #fff;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+.modal-header h3 { margin: 0; color: var(--primary); }
+.close-modal {
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+}
+.close-modal:hover { color: var(--primary); }
+
+/* --- DARK MODE --- */
+.dark-mode { background: #121212; color: white; }
+.dark-mode .main-header { background: #0f2b46; border-bottom-color: #0f2b46; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.dark-mode .main-nav a { color: white; }
+.dark-mode .main-nav a:hover { color: var(--accent); }
+.dark-mode .mega-dropdown { background: #1a1a1a; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 1px solid #333; }
+.dark-mode .mega-column h4 { color: #fff; border-bottom-color: #333; }
+.dark-mode .mega-column a { color: #ccc !important; }
+.dark-mode .mega-column a:hover { color: var(--accent) !important; }
+.dark-mode .section[style*="background:#ffffff"] { background: #121212 !important; }
+.dark-mode .section[style*="background:var(--light)"] { background: #1a1a1a !important; }
+.dark-mode h2, .dark-mode h3 { color: #fff; }
+.dark-mode p { color: #bbb !important; }
+.dark-mode .std-card, .dark-mode .modal-content { background: #1e1e1e; box-shadow: 0 6px 18px rgba(0,0,0,0.3); }
+.dark-mode .std-card canvas { background: #2a2a2a; border-color: #444; }
+.dark-mode .search-bar, .dark-mode .language-switch { background: #2a2a2a; color: #fff; border-color: #444; }
+.dark-mode .dark-toggle { color: white; }
+.dark-mode .filter-btn { border-color: #555; color: #ccc; }
+.dark-mode .filter-btn.active, .dark-mode .filter-btn:hover { border-color: var(--accent); background: var(--accent); color: #fff; }
+.dark-mode .table-wrapper { background: #1e1e1e; }
+.dark-mode th { border-bottom-color: #333; color: var(--accent); }
+.dark-mode td { border-bottom-color: #333; }
+.dark-mode input[type="number"], .dark-mode input[type="text"], .dark-mode input[type="password"], .dark-mode select { background: #2a2a2a; color: #fff; border: 1px solid #444; }
+.dark-mode .form-group label { color: var(--accent); }
+.dark-mode .checklist li { color: #ccc; }
+.dark-mode .kpi-card { background: #2a2a2a; border-color: #444; }
+.dark-mode .kpi-value { color: var(--accent); }
+.dark-mode .modal-header { border-bottom-color: #333; }
+
+/* Dark Mode Matrix */
+.dark-mode .matrix-section { background: #121212; border-color: #333; }
+.dark-mode .delivery-matrix { background: #1e1e1e; }
+.dark-mode .delivery-matrix th { background: #0a1c2e; border-bottom: 1px solid #333; }
+.dark-mode .delivery-matrix td { border-bottom-color: #333; color: #ccc; }
+.dark-mode .delivery-matrix tr:hover { background: #2a2a2a; }
+.dark-mode .section-intro p, .dark-mode .matrix-summary { color: #aaa; }
+.dark-mode .pill { background: #2a2a2a; color: #ccc; }
+.dark-mode .pill.highlight { background: var(--accent); color: #fff; }
+.dark-mode .investor-matrix { background: #1e1e1e; }
+.dark-mode .investor-matrix th { background: #2a2a2a; color: #fff; border-bottom: 1px solid #444; }
+.dark-mode .investor-matrix td { border-bottom-color: #333; color: #ccc; }
+.dark-mode .governance-nav { background: #1a1a1a; }
+
+/* SVG Dark mode support */
+.dark-mode svg circle[fill="var(--light)"] { fill: #1e1e1e; }
+
+/* --- RESPONSIVE --- */
+@media(max-width: 1200px) {
+  .nav-container { flex-direction: row; flex-wrap: wrap; gap: 15px; padding: 15px 5%; justify-content: space-between; }
+  .header-actions { order: 2; width: 100%; justify-content: space-between; margin-top: 10px; }
+  .hamburger { order: 1; }
+
+  .mega-menu {
+    position: static; display: none; grid-template-columns: 1fr;
+    box-shadow: none; padding: 10px 0 0 0; gap: 20px; width: 100%; transform: none;
+    opacity: 1; pointer-events: auto;
+  }
+  .mega-dropdown:hover .mega-menu, .mega-dropdown:focus-within .mega-menu { display: grid; transform: none; }
+}
+@media(max-width: 900px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .sector-hero { height: 350px; min-height: 300px; }
+    .overlay h1 { font-size: 28px; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "EL ALI GROUP INTERNATIONAL LTD",
+    "alternateName": "EAGint",
+    "url": "https://www.eagint.com",
+    "areaServed": [
+        "Governments & Public Institutions",
+        "United Nations Agencies",
+        "Multilateral Development Banks",
+        "NGOs",
+        "Private Sector",
+        "Oil & Gas",
+        "Renewable Energy",
+        "Agriculture & Food Systems"
+    ],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Sectors Served",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "name": "Governments & Public Institutions"
+            },
+            {
+                "@type": "Offer",
+                "name": "United Nations Agencies & IFIs"
+            },
+            {
+                "@type": "Offer",
+                "name": "Multilateral Development Banks & DFIs"
+            },
+            {
+                "@type": "Offer",
+                "name": "Oil, Gas & Extractives"
+            },
+            {
+                "@type": "Offer",
+                "name": "Renewable Energy & Climate Infrastructure"
+            },
+            {
+                "@type": "Offer",
+                "name": "Agriculture & Food Systems"
+            }
+        ]
+    }
+}
+</script>
+
+</head>
+<body>
+
+<!-- MAIN HEADER -->
+<header class="main-header">
+  <div class="nav-container">
+    
+    <!-- LEFT: LOGO -->
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none;">
+        <img src="assets/img/EAGint.jpeg" alt="EAGint Logo" onerror="this.src='https://via.placeholder.com/150x50/0f2b46/ffffff?text=EAGint'">
+      </a>
+    </div>
+
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">☰</button>
+
+    <!-- CENTER: MAIN NAVIGATION -->
+    <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About EAGint</a></li>
+
+        <li class="mega-dropdown">
+          <button class="mega-btn" aria-haspopup="true" aria-expanded="false" onclick="window.location.href='divisions.html'">Divisions ▾</button>
+          
+          <div class="mega-menu">
+            <div class="mega-column">
+              <h4>🏗 Infrastructure</h4>
+              <a href="division-marine.html">Marine & Port</a>
+              <a href="division-infrastructure.html">Construction</a>
+              <a href="division-energy.html">Energy & Environment</a>
+              <a href="division-technology.html">Technology & Digital</a>
+            </div>
+            <div class="mega-column">
+              <h4>🚚 Logistics & Trade</h4>
+              <a href="division-logistics.html">Supply Chain</a>
+              <a href="division-trade.html">Global Procurement</a>
+              <a href="division-commercial.html">Commercial Supply</a>
+              <a href="division-tenders.html">Tender Services</a>
+            </div>
+            <div class="mega-column">
+              <h4>🏥 Social & Institutional</h4>
+              <a href="division-humanitarian.html">Humanitarian Services</a>
+              <a href="division-education.html">Education Infrastructure</a>
+              <a href="division-camp.html">Camp Management</a>
+              <a href="division-capacity.html">Capacity Development</a>
+            </div>
+          </div>
+        </li>
+
+        <li><a href="sectors.html" style="color:var(--accent);">Sectors We Serve</a></li>
+        <li><a href="esg.html">ESG & Impact</a></li>
+        <li><a href="compliance.html">Compliance & Safeguarding</a></li>
+        <li><a href="projects.html">Projects & Experience</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="careers.html">Careers & Localization</a></li>
+        <li><a href="insights.html">Insights & Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: ACTIONS -->
+    <div class="header-actions">
+        <input type="text" id="searchInput" placeholder="Search..." class="search-bar" onkeyup="searchSite()" aria-label="Search">
+
+        <select class="language-switch" onchange="changeLanguage(this.value)" aria-label="Language Switch">
+          <option value="en">EN</option>
+          <option value="so">SO</option>
+          <option value="tr">TR</option>
+          <option value="zh-CN">ZH</option>
+          <option value="ar">AR</option>
+        </select>
+
+        <div id="google_translate_element" style="display:none;"></div>
+        <button class="dark-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
+        
+        <a href="contact.html" class="cta-btn" style="color:white; text-decoration:none;">Work With Us</a>
+        <button onclick="openLoginModal()" class="btn btn-outline" style="padding: 6px 12px; font-size: 13px; border:none; margin-left: -5px;" title="Staff Login"><i class="fas fa-lock"></i></button>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-inner" style="padding-top: 180px;">
+    <div class="container">
+        <h1>Sectors We Serve</h1>
+        <p>Structured implementation partner across public, humanitarian, financial, and private-sector ecosystems.</p>
+    </div>
+</section>
+
+<!-- SDG FILTER SECTION & SVG ARCHITECTURE -->
+<section class="section" style="background:var(--light); padding-bottom: 40px; padding-top: 60px;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;">
+            
+            <!-- Filter Controls -->
+            <div class="text-left">
+                <h2 style="font-size: 28px; margin-bottom: 10px;">Filter by SDG Alignment</h2>
+                <p style="color: #555; margin-bottom: 20px;">Isolate sectors and operations by their corresponding UN Sustainable Development Goal.</p>
+                <div class="filter-buttons" style="justify-content: flex-start; margin-top: 0;">
+                    <button class="filter-btn active" onclick="filterSector('all', this)">All Sectors</button>
+                    <button class="filter-btn" onclick="filterSector('9', this)">SDG 9: Infrastructure</button>
+                    <button class="filter-btn" onclick="filterSector('13', this)">SDG 13: Climate</button>
+                    <button class="filter-btn" onclick="filterSector('3', this)">SDG 3: Health</button>
+                    <button class="filter-btn" onclick="filterSector('8', this)">SDG 8: Work & Growth</button>
+                    <button class="filter-btn" onclick="resetFilter()">Reset</button>
+                </div>
+            </div>
+
+            <!-- SVG SDG Wheel -->
+            <div class="text-center" style="max-width: 400px; margin: auto;">
+                <svg width="100%" height="100%" viewBox="0 0 500 500">
+                    <circle cx="250" cy="250" r="200" fill="var(--light)"/>
+                    <circle cx="250" cy="250" r="140" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5,5" />
+                    
+                    <text x="250" y="258" text-anchor="middle" font-size="28" font-weight="bold" fill="var(--primary)" font-family="Montserrat, sans-serif">EAGint</text>
+                    
+                    <text x="250" y="60" text-anchor="middle" font-weight="bold" font-size="16" fill="var(--primary)">SDG 9</text>
+                    <text x="440" y="255" text-anchor="middle" font-weight="bold" font-size="16" fill="var(--primary)">SDG 13</text>
+                    <text x="250" y="450" text-anchor="middle" font-weight="bold" font-size="16" fill="var(--primary)">SDG 3</text>
+                    <text x="60" y="255" text-anchor="middle" font-weight="bold" font-size="16" fill="var(--primary)">SDG 8</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTORS CONTENT -->
+<section class="section" id="sectors-container">
+    <div class="container">
+
+        <!-- CATEGORY 1: Institutional -->
+        <div class="sector-category">
+            <section class="sector-hero government-hero">
+              <div class="overlay">
+                <h1>Governments & Public Institutions</h1>
+                <p>Delivering resilient public infrastructure with accountability and compliance.</p>
+              </div>
+            </section>
+            
+            <div class="grid-3">
+                <div class="std-card sector-card" data-sdg="9 11 16 6 8">
+                    <h3>Governments & Public Institutions</h3>
+                    <p>Public infrastructure, utilities, institutional systems, and long-term asset sustainability.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg9">SDG 9</span>
+                        <span class="sdg sdg11">SDG 11</span>
+                        <span class="sdg sdg16">SDG 16</span>
+                    </div>
+                    <a href="downloads/Government-Sector-Profile-2026.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+
+                <div class="std-card sector-card" data-sdg="1 2 3 17 9 16">
+                    <h3>United Nations Agencies & IFIs</h3>
+                    <p>Procurement-compliant humanitarian and stabilization delivery systems across fragile corridors.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg1">SDG 1</span>
+                        <span class="sdg sdg3">SDG 3</span>
+                        <span class="sdg sdg17">SDG 17</span>
+                    </div>
+                    <a href="downloads/UN-Sector-Profile-2026.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+
+                <div class="std-card sector-card" data-sdg="9 13 17">
+                    <h3>Multilateral Development Banks</h3>
+                    <p>IFI-aligned infrastructure, safeguards integration, and risk-managed execution platforms.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg9">SDG 9</span>
+                        <span class="sdg sdg13">SDG 13</span>
+                        <span class="sdg sdg17">SDG 17</span>
+                    </div>
+                    <a href="downloads/MDB-Sector-Profile-2026.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+            </div>
+            
+            <!-- MDB Focus Subsection -->
+            <div class="std-card" style="margin-top: 30px; background: var(--light); box-shadow: none;">
+                <h3 style="margin-bottom: 20px;">MDB & DFI Tender Targeting & Execution</h3>
+                
+                <!-- Implementation Capacity Pitch -->
+                <div class="ifi-pitch" style="margin-bottom: 25px;">
+                    <p style="font-size: 14.5px; color: #555;">EAGint operates as a structured implementation partner aligned with Environmental & Social Safeguards, procurement frameworks, and fiduciary controls required by multilateral development banks.</p>
+                    <ul style="font-size: 13.5px; color: var(--primary-navy); font-weight: 600; display: flex; flex-wrap: wrap; gap: 15px; list-style: none; padding: 0; margin-top: 15px;">
+                        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> ESMF Integration</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Procurement Compliance</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Audit-Ready Reporting</li>
+                        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Climate Safeguards</li>
+                    </ul>
+                </div>
+
+                <div class="grid-3" style="margin-top: 0; gap: 20px;">
+                    <div style="background: #fff; padding: 20px; border-radius: 8px;">
+                        <h4 style="color:var(--accent); margin-bottom: 8px;">World Bank Procurement</h4>
+                        <p style="font-size: 13.5px; margin:0;">Strictly aligned with World Bank Environmental & Social Framework (ESF).</p>
+                    </div>
+                    <div style="background: #fff; padding: 20px; border-radius: 8px;">
+                        <h4 style="color:var(--accent); margin-bottom: 8px;">African Development Bank</h4>
+                        <p style="font-size: 13.5px; margin:0;">Integrated safeguard, local content, and procurement compliance support.</p>
+                    </div>
+                    <div style="background: #fff; padding: 20px; border-radius: 8px;">
+                        <h4 style="color:var(--accent); margin-bottom: 8px;">Climate Finance Facilities</h4>
+                        <p style="font-size: 13.5px; margin:0;">Execution-ready green infrastructure and climate resilience systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY 2: Humanitarian -->
+        <div class="sector-category">
+            <section class="sector-hero un-hero">
+              <div class="overlay">
+                <h1>Humanitarian & Social Sector</h1>
+                <p>Operational readiness and compliant logistics for complex humanitarian missions.</p>
+              </div>
+            </section>
+
+            <div class="grid-3">
+                <div class="std-card sector-card" data-sdg="1 3 4 6 5 10">
+                    <h3>International & National NGOs</h3>
+                    <p>WASH, emergency infrastructure, and compliance-aligned field logistics for crisis response.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg3">SDG 3</span>
+                        <span class="sdg sdg4">SDG 4</span>
+                        <span class="sdg sdg6">SDG 6</span>
+                    </div>
+                    <a href="downloads/NGO-Sector-Profile.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+
+                <div class="std-card sector-card" data-sdg="11 13 16">
+                    <h3>Humanitarian & Development Partners</h3>
+                    <p>Resilience, recovery, and peace-nexus programming supporting transitional stability.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg11">SDG 11</span>
+                        <span class="sdg sdg13">SDG 13</span>
+                        <span class="sdg sdg16">SDG 16</span>
+                    </div>
+                    <a href="downloads/Humanitarian-Profile.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+
+                <div class="std-card sector-card" data-sdg="3 4 6">
+                    <h3>Education & Health Institutions</h3>
+                    <p>Health infrastructure, medical cold-chain logistics, and inclusive learning systems construction.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg3">SDG 3</span>
+                        <span class="sdg sdg4">SDG 4</span>
+                        <span class="sdg sdg6">SDG 6</span>
+                    </div>
+                    <a href="downloads/Health-Edu-Profile.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY 3: Private Sector -->
+        <div class="sector-category">
+            <section class="sector-hero mdb-hero">
+              <div class="overlay">
+                <h1>Private Sector & Industrial PPPs</h1>
+                <p>Structured infrastructure delivery combining governance, capital, and localized capacity.</p>
+              </div>
+            </section>
+
+            <div class="grid-3">
+                <div class="std-card sector-card" data-sdg="8 9 7">
+                    <h3>Private Sector & PPPs</h3>
+                    <p>Bankable infrastructure delivery combining governance, capital, and execution for concessionaires.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg7">SDG 7</span>
+                        <span class="sdg sdg8">SDG 8</span>
+                        <span class="sdg sdg9">SDG 9</span>
+                    </div>
+                    <a href="downloads/PPP-Sector-Profile.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+
+                <div class="std-card sector-card" data-sdg="8 9 12 13">
+                    <h3>Oil, Gas & Extractives</h3>
+                    <p>Secure logistics, rigorous HSE compliance, and heavy industrial equipment mobilization.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg8">SDG 8</span>
+                        <span class="sdg sdg9">SDG 9</span>
+                        <span class="sdg sdg12">SDG 12</span>
+                    </div>
+                    <a href="downloads/Industrial-Profile.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+
+                <div class="std-card sector-card" data-sdg="7 13 9">
+                    <h3>Renewable Energy & Climate</h3>
+                    <p>Solar arrays, hybrid off-grid systems, and infrastructure designed for climate resilience.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg7">SDG 7</span>
+                        <span class="sdg sdg9">SDG 9</span>
+                        <span class="sdg sdg13">SDG 13</span>
+                    </div>
+                    <a href="downloads/Energy-Profile.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+
+                <div class="std-card sector-card" data-sdg="2 8 12">
+                    <h3>Agriculture & Food Systems</h3>
+                    <p>Climate-smart agro logistics, irrigation civil works, and rural value-chain infrastructure.</p>
+                    <div class="sdg-container">
+                        <span class="sdg sdg2">SDG 2</span>
+                        <span class="sdg sdg8">SDG 8</span>
+                        <span class="sdg sdg12">SDG 12</span>
+                    </div>
+                    <a href="downloads/Agri-Profile.pdf" class="download-btn" style="margin-top: auto;">Download Sector Profile</a>
+                </div>
+            </div>
+            
+            <!-- Investor Platform Subsection & Impact Calc -->
+            <div class="grid-3" style="margin-top: 30px;">
+                <div class="std-card" style="grid-column: span 2;">
+                    <h3>Investor & PPP Platform</h3>
+                    <p>EAGint operates at the intersection of infrastructure demand, donor financing, and PPP execution in emerging markets.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div>
+                            <h4 style="color:var(--accent); font-size: 14px; margin-bottom: 8px;">Risk Mitigation Model</h4>
+                            <ul style="color:#555; font-size: 13.5px; padding-left: 20px;">
+                                <li>ISO-aligned governance & anti-bribery</li>
+                                <li>Local regulatory navigation</li>
+                                <li>Integrated logistics + infrastructure capacity</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color:var(--accent); font-size: 14px; margin-bottom: 8px;">Investment Focus Areas</h4>
+                            <ul style="color:#555; font-size: 13.5px; padding-left: 20px;">
+                                <li>Renewable Energy</li>
+                                <li>Port & Logistics Corridors</li>
+                                <li>Urban Infrastructure</li>
+                                <li>Industrial Development</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Investor Matrix Table -->
+                    <table class="investor-matrix">
+                        <thead>
+                            <tr>
+                                <th>Execution Engine</th>
+                                <th>Application Layer</th>
+                                <th>Risk Level</th>
+                                <th>Financing Model</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Energy Division</td>
+                                <td>Solar Hybrid Systems</td>
+                                <td><span class="risk medium">Medium</span></td>
+                                <td>PPP / Climate Finance</td>
+                            </tr>
+                            <tr>
+                                <td>Logistics Division</td>
+                                <td>Regional Corridors</td>
+                                <td><span class="risk high">Medium-High</span></td>
+                                <td>Blended Finance</td>
+                            </tr>
+                            <tr>
+                                <td>Infrastructure Div.</td>
+                                <td>Port Development</td>
+                                <td><span class="risk medium">Medium</span></td>
+                                <td>Concession / FDI</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="std-card text-center" style="background: var(--primary); color: #fff;">
+                    <h3 style="color: #fff;"><i class="fas fa-leaf" style="color: #4CAF50; margin-right: 8px;"></i> Climate Impact Tool</h3>
+                    <p style="color: #e0e6ef; font-size: 13px;">Estimate CO₂ reduction for planned renewable energy projects (Solar PV).</p>
+                    
+                    <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+                        <input type="number" id="solarCapacity" placeholder="Solar Capacity (kW)" style="padding: 12px; border-radius: 4px; border: 1px solid #ccc; outline: none; width: 100%;">
+                        <button onclick="calculateImpact()" class="btn btn-outline" style="border-color: var(--accent); color: #fff; background: var(--accent); width: 100%;">Calculate Impact</button>
+                    </div>
+                    <p id="calcResult" style="margin-top: 15px; font-weight: bold; color: var(--accent); font-size: 16px; margin-bottom: 0;"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- DELIVERY ARCHITECTURE MATRIX (2026) -->
+<section class="matrix-section">
+    <div class="container">
+        
+        <div class="section-intro">
+            <h2>Delivery Architecture Matrix (2026)</h2>
+            <p>This matrix defines how EAGint aligns its internal delivery engines (Divisions) with client sectors and high-complexity operational environments. It reflects procurement intelligence, risk management structure, and institutional capability mapping.</p>
+            <p style="font-size: 13px; font-weight: 600; color: var(--accent);">Division = Internal execution engine &nbsp;|&nbsp; Sector = Client or financing category &nbsp;|&nbsp; Specialised Sector = High-value, high-complexity application layer</p>
+        </div>
+
+        <!-- Architecture Intelligence Dashboard -->
+        <div class="dashboard" style="margin-bottom: 50px;">
+            <div class="kpi-grid">
+                <div class="kpi-card arch-card">
+                    <h3 style="font-size: 15px; margin-bottom: 5px; color: var(--primary-navy);">Active Divisions</h3>
+                    <p style="font-size: 14px; font-weight: 700; color: var(--accent); margin:0; transition: opacity 0.8s;">13 Operational Engines</p>
+                </div>
+                <div class="kpi-card arch-card">
+                    <h3 style="font-size: 15px; margin-bottom: 5px; color: var(--primary-navy);">Sector Coverage</h3>
+                    <p style="font-size: 14px; font-weight: 700; color: var(--accent); margin:0; transition: opacity 0.8s;">10 Institutional Sectors</p>
+                </div>
+                <div class="kpi-card arch-card">
+                    <h3 style="font-size: 15px; margin-bottom: 5px; color: var(--primary-navy);">High-Risk Environments</h3>
+                    <p style="font-size: 14px; font-weight: 700; color: var(--accent); margin:0; transition: opacity 0.8s;">Fragile-State Operations</p>
+                </div>
+                <div class="kpi-card arch-card">
+                    <h3 style="font-size: 15px; margin-bottom: 5px; color: var(--primary-navy);">IFI-Aligned Projects</h3>
+                    <p id="activeProjects" style="font-size: 14px; font-weight: 700; color: var(--accent); margin:0; transition: opacity 0.8s;">World Bank / AfDB / UN</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Diagram -->
+        <div class="architecture-diagram">
+            <div class="layer">
+                <div class="pill highlight">Client / Financing Sector</div>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="layer">
+                <div class="pill">Specialised Application Layer</div>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="layer">
+                <div class="pill highlight">Internal Execution Engine (Division)</div>
+            </div>
+        </div>
+
+        <div class="matrix-controls">
+            <select id="sectorFilter" onchange="filterMatrix()" aria-label="Filter Matrix by Sector">
+                <option value="all">View All Sectors</option>
+                <option value="Government">Governments & Public Institutions</option>
+                <option value="UN">United Nations & IFIs</option>
+                <option value="NGOs">NGOs & Humanitarian</option>
+                <option value="PPP">Private Sector & PPPs</option>
+            </select>
+        </div>
+
+        <div class="matrix-wrapper">
+            <table class="delivery-matrix">
+                <thead>
+                    <tr>
+                        <th>Division (Execution Engine)</th>
+                        <th>Client / Financing Sector</th>
+                        <th>Specialised Application Layer</th>
+                        <th>SDGs</th>
+                        <th>Risk Level</th>
+                    </tr>
+                </thead>
+                <tbody id="matrixBody">
+                    <tr>
+                        <td><strong>Infrastructure & Construction</strong></td>
+                        <td>Government, PPP, UN</td>
+                        <td>Resilient civil assets, public facilities, and ESG-compliant vertical construction</td>
+                        <td>
+                            <span class="sdg sdg9" style="padding:4px 8px; margin:2px;">9</span>
+                            <span class="sdg sdg11" style="padding:4px 8px; margin:2px;">11</span>
+                        </td>
+                        <td><span class="risk medium">Medium</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logistics & Supply Chain</strong></td>
+                        <td>UN, NGOs, Government</td>
+                        <td>Multimodal transport, fragile-context routing, and compliance-aligned freight</td>
+                        <td>
+                            <span class="sdg sdg9" style="padding:4px 8px; margin:2px;">9</span>
+                            <span class="sdg sdg8" style="padding:4px 8px; margin:2px;">8</span>
+                        </td>
+                        <td><span class="risk high">High</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marine, Port & Aviation</strong></td>
+                        <td>Government, UN, PPP</td>
+                        <td>Port operations, airstrip rehabilitation, and trade gateway optimization</td>
+                        <td>
+                            <span class="sdg sdg9" style="padding:4px 8px; margin:2px;">9</span>
+                        </td>
+                        <td><span class="risk medium">Medium</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Industrial & Energy</strong></td>
+                        <td>PPP, Government, NGOs</td>
+                        <td>Renewable arrays, hybrid grids, and climate-resilient energy infrastructure</td>
+                        <td>
+                            <span class="sdg sdg7" style="padding:4px 8px; margin:2px;">7</span>
+                            <span class="sdg sdg13" style="padding:4px 8px; margin:2px;">13</span>
+                        </td>
+                        <td><span class="risk medium">Medium</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Commercial Supply</strong></td>
+                        <td>UN, Government, NGOs</td>
+                        <td>Framework procurement, life-support logistics, and rapid institutional supply</td>
+                        <td>
+                            <span class="sdg sdg12" style="padding:4px 8px; margin:2px;">12</span>
+                        </td>
+                        <td><span class="risk low">Low</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Technology & Telecoms</strong></td>
+                        <td>Government, UN, PPP</td>
+                        <td>Secure ICT networks, digital governance systems, and low-infrastructure comms</td>
+                        <td>
+                            <span class="sdg sdg9" style="padding:4px 8px; margin:2px;">9</span>
+                        </td>
+                        <td><span class="risk low">Low</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Capacity Development & Governance</strong></td>
+                        <td>Government, UN</td>
+                        <td>Institutional strengthening, localization strategies, and procurement reform</td>
+                        <td>
+                            <span class="sdg sdg16" style="padding:4px 8px; margin:2px;">16</span>
+                        </td>
+                        <td><span class="risk low">Low</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Humanitarian Services</strong></td>
+                        <td>UN, NGOs</td>
+                        <td>Emergency response, stabilization programming, and peace-nexus support</td>
+                        <td>
+                            <span class="sdg sdg3" style="padding:4px 8px; margin:2px;">3</span>
+                            <span class="sdg sdg16" style="padding:4px 8px; margin:2px;">16</span>
+                        </td>
+                        <td><span class="risk high">High</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Agriculture & Food Systems</strong></td>
+                        <td>NGOs, UN, PPP</td>
+                        <td>Climate-smart agro logistics, irrigation, and rural value-chain infrastructure</td>
+                        <td>
+                            <span class="sdg sdg2" style="padding:4px 8px; margin:2px;">2</span>
+                            <span class="sdg sdg8" style="padding:4px 8px; margin:2px;">8</span>
+                        </td>
+                        <td><span class="risk medium">Medium</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="matrix-summary">
+            <p>The Delivery Architecture Matrix demonstrates EAGint’s capacity to align internal engineering and logistics engines with sector-specific procurement frameworks and specialised operational environments. This structure reduces risk, enhances accountability, and enables scalable multi-sector execution under unified governance.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- EXECUTIVE ERP & TENDER DASHBOARD -->
+<section class="section" style="background:var(--light);" id="erp-dashboard">
+    <div class="container">
+        
+        <!-- GOVERNANCE DASHBOARD NAV -->
+        <nav class="governance-nav">
+            <ul>
+                <li><a href="#erp-dashboard" class="active">Dashboard</a></li>
+                <li><a href="#sectors-container">Delivery Matrix</a></li>
+                <li><a href="#esg-dashboard-section">ESG</a></li>
+                <li><a href="#erp-dashboard">Risk</a></li>
+                <li><a href="#erp-dashboard">Finance</a></li>
+                <li><a href="#erp-dashboard">Tenders</a></li>
+                <li><a href="#erp-dashboard">Documents</a></li>
+            </ul>
+        </nav>
+
+        <h2 class="text-center">Executive ERP & Live Tender Dashboard</h2>
+        <p class="text-center" style="margin-bottom: 40px; color:#555;">Real-time tracking of institutional procurements alongside internal ERP performance metrics.</p>
+        
+        <!-- KPI Summary row -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-value">24</div>
+                <div class="kpi-label">Active Projects</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">$42M</div>
+                <div class="kpi-label">Revenue Pipeline</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">63%</div>
+                <div class="kpi-label">Win Rate</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">100%</div>
+                <div class="kpi-label">Compliance Status</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value kpi-alert">2</div>
+                <div class="kpi-label">Risk Alerts</div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Left: Tender Table & ERP overview -->
+            <div style="display:flex; flex-direction: column; gap: 20px;">
+                <div class="table-wrapper">
+                    <h3 style="margin-bottom: 20px; font-size: 18px; color: var(--primary);">Active Opportunities</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="min-width: 600px;">
+                            <thead>
+                                <tr>
+                                    <th>Tender ID</th>
+                                    <th>Sector</th>
+                                    <th>Client</th>
+                                    <th>Status</th>
+                                    <th>Submission Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 700; color: var(--primary);">UNSOS-2026-001</td>
+                                    <td>Logistics</td>
+                                    <td>United Nations</td>
+                                    <td><span class="status-badge status-submitted">Submitted</span></td>
+                                    <td>24 March 2026</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 700; color: var(--primary);">AfDB-2026-Infra</td>
+                                    <td>Infrastructure</td>
+                                    <td>AfDB</td>
+                                    <td><span class="status-badge status-prep">Pre-Qualification</span></td>
+                                    <td>12 April 2026</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 700; color: var(--primary);">UNDP-RE-044</td>
+                                    <td>Renewable Energy</td>
+                                    <td>UNDP</td>
+                                    <td><span class="status-badge status-prep">Preparing Bid</span></td>
+                                    <td>05 May 2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="std-card" style="margin-top: 0; box-shadow: 0 8px 20px rgba(0,0,0,0.05);">
+                    <h3 style="font-size: 16px; margin-bottom: 10px;">Enterprise ERP Modules Active</h3>
+                    <div>
+                        <span class="erp-tag">Projects</span>
+                        <span class="erp-tag">Procurement</span>
+                        <span class="erp-tag">HR</span>
+                        <span class="erp-tag">Logistics</span>
+                        <span class="erp-tag">Finance</span>
+                        <span class="erp-tag">Compliance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Scoring, Compliance Check & Risk Matrix -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <!-- Tender Scoring Form -->
+                <div class="std-card text-center" style="padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); margin-top: 0;">
+                    <h3 style="font-size: 16px; margin-bottom: 15px;"><i class="fas fa-calculator" style="color:var(--accent);"></i> Bid Evaluation Engine</h3>
+                    
+                    <div class="form-group">
+                        <select id="ts-sector">
+                            <option value="">Select Sector</option>
+                            <option value="UN">United Nations (+30 pts)</option>
+                            <option value="Government">Government / MDB</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="ts-risk">
+                            <option value="">Risk Level</option>
+                            <option value="Low">Low Risk</option>
+                            <option value="High">High Risk (-15 pts)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="ts-capacity" placeholder="Internal Capacity Score (0-50)">
+                    </div>
+                    
+                    <button onclick="evaluateBidScore()" class="btn btn-primary" style="width: 100%; padding: 10px; font-size: 13px;">Calculate Bid Viability</button>
+                    <div class="score-result" id="tenderScoreResult">-- / 100</div>
+                </div>
+
+                <!-- Compliance Checklist & Blockchain -->
+                <div class="std-card" style="padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); margin-top: 0;">
+                    <h3 style="font-size: 16px; margin-bottom: 15px; text-align: center;"><i class="fas fa-shield-alt" style="color:var(--accent);"></i> Compliance Verification</h3>
+                    
+                    <ul class="checklist">
+                        <li><i class="fas fa-check-circle check-icon check-complete"></i> ISO 9001 Certificate Attached</li>
+                        <li><i class="fas fa-check-circle check-icon check-complete"></i> SEAH Policy Signed</li>
+                        <li><i class="fas fa-clock check-icon check-pending"></i> Audited Financials Uploaded</li>
+                    </ul>
+
+                    <hr style="border:0; border-top: 1px solid var(--gray-border); margin: 15px 0;">
+                    
+                    <div style="text-align: center;">
+                        <p style="font-size: 12px; color: #555; margin-bottom: 10px;">Blockchain Data-Room Verification Tool</p>
+                        <button onclick="verifyDocument()" class="btn btn-outline" style="width: 100%; padding: 8px; font-size: 12px;"><i class="fas fa-link"></i> Verify SHA-256 Hash</button>
+                        <div id="verificationStatus" style="margin-top: 10px; font-size: 13px; font-weight: 600;"></div>
+                    </div>
+                </div>
+
+                <!-- Institutional Risk Matrix -->
+                <div class="std-card" style="padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); margin-top: 0;">
+                    <h3 style="font-size: 16px; margin-bottom: 10px; text-align: center;">Institutional Risk Matrix</h3>
+                    <div class="risk-grid">
+                        <div class="risk-box low">Compliance Risk – Low</div>
+                        <div class="risk-box medium">Supply Chain Risk – Medium</div>
+                        <div class="risk-box high">Fragile Context Risk – High</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ESG DASHBOARD W/ CHARTS -->
+<section class="section" id="esg-dashboard-section" style="background:#ffffff; border-top: 1px solid #e5e7eb;">
+    <div class="container text-center">
+        <h2>ESG & Impact Dashboard</h2>
+        <p style="max-width: 800px; margin: auto; margin-bottom: 40px; color: #555;">Live metrics tracking our Environmental, Social, and Governance commitments across the 2026 delivery pipeline.</p>
+        
+        <div class="grid-3">
+            <div class="std-card text-left">
+                <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 10px;">
+                    <div style="background: #e6f4ea; color: #2e7d32; width: 40px; height: 40px; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size: 20px; font-weight: 800;">E</div>
+                    <h3 style="margin:0;">Environmental</h3>
+                </div>
+                <!-- Integrated KPI text -->
+                <div style="margin: 15px 0; font-size: 14px; font-weight: 600; color: var(--primary);">
+                    <p style="margin-bottom: 5px;">Solar Capacity Installed: <span id="solar" style="color:var(--accent);">12.4 MW</span></p>
+                    <p style="margin-bottom: 5px;">CO₂ Reduction: <span id="carbon" style="color:var(--accent);">4,120 t/year</span></p>
+                </div>
+                <p style="font-size: 13px; color:#555;">Renewable energy, climate resilience, and sustainable infrastructure.</p>
+                <canvas id="envChart" style="margin-top: 15px; width: 100%; height: 200px;"></canvas>
+            </div>
+
+            <div class="std-card text-left">
+                <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 10px;">
+                    <div style="background: #e3f2fd; color: #1565c0; width: 40px; height: 40px; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size: 20px; font-weight: 800;">S</div>
+                    <h3 style="margin:0;">Social</h3>
+                </div>
+                <!-- Integrated KPI text -->
+                <div style="margin: 15px 0; font-size: 14px; font-weight: 600; color: var(--primary);">
+                    <p style="margin-bottom: 5px;">Local Workforce Ratio: <span style="color:var(--accent);">78%</span></p>
+                    <p style="margin-bottom: 5px;">Beneficiaries Reached: <span style="color:var(--accent);">124,000+</span></p>
+                </div>
+                <p style="font-size: 13px; color:#555;">Localization, safeguarding, workforce development, and inclusion.</p>
+                <canvas id="socChart" style="margin-top: 15px; width: 100%; height: 200px;"></canvas>
+            </div>
+
+            <div class="std-card text-left">
+                <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 10px;">
+                    <div style="background: #f3e5f5; color: #0f2b46; width: 40px; height: 40px; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size: 20px; font-weight: 800;">G</div>
+                    <h3 style="margin:0;">Governance</h3>
+                </div>
+                <!-- Integrated KPI text -->
+                <div style="margin: 15px 0; font-size: 14px; font-weight: 600; color: var(--primary);">
+                    <p style="margin-bottom: 5px;">Audit Compliance: <span style="color:var(--accent);">100%</span></p>
+                    <p style="margin-bottom: 5px;">Safeguarding Incidents: <span style="color:var(--accent);">0</span></p>
+                </div>
+                <p style="font-size: 13px; color:#555;">ISO-aligned systems, anti-corruption controls, audit-ready reporting.</p>
+                <canvas id="govChart" style="margin-top: 15px; width: 100%; height: 200px;"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OPERATIONAL DELIVERY MAP (DIGITAL TWIN) -->
+<section class="digital-twin">
+    <div class="container">
+        <h2>Operational Delivery Map</h2>
+        <p style="max-width: 700px; margin: auto; font-size: 15px; opacity: 0.8; margin-bottom: 20px;">Geospatial representation of active staging grounds, hybrid energy nodes, and emergency corridors.</p>
+        
+        <div class="map-nodes-container">
+            <div class="map-node"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color: var(--accent);"></i> Somalia – Logistics Hub</div>
+            <div class="map-node"><i class="fas fa-solar-panel" style="margin-right: 8px; color: var(--accent);"></i> Energy Projects – Solar Hybrid</div>
+            <div class="map-node"><i class="fas fa-truck-medical" style="margin-right: 8px; color: var(--accent);"></i> UN Emergency Operations</div>
+            <div class="map-node"><i class="fas fa-anchor" style="margin-right: 8px; color: var(--accent);"></i> East Africa – Port Facilities</div>
+        </div>
+    </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="section" style="background:var(--primary);color:#fff;text-align:center;">
+    <div class="container">
+        <h2 style="color:#fff;">Institutional Engagement</h2>
+        <p style="max-width: 800px; margin: 0 auto 20px;">
+            Partner with EAGint for structured execution, donor-grade compliance, and scalable delivery across any operational corridor.
+        </p>
+        <br>
+        <a href="divisions.html" class="btn btn-outline" style="border-color: #fff; color: #fff;">Explore Our 13 Divisions</a>
+        <a href="downloads/MDB-Sector-Profile.pdf" class="btn btn-primary" style="margin-left: 10px; background: #fff; color: var(--primary);">Download Sector Profile</a>
+    </div>
+</section>
+
+<!-- MAIN FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+    <!-- Company Column -->
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About EAGint</a></li>
+        <li><a href="divisions.html">Divisions</a></li>
+        <li><a href="projects.html">Projects & Experience</a></li>
+        <li><a href="careers.html">Careers & Localization</a></li>
+      </ul>
+    </div>
+
+    <!-- Compliance Hub -->
+    <div class="footer-col">
+      <h4>Compliance Hub</h4>
+      <ul>
+        <li><a href="compliance.html">Compliance Portal</a></li>
+        <li><a href="iso-certifications.html">ISO Certifications</a></li>
+        <li><a href="ungm-registration.html">UNGM Registration</a></li>
+        <li><a href="iata-registration.html">IATA Registration</a></li>
+        <li><a href="safeguarding.html">Safeguarding & PSEA</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="media.html">Media Center</a></li>
+        <li><a href="insights.html">Insights & Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: info@eagint.com</p>
+      <p>Website: www.eagint.com</p>
+      <p>Somalia | East Africa | Global</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint)
+  </div>
+</footer>
+
+<!-- STAFF LOGIN MODAL -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 style="font-size: 22px;">Staff & Investor Login</h3>
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+        </div>
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="text" placeholder="Enter your email" />
+        </div>
+        <div class="form-group" style="margin-bottom: 25px;">
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" />
+        </div>
+        <button class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 15px;" onclick="closeLoginModal()">Secure Login</button>
+        <p style="text-align: center; margin-top: 15px; font-size: 12px; color: #888;">EAGint Enterprise ERP Access</p>
+    </div>
+</div>
+
+<script>
+    // Mega Menu A11y Focus Logic
+    document.querySelectorAll('.mega-dropdown button.mega-btn').forEach(btn => {
+        btn.addEventListener('focus', () => {
+            btn.setAttribute('aria-expanded', 'true');
+        });
+        
+        btn.addEventListener('blur', () => {
+            setTimeout(() => {
+                const parent = btn.closest('.mega-dropdown');
+                if (!parent.contains(document.activeElement)) {
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            }, 100);
+        });
+    });
+
+    // Login Modal Logic
+    function openLoginModal() {
+        document.getElementById('loginModal').style.display = 'flex';
+    }
+    function closeLoginModal() {
+        document.getElementById('loginModal').style.display = 'none';
+    }
+    
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('loginModal');
+        if (event.target == modal) {
+            closeLoginModal();
+        }
+    }
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        const nav = document.getElementById('mainNav');
+        nav.classList.toggle('open');
+    }
+
+    // Search Box Logic
+    function searchSite() {
+      let input = document.getElementById("searchInput").value.toLowerCase();
+      let content = document.body.innerText.toLowerCase();
+      if(input.length > 2 && content.includes(input)){
+        document.getElementById("searchInput").style.borderColor = "var(--accent)";
+      } else {
+        document.getElementById("searchInput").style.borderColor = "#ccc";
+      }
+    }
+
+    // Google Translate Initialization
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,so,tr,zh-CN,ar',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    // Dark Mode Toggle Logic
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      const btn = document.querySelector('.dark-toggle');
+      btn.innerText = isDark ? "☀️" : "🌙";
+    }
+
+    // SDG Filter Logic
+    function filterSector(sdg, btnElement) {
+        if (btnElement) {
+            document.querySelectorAll(".filter-btn").forEach(btn => {
+                btn.classList.remove("active");
+            });
+            btnElement.classList.add("active");
+        }
+
+        let cards = document.querySelectorAll(".sector-card");
+        let categories = document.querySelectorAll(".sector-category");
+
+        cards.forEach(card => {
+            let cardSDGs = card.dataset.sdg ? card.dataset.sdg.split(" ") : [];
+            if (sdg === 'all' || cardSDGs.includes(sdg)) {
+                card.style.display = "flex"; 
+                card.style.animation = "none"; 
+                card.offsetHeight; 
+                card.style.animation = "fadeIn 0.5s ease forwards";
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        categories.forEach(category => {
+            let visibleCards = category.querySelectorAll('.sector-card[style*="display: flex"], .sector-card:not([style*="display: none"])');
+            let hasVisible = Array.from(visibleCards).some(c => window.getComputedStyle(c).display !== 'none');
+            
+            if (!hasVisible && sdg !== 'all') {
+                category.style.display = "none";
+            } else {
+                category.style.display = "block";
+            }
+        });
+    }
+
+    function resetFilter() {
+        filterSector('all');
+        document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+        document.querySelector(".filter-btn").classList.add("active");
+    }
+
+    // Delivery Architecture Matrix Filter
+    function filterMatrix() {
+        let filter = document.getElementById("sectorFilter").value;
+        let rows = document.querySelectorAll("#matrixBody tr");
+
+        rows.forEach(row => {
+            if(filter === "all" || row.innerText.includes(filter)){
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    }
+
+    // Climate Impact Calculator
+    function calculateImpact(){
+        let kw = document.getElementById("solarCapacity").value;
+        if(kw && kw > 0) {
+            let co2 = (kw * 1.5).toLocaleString(); 
+            document.getElementById("calcResult").innerHTML = "Estimated CO₂ Reduction:<br>" + co2 + " tons/year";
+        } else {
+            document.getElementById("calcResult").innerHTML = "Please enter valid capacity.";
+        }
+    }
+
+    // Tender Bid Evaluation Logic (Updated)
+    function evaluateBidScore() {
+        let sector = document.getElementById('ts-sector').value;
+        let risk = document.getElementById('ts-risk').value;
+        let capacityScoreInput = document.getElementById('ts-capacity').value;
+        
+        let capacityScore = capacityScoreInput ? parseInt(capacityScoreInput) : 0;
+        let score = 0;
+
+        if(sector === "UN") score += 30;
+        if(risk === "High") score -= 15;
+        score += capacityScore;
+        
+        // Cap the score logic for UI display purposes
+        if(score > 100) score = 100;
+        if(score < 0) score = 0;
+
+        document.getElementById('tenderScoreResult').innerText = score + " / 100";
+    }
+
+    // Document Blockchain Verification Logic
+    function verifyDocument() {
+        const statusEl = document.getElementById('verificationStatus');
+        statusEl.innerHTML = "Hashing document... <i class='fas fa-spinner fa-spin' style='color:var(--accent);'></i>";
+        
+        setTimeout(() => {
+            const fakeHash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+            statusEl.innerHTML = `<span style="color: #4CAF50;"><i class="fas fa-check-circle"></i> Verified on Ledger<br><small style="color:#888; font-weight:normal; word-break: break-all; margin-top:5px; display:inline-block;">Hash: ${fakeHash}</small></span>`;
+        }, 1500);
+    }
+
+    // Initialize Chart.js Dashboards
+    document.addEventListener("DOMContentLoaded", () => {
+        
+        // Add opacity animation for dashboard paragraphs
+        document.querySelectorAll(".arch-card p").forEach(el => {
+            el.style.opacity = 0;
+            setTimeout(() => { el.style.opacity = 1; }, 800);
+        });
+
+        // Mock API Fetch for Matrix Stats
+        setTimeout(() => {
+            const mockData = { active: "World Bank / AfDB / UN (Verified)" };
+            const activeProjEl = document.getElementById('activeProjects');
+            if(activeProjEl) {
+                activeProjEl.style.opacity = 0;
+                setTimeout(() => {
+                    activeProjEl.innerText = mockData.active;
+                    activeProjEl.style.opacity = 1;
+                }, 300);
+            }
+        }, 1200);
+
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, grid: { color: '#e0e6ef' } },
+                x: { grid: { display: false } }
+            }
+        };
+
+        // Environmental Chart
+        new Chart(document.getElementById('envChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Renewable', 'Water', 'Waste'],
+                datasets: [{
+                    label: '2026 Delivery',
+                    data: [18, 25, 12],
+                    backgroundColor: '#4CAF50',
+                    borderRadius: 4
+                }]
+            },
+            options: chartOptions
+        });
+
+        // Social Chart
+        new Chart(document.getElementById('socChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Local Jobs', 'Training', 'PSEA (%)'],
+                datasets: [{
+                    label: '2026 Metrics',
+                    data: [320, 45, 100],
+                    backgroundColor: '#1565c0',
+                    borderRadius: 4
+                }]
+            },
+            options: chartOptions
+        });
+
+        // Governance Chart
+        new Chart(document.getElementById('govChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['ISOs', 'Audits (%)', 'Risk Reviews'],
+                datasets: [{
+                    label: 'Governance Controls',
+                    data: [9, 100, 24],
+                    backgroundColor: '#0f2b46',
+                    borderRadius: 4
+                }]
+            },
+            options: chartOptions
+        });
+    });
+</script>
+<!-- Google Translate Script -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenders & Procurement Services | EAGint Division 10</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-blue: #0A2540;
+            --brand-accent: #2563EB;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        #main-header { transition: all 0.3s ease; }
+        #main-header.scrolled { padding-top: 10px; padding-bottom: 10px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Global Header -->
+    <header id="main-header" class="bg-white fixed w-full top-0 z-50 py-5 border-b border-slate-200">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-black tracking-tighter text-[#0A2540]">
+                EAG<span class="text-blue-600">int</span>
+            </a>
+            <nav class="hidden xl:flex space-x-3 2xl:space-x-4 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-wide text-slate-600 items-center">
+                <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+                <a href="index.html#about" class="hover:text-blue-600 transition">About</a>
+                <a href="index.html#divisions" class="text-blue-600 transition flex items-center gap-1">Divisions <i class="fa-solid fa-angle-down"></i></a>
+                <a href="index.html#sectors" class="hover:text-blue-600 transition">Sectors</a>
+                <a href="index.html#contact" class="hover:text-blue-600 transition">Contact</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <a href="index.html#contact" class="hidden md:inline-block bg-[#0A2540] text-white px-5 py-2.5 rounded text-xs font-bold uppercase tracking-wider hover:bg-blue-700 transition">
+                    Work With Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Division Hero -->
+    <section class="relative pt-40 pb-24 bg-[#0A2540] text-white mt-16 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Contracts and Procurement">
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <span class="inline-block bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold uppercase tracking-widest text-xs px-3 py-1 rounded mb-6">
+                Division 10 | EAGint 2026
+            </span>
+            <h1 class="text-4xl md:text-5xl xl:text-6xl font-black mb-6 max-w-4xl leading-tight">
+                Tenders & Procurement Services
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed mb-8">
+                Specialized, end-to-end support for competitive bidding, framework participation, and institutional procurement processes across complex environments.
+            </p>
+            <div class="flex gap-4">
+                <a href="#scope" class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3.5 rounded font-bold uppercase tracking-wide transition shadow-lg">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview & Value Proposition -->
+    <section class="py-20 bg-white border-b border-slate-200">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-[#0A2540] mb-6">Strategic Role & Value Proposition</h2>
+                <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                    Public and donor procurement systems are increasingly stringent, data-driven, and compliance-focused. Even highly capable operators fail to secure contracts due to documentation gaps or weak compliance narratives.
+                </p>
+                <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                    EAGint enables partners and internal divisions to translate technical capability into <strong>winning, compliant submissions</strong>. We combine procurement governance expertise with sector-specific technical depth to reduce bid risk and accelerate timelines.
+                </p>
+            </div>
+            <div class="bg-slate-50 p-8 border border-slate-100 rounded-xl shadow-sm">
+                <h3 class="text-sm font-bold uppercase tracking-widest text-blue-600 mb-6">Key Differentiators</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-4">
+                        <i class="fa-solid fa-circle-check text-blue-500 mt-1"></i>
+                        <span class="text-slate-700 font-medium">Deep familiarity with UN, IFI, and complex donor procurement rules</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i class="fa-solid fa-circle-check text-blue-500 mt-1"></i>
+                        <span class="text-slate-700 font-medium">Integrated technical, financial, and compliance drafting</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i class="fa-solid fa-circle-check text-blue-500 mt-1"></i>
+                        <span class="text-slate-700 font-medium">Impeccable audit trails and version control management</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i class="fa-solid fa-circle-check text-blue-500 mt-1"></i>
+                        <span class="text-slate-700 font-medium">Proven ability to structure and support partner consortium submissions</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scope of Services -->
+    <section id="scope" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold uppercase tracking-widest text-xs mb-2 block">Our Expertise</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0A2540]">Scope of Services</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 border border-slate-200 rounded-xl hover:shadow-xl transition group">
+                    <i class="fa-solid fa-gavel text-4xl text-slate-300 group-hover:text-blue-600 mb-6 transition"></i>
+                    <h3 class="font-bold text-xl text-[#0A2540] mb-4">Bid Management</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>&middot; Opportunity ID & no-bid analysis</li>
+                        <li>&middot; Bid planning & timeline control</li>
+                        <li>&middot; Multi-discipline input coordination</li>
+                        <li>&middot; Final packaging & quality checks</li>
+                    </ul>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white p-8 border border-slate-200 rounded-xl hover:shadow-xl transition group">
+                    <i class="fa-solid fa-clipboard-list text-4xl text-slate-300 group-hover:text-blue-600 mb-6 transition"></i>
+                    <h3 class="font-bold text-xl text-[#0A2540] mb-4">Compliance & Eligibility</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>&middot; Stringent criteria review</li>
+                        <li>&middot; Legal/corporate document comp.</li>
+                        <li>&middot; ESG & safeguarding alignment</li>
+                        <li>&middot; Pre-submission risk review</li>
+                    </ul>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white p-8 border border-slate-200 rounded-xl hover:shadow-xl transition group">
+                    <i class="fa-solid fa-file-invoice-dollar text-4xl text-slate-300 group-hover:text-blue-600 mb-6 transition"></i>
+                    <h3 class="font-bold text-xl text-[#0A2540] mb-4">Technical & Financial</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>&middot; Technical proposal structuring</li>
+                        <li>&middot; Methodology & workplans</li>
+                        <li>&middot; Complex BoQs & costing models</li>
+                        <li>&middot; Value-for-money narratives</li>
+                    </ul>
+                </div>
+                <!-- Service 4 -->
+                <div class="bg-white p-8 border border-slate-200 rounded-xl hover:shadow-xl transition group">
+                    <i class="fa-solid fa-handshake-angle text-4xl text-slate-300 group-hover:text-blue-600 mb-6 transition"></i>
+                    <h3 class="font-bold text-xl text-[#0A2540] mb-4">Frameworks & Vendors</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>&middot; LTA & framework agreements</li>
+                        <li>&middot; UN portal vendor registration</li>
+                        <li>&middot; Pre-qualification maintenance</li>
+                        <li>&middot; Rosters & compliance profiling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Approach & Typical Projects -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-16">
+            
+            <!-- Delivery Approach -->
+            <div>
+                <h2 class="text-3xl font-bold text-[#0A2540] mb-8">Disciplined Bid Delivery Model</h2>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <h4 class="font-bold text-[#0A2540] mb-1">Opportunity Assessment</h4>
+                            <p class="text-sm text-slate-600">Strict eligibility screening, capacity mapping, risk assessments, and objective bid/no-bid support.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <h4 class="font-bold text-[#0A2540] mb-1">Bid Structuring & Planning</h4>
+                            <p class="text-sm text-slate-600">Development of airtight compliance matrices, drafting workplans, and rigid milestone management.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">3</div>
+                        <div>
+                            <h4 class="font-bold text-[#0A2540] mb-1">Drafting & Integration</h4>
+                            <p class="text-sm text-slate-600">Synchronized technical and financial drafting, integrating required safeguards, followed by internal QA reviews.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">4</div>
+                        <div>
+                            <h4 class="font-bold text-[#0A2540] mb-1">Finalization & Submission</h4>
+                            <p class="text-sm text-slate-600">Final checks against all solicitation parameters, exact packaging, submission, and post-bid negotiation support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Use Cases -->
+            <div class="bg-[#0A2540] text-white p-10 rounded-2xl">
+                <h2 class="text-2xl font-bold mb-8">Typical Programs & Use Cases</h2>
+                
+                <div class="space-y-6">
+                    <div class="border-b border-slate-700 pb-4">
+                        <h4 class="text-blue-400 font-bold mb-2">Government & Public Procurement</h4>
+                        <p class="text-sm text-slate-300">National infrastructure and service tenders, alongside large-scale, multi-year government framework agreements.</p>
+                    </div>
+                    <div class="border-b border-slate-700 pb-4">
+                        <h4 class="text-blue-400 font-bold mb-2">United Nations & IFIs</h4>
+                        <p class="text-sm text-slate-300">Management of RFQs, RFPs, ITBs, and LTAs, especially for complex multi-lot or emergency surge requirements.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-blue-400 font-bold mb-2">Private Sector & Consortia</h4>
+                        <p class="text-sm text-slate-300">PPP pre-qualification bidding, consortium formation, and procurement coordination for mega-projects.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ESG, Compliance & Risk -->
+    <section class="py-20 bg-slate-100 border-t border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <i class="fa-solid fa-scale-balanced text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold text-lg text-[#0A2540] mb-2">Ethics & Integrity</h3>
+                    <p class="text-sm text-slate-600">We mandate conflict-of-interest declarations, implement anti-collusion controls, and guarantee secure handling of sensitive financial information.</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-triangle-exclamation text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold text-lg text-[#0A2540] mb-2">Risk Protection</h3>
+                    <p class="text-sm text-slate-600">We prevent underpricing and unrealistic commitments through evidence-based costing, protecting partners from post-award failure and disputes.</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-leaf text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold text-lg text-[#0A2540] mb-2">ESG & SDGs</h3>
+                    <p class="text-sm text-slate-600">Driving SDGs 12, 16, and 17. We treat transparent, accountable procurement as a core governance function while building local partner capacity to bid.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-24 bg-blue-600 text-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-black mb-6">Win Compliant Contracts</h2>
+            <p class="text-blue-100 text-lg max-w-2xl mx-auto mb-10">
+                EAGint understands how evaluators score. We combine strict compliance discipline with deep technical credibility to secure high-value contracts.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="index.html#contact" class="bg-white text-blue-600 px-8 py-4 rounded font-bold uppercase tracking-wide hover:bg-[#0A2540] hover:text-white transition shadow-lg">
+                    Request Bid Support Framework
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800 text-sm">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest mb-6">Company</h4>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="index.html#about" class="hover:text-white">About EAGint</a></li>
+                    <li><a href="index.html#divisions" class="hover:text-white">Divisions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest mb-6">Connect</h4>
+                <ul class="space-y-3">
+                    <li>Email: info@eagint.com</li>
+                    <li><a href="#" class="hover:text-white"><i class="fa-brands fa-linkedin text-xl"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+            <p>&copy; 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint)</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact & Transparency Portal | EAGint</title>
+<meta name="description" content="EAGint's Contact and Transparency portal. Structured communication channels aligned with United Nations, donor, and institutional standards, including confidential safeguarding reporting.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* --- CORE STYLES --- */
+:root {
+    --primary:#0f2b46;
+    --accent:#00aeef; 
+    --light:#f4f7fb;
+    --dark:#0b1f33;
+    --text:#333;
+    --primary-navy:#0f2b46;
+    --secondary-blue:#0077cc;
+    --accent-olive:#8a8f2a;
+    --gray-light:#f7f9fb;
+    --gray-border:#e5e7eb;
+    --safeguarding-red: #7a0019;
+    --font-main:'Inter', sans-serif;
+    --shadow-soft:0 10px 30px rgba(0,0,0,0.05);
+    --radius-md:8px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+    font-family: var(--font-main);
+    color:var(--text);
+    line-height:1.7;
+    padding-top:75px; 
+    background: var(--gray-light); 
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Accessibility Focus States */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid var(--secondary-blue);
+  outline-offset: 3px;
+}
+
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--primary);}
+h2 {margin-bottom: 20px; font-size: 32px;}
+h3 {margin-bottom: 15px; font-size: 20px;}
+p {margin-bottom: 15px;}
+a{text-decoration:none;transition:0.3s;}
+ul { padding-left: 20px; margin-bottom: 15px; }
+li { margin-bottom: 8px; }
+
+.container{width:90%;max-width:1200px;margin:auto;}
+.text-center{text-align:center;}
+.text-left{text-align:left;}
+.section {padding: 80px 0;}
+.section-alt {padding: 80px 0; background: #ffffff; border-top: 1px solid var(--gray-border); border-bottom: 1px solid var(--gray-border);}
+
+.btn{padding:12px 28px;border-radius:6px;font-weight:600;display:inline-block;transition:transform 0.2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; text-align: center;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-outline{border:2px solid var(--primary);color:var(--primary); background: transparent;}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+.btn-dark{background:var(--primary);color:#fff;}
+
+/* --- MAIN HEADER --- */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 5%;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 999;
+  transition: background 0.3s, border-color 0.3s;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  max-width: 1600px;
+  margin: auto;
+  gap: 20px;
+}
+.logo img { height: 45px; }
+.primary-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.primary-nav a { text-decoration: none; color: #0f2b46; font-weight: 600; font-size: 13px; transition: 0.3s; }
+.primary-nav a:hover { color: #0077cc; }
+.cta-btn { background: #0077cc; color: white !important; padding: 8px 16px; border-radius: 5px; }
+
+/* --- NAV ANIMATIONS & UTILITIES --- */
+.main-nav { display: none; flex-direction: column; background: white; position: absolute; width: 100%; top: 70px; left: 0; padding: 20px; box-shadow: var(--shadow-soft); }
+.main-nav.open { display: flex; }
+@media(min-width: 1024px) {
+  .main-nav { display: flex; position: static; flex-direction: row; background: none; width: auto; padding: 0; box-shadow: none; }
+  .hamburger { display: none !important; }
+}
+.main-nav a, .main-nav button.mega-btn { position: relative; background: none; border: none; color: var(--primary-navy); font-weight: 600; font-size: 13px; cursor: pointer; padding: 0; font-family: inherit; }
+.main-nav a::after, .main-nav button.mega-btn::after { content: ''; position: absolute; width: 0%; height: 2px; bottom: -4px; left: 0; background: var(--accent); transition: 0.3s; }
+.main-nav a:hover::after, .main-nav button.mega-btn:hover::after { width: 100%; }
+
+.header-utils { display: flex; align-items: center; gap: 15px; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.search-bar { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; outline: none; font-size: 13px; background: var(--light); color: var(--text); }
+.language-switch { padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; outline: none; }
+.dark-toggle { background: none; border: none; font-size: 18px; cursor: pointer; transition: transform 0.2s; }
+.dark-toggle:hover { transform: scale(1.1); }
+.goog-te-gadget-simple { background-color: #fff !important; border: 1px solid #ccc !important; border-radius: 4px !important; padding: 4px !important; font-family: 'Inter', sans-serif !important; }
+
+/* --- MEGA MENU --- */
+.mega-dropdown { position: relative; }
+.mega-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px); width: 900px; background: white; display: grid; padding: 40px; box-shadow: var(--shadow-soft); border-radius: var(--radius-md); z-index: 1000; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: left; opacity: 0; transition: 0.3s ease; pointer-events: none; }
+.mega-dropdown:hover .mega-menu, .mega-dropdown:focus-within .mega-menu { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+.mega-column h4 { margin-bottom: 15px; color: var(--primary-navy); font-size: 15px; border-bottom: 2px solid var(--gray-border); padding-bottom: 8px; }
+.mega-column a { display: block; color: var(--text) !important; padding: 8px 0; font-size: 13px; font-weight: 500; }
+.mega-column a::after { display: none; }
+.mega-column a:hover { color: var(--accent) !important; padding-left: 5px; }
+.hamburger { display: block; font-size: 24px; background: none; border: none; cursor: pointer; color: var(--primary); }
+
+/* --- HERO INNER --- */
+.hero-inner{
+    padding: 120px 0 80px;
+    background:linear-gradient(rgba(15,43,70,0.9),rgba(15,43,70,0.9)),
+    url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop') center/cover no-repeat;
+    color:#fff;
+    text-align:center;
+}
+.hero-inner h1{font-size:42px;margin-bottom:20px;color:#fff;}
+.hero-inner p{font-size:18px;font-weight:400;color:#e0e6ef;max-width: 800px; margin: auto;}
+
+/* --- GRIDS & CARDS --- */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;}
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.std-card { background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s; display: flex; flex-direction: column; }
+.std-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+.std-card h3 { color: var(--primary); font-size: 18px; margin-bottom: 12px; }
+.std-card i { color: var(--accent); margin-right: 8px; }
+
+/* --- FORM STYLES --- */
+.form-group { margin-bottom: 18px; text-align: left; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--primary-navy); }
+.form-control { width: 100%; padding: 12px 15px; border-radius: 6px; border: 1px solid #ccc; font-family: var(--font-main); font-size: 14px; outline: none; transition: border-color 0.3s; background: #fff;}
+.form-control:focus { border-color: var(--secondary-blue); }
+textarea.form-control { resize: vertical; }
+
+.notice { font-size: 12.5px; color: #666; margin-top: 15px; line-height: 1.5; padding-top: 15px; border-top: 1px solid var(--gray-border); }
+
+/* --- MAIN FOOTER --- */
+.main-footer { background: #0f2b46; color: #ffffff; padding: 60px 8% 30px; }
+.footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: auto; }
+.footer-col h4 { margin-bottom: 15px; font-size: 16px; color: var(--accent); }
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col a { color: #d0d7de; text-decoration: none; font-size: 14px; transition: 0.3s; }
+.footer-col a:hover { color: #ffffff; }
+.footer-bottom { text-align: center; margin-top: 40px; font-size: 13px; opacity: 0.7; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+/* --- DARK MODE --- */
+.dark-mode { background: #121212; color: white; }
+.dark-mode .main-header { background: #0f2b46; border-bottom-color: #0f2b46; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.dark-mode .main-nav a, .dark-mode .main-nav button.mega-btn { color: white; }
+.dark-mode .main-nav a:hover, .dark-mode .main-nav button.mega-btn:hover { color: var(--accent); }
+.dark-mode .mega-dropdown { background: #1a1a1a; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 1px solid #333; }
+.dark-mode .mega-column h4 { color: #fff; border-bottom-color: #333; }
+.dark-mode .mega-column a { color: #ccc !important; }
+.dark-mode .mega-column a:hover { color: var(--accent) !important; }
+.dark-mode .section[style*="background:#ffffff"], .dark-mode .section-alt { background: #1a1a1a !important; border-color: #333; }
+.dark-mode h2, .dark-mode h3 { color: #fff; }
+.dark-mode p, .dark-mode li { color: #bbb !important; }
+.dark-mode .std-card { background: #1e1e1e; box-shadow: 0 6px 18px rgba(0,0,0,0.3); }
+.dark-mode .search-bar, .dark-mode .language-switch { background: #2a2a2a; color: #fff; border-color: #444; }
+.dark-mode .dark-toggle { color: white; }
+.dark-mode .form-control { background: #2a2a2a; color: #fff; border-color: #444; }
+.dark-mode .form-control:focus { border-color: var(--accent); }
+.dark-mode .form-group label { color: #ccc; }
+.dark-mode .notice { border-top-color: #333; color: #999; }
+.dark-mode .hamburger { color: #fff; }
+
+/* --- RESPONSIVE --- */
+@media(max-width: 1200px) {
+  .nav-container { flex-direction: row; flex-wrap: wrap; gap: 15px; padding: 15px 5%; justify-content: space-between; }
+  .header-actions { order: 2; width: 100%; justify-content: space-between; margin-top: 10px; }
+  .hamburger { order: 1; }
+  .mega-menu { position: static; display: none; grid-template-columns: 1fr; box-shadow: none; padding: 10px 0 0 0; gap: 20px; width: 100%; transform: none; opacity: 1; pointer-events: auto; }
+  .mega-dropdown:hover .mega-menu, .mega-dropdown:focus-within .mega-menu { display: grid; transform: none; }
+}
+@media(max-width: 900px) {
+    .grid-2 { grid-template-columns: 1fr; }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "EL ALI GROUP INTERNATIONAL LTD",
+  "alternateName": "EAGint",
+  "url": "https://www.eagint.com",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "General Inquiries",
+      "email": "info@eagint.com",
+      "availableLanguage": ["English", "Somali", "Arabic"]
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "Safeguarding and PSEA Reporting",
+      "email": "safeguarding@eagint.com",
+      "availableLanguage": ["English", "Somali", "Arabic"],
+      "areaServed": "Somalia"
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "Compliance & Ethics",
+      "email": "compliance@eagint.com"
+    }
+  ]
+}
+</script>
+
+</head>
+<body>
+
+<!-- MAIN HEADER -->
+<header class="main-header">
+  <div class="nav-container">
+    <!-- LEFT: LOGO -->
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none;">
+        <img src="assets/img/EAGint.jpeg" alt="EAGint Logo" onerror="this.src='https://via.placeholder.com/150x50/0f2b46/ffffff?text=EAGint'">
+      </a>
+    </div>
+
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">☰</button>
+
+    <!-- CENTER: MAIN NAVIGATION -->
+    <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About EAGint</a></li>
+
+        <li class="mega-dropdown">
+          <button class="mega-btn" aria-haspopup="true" aria-expanded="false" onclick="window.location.href='divisions.html'">Divisions ▾</button>
+          <div class="mega-menu">
+            <div class="mega-column">
+              <h4>🏗 Infrastructure</h4>
+              <a href="division-marine.html">Marine & Port</a>
+              <a href="division-infrastructure.html">Construction</a>
+              <a href="division-energy.html">Energy & Environment</a>
+              <a href="division-technology.html">Technology & Digital</a>
+            </div>
+            <div class="mega-column">
+              <h4>🚚 Logistics & Trade</h4>
+              <a href="division-logistics.html">Supply Chain</a>
+              <a href="division-trade.html">Global Procurement</a>
+              <a href="division-commercial.html">Commercial Supply</a>
+              <a href="division-tenders.html">Tender Services</a>
+            </div>
+            <div class="mega-column">
+              <h4>🏥 Social & Institutional</h4>
+              <a href="division-humanitarian.html">Humanitarian Services</a>
+              <a href="division-education.html">Education Infrastructure</a>
+              <a href="division-camp.html">Camp Management</a>
+              <a href="division-capacity.html">Capacity Development</a>
+            </div>
+          </div>
+        </li>
+
+        <li><a href="sectors.html">Sectors We Serve</a></li>
+        <li><a href="esg.html">ESG & Impact</a></li>
+        <li><a href="compliance.html">Compliance & Safeguarding</a></li>
+        <li><a href="projects.html">Projects & Experience</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="careers.html">Careers & Localization</a></li>
+        <li><a href="insights.html">Insights & Resources</a></li>
+        <li><a href="contact.html" style="color:var(--accent);">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: ACTIONS -->
+    <div class="header-actions">
+        <input type="text" id="searchInput" placeholder="Search..." class="search-bar" aria-label="Search">
+        <select class="language-switch" aria-label="Language Switch">
+          <option value="en">EN</option>
+          <option value="so">SO</option>
+          <option value="tr">TR</option>
+          <option value="zh-CN">ZH</option>
+          <option value="ar">AR</option>
+        </select>
+        <div id="google_translate_element" style="display:none;"></div>
+        <button class="dark-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
+        <a href="contact.html" class="cta-btn" style="color:white; text-decoration:none;">Work With Us</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-inner" style="padding-top: 180px;">
+    <div class="container">
+        <h1>Institutional Contact & Transparency Portal</h1>
+        <p style="font-weight: 600; color: var(--accent); margin-bottom: 10px;">Open Communication • Accountability • Trust</p>
+        <p>EAGint maintains structured communication and reporting channels to ensure transparency, accountability, and professional engagement with all stakeholders.</p>
+    </div>
+</section>
+
+<!-- DEDICATED CONTACT CHANNELS -->
+<section class="section">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 50px;">
+            <h2>Dedicated Contact Channels</h2>
+            <p>Direct communication points mapped to our institutional governance structures.</p>
+        </div>
+        
+        <div class="grid-3">
+            <div class="std-card">
+                <h3><i class="fas fa-envelope"></i> General Inquiries</h3>
+                <p>For general information and corporate inquiries.</p>
+                <a href="mailto:info@eagint.com" style="color:var(--secondary-blue); font-weight:600;">info@eagint.com</a>
+            </div>
+
+            <div class="std-card">
+                <h3><i class="fas fa-file-signature"></i> Tenders & Procurement</h3>
+                <p>For RFPs, RFQs, frameworks, and supply chain matters.</p>
+                <a href="mailto:tenders@eagint.com" style="color:var(--secondary-blue); font-weight:600;">tenders@eagint.com</a>
+            </div>
+
+            <div class="std-card">
+                <h3><i class="fas fa-handshake"></i> Donor & Partnerships</h3>
+                <p>Donor engagement, project proposals, and PPP discussions.</p>
+                <a href="mailto:partnerships@eagint.com" style="color:var(--secondary-blue); font-weight:600;">partnerships@eagint.com</a>
+            </div>
+
+            <div class="std-card">
+                <h3><i class="fas fa-gavel"></i> Compliance & Ethics</h3>
+                <p>Reporting governance concerns or ethics-related matters.</p>
+                <a href="mailto:compliance@eagint.com" style="color:var(--secondary-blue); font-weight:600;">compliance@eagint.com</a>
+            </div>
+
+            <div class="std-card">
+                <h3><i class="fas fa-leaf"></i> ESG & Sustainability</h3>
+                <p>ESG frameworks, SDGs, KPIs, and impact reporting.</p>
+                <a href="mailto:esg@eagint.com" style="color:var(--secondary-blue); font-weight:600;">esg@eagint.com</a>
+            </div>
+
+            <div class="std-card">
+                <h3><i class="fas fa-users"></i> Careers & Recruitment</h3>
+                <p>For employment opportunities and localization inquiries.</p>
+                <a href="mailto:careers@eagint.com" style="color:var(--secondary-blue); font-weight:600;">careers@eagint.com</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FORMS SECTION -->
+<section class="section-alt">
+    <div class="container grid-2">
+        
+        <!-- General Institutional Submission Form -->
+        <div class="std-card">
+            <h3>Secure Institutional Submission</h3>
+            <p style="font-size:14px; margin-bottom: 20px;">Use this form for official inquiries, partnership requests, or general compliance questions.</p>
+            
+            <form onsubmit="handleFormSubmit(event, 'general')">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" required aria-label="Select Category">
+                        <option value="">Select an Option...</option>
+                        <option>General Inquiry</option>
+                        <option>Donor / Partnership</option>
+                        <option>Compliance / Ethics</option>
+                        <option>ESG / Sustainability</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" placeholder="Jane Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" class="form-control" placeholder="jane@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Organization (Optional)</label>
+                    <input type="text" class="form-control" placeholder="Agency or Company Name">
+                </div>
+                <div class="form-group">
+                    <label>Message / Details</label>
+                    <textarea class="form-control" rows="5" placeholder="Provide details here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Submit Securely</button>
+            </form>
+            <div class="notice">
+                All submissions are treated confidentially and in accordance with EAGint’s governance and data protection policies.
+            </div>
+        </div>
+
+        <!-- Safeguarding & SEAH Reporting Form -->
+        <div class="std-card" style="border-top: 4px solid var(--safeguarding-red);">
+            <h3 style="color:var(--safeguarding-red);"><i class="fas fa-shield-alt"></i> Safeguarding & SEAH Reporting</h3>
+            <p style="font-size:14px; font-weight: 600; color: #555; margin-bottom: 20px;">Confidential • Survivor-Centered • No Retaliation</p>
+            
+            <form onsubmit="handleFormSubmit(event, 'safeguarding')">
+                <div class="form-group" style="background: var(--light); padding: 10px 15px; border-radius: 6px; border: 1px solid var(--gray-border);">
+                    <label style="display:flex; align-items:center; gap:10px; cursor:pointer; font-weight:600; margin:0;">
+                        <input type="checkbox" id="anonymousToggle" onchange="toggleAnonymous()" style="width:18px; height:18px; accent-color: var(--safeguarding-red);"> 
+                        Submit this report anonymously
+                    </label>
+                </div>
+                
+                <div class="grid-2" style="gap:15px; margin-bottom: 15px;">
+                    <div class="form-group" style="margin:0;">
+                        <label>Full Name</label>
+                        <input type="text" id="sgName" class="form-control" placeholder="Optional if anonymous">
+                    </div>
+                    <div class="form-group" style="margin:0;">
+                        <label>Email Address</label>
+                        <input type="email" id="sgEmail" class="form-control" placeholder="Optional if anonymous">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Type of Concern</label>
+                    <select class="form-control" required>
+                        <option value="">Select Concern...</option>
+                        <option>Sexual Exploitation</option>
+                        <option>Sexual Abuse</option>
+                        <option>Sexual Harassment</option>
+                        <option>Child Protection Concern</option>
+                        <option>Forced Labor / Human Trafficking</option>
+                        <option>Other Safeguarding Concern</option>
+                    </select>
+                </div>
+                
+                <div class="grid-2" style="gap:15px; margin-bottom: 15px;">
+                    <div class="form-group" style="margin:0;">
+                        <label>Location of Incident</label>
+                        <input type="text" class="form-control" placeholder="City / Project Site">
+                    </div>
+                    <div class="form-group" style="margin:0;">
+                        <label>Date of Incident</label>
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Incident Details</label>
+                    <textarea class="form-control" rows="4" placeholder="Describe the incident in detail..." required></textarea>
+                </div>
+
+                <div class="form-group" style="margin-top: 20px;">
+                    <label style="display:flex; align-items:flex-start; gap:10px; cursor:pointer; font-weight:normal; font-size:13px; color:#555;">
+                        <input type="checkbox" required style="margin-top:3px; accent-color: var(--safeguarding-red);"> 
+                        I confirm the information provided is accurate to the best of my knowledge.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn" style="width:100%; background:var(--safeguarding-red); color:#fff; margin-top: 10px;">Submit Confidential Report</button>
+            </form>
+            <div class="notice">
+                All reports are reviewed by designated safeguarding officers only. Retaliation against reporters is strictly prohibited. <strong>Emergency cases should contact local authorities immediately.</strong>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- LOCATIONS & TRANSPARENCY -->
+<section class="section">
+    <div class="container grid-2">
+        <div>
+            <h2>Physical Office Locations</h2>
+            
+            <div class="std-card" style="margin-bottom: 20px; padding: 25px;">
+                <h3 style="font-size: 16px;"><i class="fas fa-map-marker-alt" style="color:var(--accent);"></i> Somalia – Headquarters</h3>
+                <p style="margin-bottom: 10px; font-size: 14px;"><strong>Location:</strong> Mogadishu, Somalia</p>
+                <ul style="font-size: 14px; color: #555;">
+                    <li>Corporate headquarters</li>
+                    <li>Logistics & supply chain operations</li>
+                    <li>Humanitarian & development coordination</li>
+                </ul>
+            </div>
+
+            <div class="std-card" style="padding: 25px;">
+                <h3 style="font-size: 16px;"><i class="fas fa-globe-africa" style="color:var(--accent);"></i> Regional & Project Offices</h3>
+                <p style="font-size: 14px; margin-bottom: 0;">EAGint maintains project-based and regional offices across East Africa aligned with operational needs in logistics, infrastructure, and development programs. Exact project office addresses are shared with partners and donors during active engagements for security and operational reasons.</p>
+            </div>
+        </div>
+
+        <div>
+            <h2>Transparency & Response Standards</h2>
+            <p>EAGint believes transparency builds trust. We welcome engagement, questions, and oversight from donors, partners, authorities, and the communities we serve.</p>
+            
+            <h3 style="margin-top: 30px; font-size: 18px;">Disclosure Commitments</h3>
+            <ul style="font-size: 14px; color: #555; margin-bottom: 30px;">
+                <li>Governance and compliance frameworks</li>
+                <li>ESG & sustainability policies</li>
+                <li>Safeguarding & ethics standards</li>
+                <li>Impact & results reporting</li>
+                <li>UNGM verification and institutional registrations</li>
+            </ul>
+
+            <h3 style="font-size: 18px;">Response Service Level</h3>
+            <ul style="font-size: 14px; color: #555;">
+                <li>Acknowledging formal inquiries within <strong>3–5 working days</strong>.</li>
+                <li>Handling safeguarding and compliance reports <strong>immediately and confidentially</strong>.</li>
+                <li>Providing accurate, documented responses to donor and partner requests.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About EAGint</a></li>
+        <li><a href="divisions.html">Divisions</a></li>
+        <li><a href="projects.html">Projects & Experience</a></li>
+        <li><a href="careers.html">Careers & Localization</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Compliance Hub</h4>
+      <ul>
+        <li><a href="compliance.html">Compliance Portal</a></li>
+        <li><a href="iso-certifications.html">ISO Certifications</a></li>
+        <li><a href="ungm-registration.html">UNGM Registration</a></li>
+        <li><a href="iata-registration.html">IATA Registration</a></li>
+        <li><a href="safeguarding.html">Safeguarding & PSEA</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="media.html">Media Center</a></li>
+        <li><a href="insights.html">Insights & Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: info@eagint.com</p>
+      <p>Website: www.eagint.com</p>
+      <p>Somalia | East Africa | Global</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint) | Contact & Transparency
+  </div>
+</footer>
+
+<script>
+    // Mega Menu A11y Focus Logic
+    document.querySelectorAll('.mega-dropdown button.mega-btn').forEach(btn => {
+        btn.addEventListener('focus', () => {
+            btn.setAttribute('aria-expanded', 'true');
+        });
+        btn.addEventListener('blur', () => {
+            setTimeout(() => {
+                const parent = btn.closest('.mega-dropdown');
+                if (!parent.contains(document.activeElement)) {
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            }, 100);
+        });
+    });
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        const nav = document.getElementById('mainNav');
+        nav.classList.toggle('open');
+    }
+
+    // Dark Mode Toggle Logic
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      const btn = document.querySelector('.dark-toggle');
+      btn.innerText = isDark ? "☀️" : "🌙";
+    }
+
+    // Anonymous Toggle for Safeguarding Form
+    function toggleAnonymous() {
+        const isAnon = document.getElementById('anonymousToggle').checked;
+        const nameInput = document.getElementById('sgName');
+        const emailInput = document.getElementById('sgEmail');
+        
+        if (isAnon) {
+            nameInput.disabled = true;
+            nameInput.value = '';
+            emailInput.disabled = true;
+            emailInput.value = '';
+        } else {
+            nameInput.disabled = false;
+            emailInput.disabled = false;
+        }
+    }
+
+    // Form Submission Mock Logic
+    function handleFormSubmit(event, formType) {
+        event.preventDefault();
+        // In a real application, data would be serialized and POSTed to a secure backend route.
+        const submitBtn = event.target.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        
+        submitBtn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Submitting Securely...";
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            submitBtn.innerHTML = "<i class='fas fa-check'></i> Submitted Successfully";
+            submitBtn.style.background = "#4CAF50";
+            if(formType !== 'safeguarding') {
+                submitBtn.style.borderColor = "#4CAF50";
+            }
+            
+            setTimeout(() => {
+                event.target.reset();
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                if(formType === 'safeguarding') {
+                    submitBtn.style.background = "var(--safeguarding-red)";
+                } else {
+                    submitBtn.style.background = "var(--accent)";
+                    submitBtn.style.borderColor = "var(--primary)";
+                }
+                toggleAnonymous(); // Reset disabled states if anonymous was checked
+            }, 3000);
+        }, 1500);
+    }
+</script>
+
+</body>
+</html>

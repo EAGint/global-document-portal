@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilateral Development Banks & DFIs | EAGint</title>
+    <meta name="description" content="IFI-aligned infrastructure execution and safeguard-integrated delivery in fragile markets.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f2b46',
+                        accent: '#00aeef',
+                        dark: '#0b1f33',
+                        light: '#f4f7fb',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(15, 43, 70, 0.85), rgba(15, 43, 70, 0.90)),
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80') center/cover no-repeat;
+        }
+
+        /* Dark Mode Overrides */
+        body.dark-mode { background-color: #121212 !important; color: #e5e7eb !important; }
+        body.dark-mode .bg-white, body.dark-mode .bg-light, body.dark-mode .bg-gray-50 { background-color: #1e1e1e !important; border-color: #333 !important; color: #e5e7eb !important; }
+        body.dark-mode .text-primary, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 { color: #60a5fa !important; }
+        body.dark-mode .text-gray-600, body.dark-mode .text-gray-800 { color: #9ca3af !important; }
+        body.dark-mode header.glass-nav { background: rgba(30, 30, 30, 0.95) !important; border-bottom: 1px solid #333; }
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,so,tr,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-white selection:bg-accent selection:text-white transition-colors duration-300">
+
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 glass-nav shadow-sm transition-all duration-300">
+        <div class="bg-primary text-white py-1.5 px-4 sm:px-6 lg:px-8 flex justify-end items-center gap-4 sm:gap-6 border-b border-white/10 relative z-20">
+            <div id="google_translate_element" class="text-xs mt-1"></div>
+            <button onclick="toggleDarkMode()" class="text-white hover:text-accent transition-colors text-sm" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="index.html" class="font-heading font-extrabold text-2xl text-primary tracking-tight">EAG<span class="text-accent">int</span></a>
+            </div>
+            
+            <nav class="hidden xl:flex space-x-6 items-center">
+                <a href="index.html" class="text-sm font-semibold text-primary hover:text-accent transition-colors">Home</a>
+                <a href="about.html" class="text-sm font-semibold text-primary hover:text-accent transition-colors">About</a>
+                <a href="divisions.html" class="text-sm font-semibold text-primary hover:text-accent transition-colors">Divisions</a>
+                <a href="sectors.html" class="text-sm font-bold text-accent transition-colors">Sectors</a>
+                <a href="index.html#contact" class="bg-accent hover:bg-sky-500 text-white px-5 py-2.5 rounded shadow-md font-semibold text-sm">Work With Us</a>
+            </nav>
+
+            <div class="xl:hidden">
+                <button id="mobile-menu-btn" class="text-primary hover:text-accent p-2">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full max-h-[80vh] overflow-y-auto p-4 flex flex-col gap-2">
+            <a href="index.html" class="px-3 py-3 text-sm font-semibold text-primary hover:bg-light rounded-md">Home</a>
+            <a href="about.html" class="px-3 py-3 text-sm font-semibold text-primary hover:bg-light rounded-md">About</a>
+            <a href="divisions.html" class="px-3 py-3 text-sm font-semibold text-primary hover:bg-light rounded-md">Divisions</a>
+            <a href="sectors.html" class="px-3 py-3 text-sm font-bold text-accent bg-light rounded-md">Sectors</a>
+        </div>
+    </header>
+
+    <!-- SECTOR HERO -->
+    <section class="hero-bg pt-40 pb-24 text-center border-b-4 border-accent relative">
+        <div class="absolute inset-0 bg-primary/85 z-0"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-accent/20 text-accent font-bold text-xs tracking-widest mb-6 border border-accent/30 backdrop-blur-sm uppercase">
+                Sector Profile
+            </span>
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-md">
+                Multilateral Development Banks & DFIs
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-200 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+                A structured implementation partner perfectly aligned with IFI safeguard, procurement, and reporting frameworks.
+            </p>
+        </div>
+    </section>
+
+    <main class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>Content for MDB partners is being integrated.</p>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            // Fixed: Guarding against null and using standard event listener
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+            }
+        });
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            const icon = document.querySelector('button[onclick="toggleDarkMode()"] i');
+            if (icon) {
+                icon.classList.toggle('fa-moon');
+                icon.classList.toggle('fa-sun');
+            }
+        }
+    </script>
+</body>
+</html>

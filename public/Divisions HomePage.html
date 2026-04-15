@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Divisions | EL ALI GROUP INTERNATIONAL LTD</title>
+<meta name="description" content="Discover the 13 integrated divisions of EL ALI GROUP INTERNATIONAL LTD (EAGint), spanning Infrastructure, Logistics, Trade, and Humanitarian Services.">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* --- CORE STYLES --- */
+:root{
+    --primary:#0f2b46;
+    --accent:#00aeef;
+    --light:#f4f7fb;
+    --dark:#0b1f33;
+    --text:#333;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Open Sans',sans-serif;color:var(--text);line-height:1.7;padding-top:70px;}
+
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--primary);}
+h2 {margin-bottom: 20px; font-size: 32px;}
+h3 {margin-bottom: 15px; font-size: 20px;}
+p {margin-bottom: 15px;}
+a{text-decoration:none;transition:0.3s;}
+
+.container{width:90%;max-width:1200px;margin:auto;}
+.text-center{text-align:center;}
+.section {padding: 90px 0;}
+
+.btn{padding:12px 28px;border-radius:4px;font-weight:600;display:inline-block;transition:transform 0.2s;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-outline{border:2px solid #fff;color:#fff;}
+.btn-outline:hover{background:#fff;color:var(--primary);}
+.btn-dark{background:var(--primary);color:#fff;}
+
+/* --- HEADER & NAV --- */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#fff;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+    z-index:1000;
+    height:70px;
+    display:flex;
+    align-items:center;
+}
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+.logo{font-weight:800;font-size:20px;color:var(--primary);z-index:1001;}
+.nav-links{list-style:none;display:flex;gap:18px;align-items:center;}
+.nav-links a{color:var(--primary);font-size:13px;font-weight:700;text-transform:uppercase;}
+.nav-links a:hover{color:var(--accent);}
+
+/* --- MEGA MENU STYLES --- */
+.mega-menu { position: relative; }
+.mega-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 30px;
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    border-radius: 8px;
+    z-index: 1000;
+    min-width: 650px;
+    text-align: left;
+}
+.mega-menu:hover .mega-dropdown { display: grid; }
+.mega-dropdown h4 { color: var(--accent); margin-bottom: 15px; font-size: 14px; border-bottom: 2px solid var(--light); padding-bottom: 8px; text-transform: uppercase; }
+.mega-dropdown a { display: block; color: var(--text) !important; padding: 6px 0; font-size: 13px; font-weight: 600; text-transform: none; transition: 0.2s; }
+.mega-dropdown a:hover { color: var(--primary) !important; padding-left: 5px; }
+
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;}
+.menu-toggle span{width:25px;height:3px;background:var(--primary);border-radius:2px;transition:0.3s;}
+
+/* --- DIVISIONS HERO --- */
+.divisions-hero {
+    position: relative;
+    padding: 140px 0 100px;
+    background: url('https://images.unsplash.com/photo-1581091870627-3b5de0e8d7f3') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+}
+.divisions-hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(15,43,70,0.85), rgba(15,43,70,0.85));
+}
+.divisions-hero .container {
+    position: relative;
+    z-index: 2;
+}
+.divisions-hero h1 {
+    font-size: 46px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.divisions-hero p {
+    font-size: 20px;
+    color: #e0e6ef;
+}
+
+/* --- FILTER BUTTONS --- */
+.filter-buttons {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.filter-buttons button {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.filter-buttons button:hover,
+.filter-buttons button.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* --- 3D DIVISIONS GRID --- */
+.division-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.division-card {
+    perspective: 1000px;
+    background: transparent;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.division-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-front {
+    background: #fff;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: #0f2b46;
+    color: #fff;
+}
+
+.division-icon {
+    font-size: 40px;
+    color: #00aeef;
+    margin-bottom: 15px;
+}
+
+.tag-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.esg-tag {
+    font-size: 11px;
+    padding: 4px 12px;
+    background: #f4f7fb;
+    color: var(--primary);
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.sdg-tag {
+    font-size: 11px;
+    padding: 4px 12px;
+    background: #e6f4ea;
+    color: #2e7d32;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+/* --- STANDARD CARDS (For ESG/Governance) --- */
+.std-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+.std-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+.std-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.std-card h3 {
+    margin-bottom: 10px;
+    color: var(--primary);
+    font-size: 18px;
+}
+.std-card p {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+/* --- CERTIFICATES & ISO CARDS --- */
+.cert-card {
+    background:#f9fafb;
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.04);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.cert-card:hover {
+    transform:translateY(-6px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.cert-card h3 {
+    color:var(--primary);
+    margin-bottom:10px;
+    font-size: 18px;
+}
+
+.cert-card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.cert-card a {
+    display:inline-block;
+    margin-top:10px;
+    color:var(--accent);
+    font-weight:600;
+    text-decoration:none;
+    font-size: 14px;
+}
+
+.iso-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+
+.iso-badge {
+    background:#e8f1fa;
+    color:var(--primary);
+    padding:15px;
+    border-radius:8px;
+    font-weight:600;
+    text-align:center;
+    font-size: 14px;
+}
+
+/* --- MODAL --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-modal:hover { color: var(--primary); }
+
+/* --- MAP ARCHITECTURE --- */
+.division-map {
+    background: var(--light);
+}
+.map-wrapper {
+    background: #fff;
+    padding: 50px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+}
+.map-center {
+    width: 100%;
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    background: var(--accent);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.map-node {
+    background: var(--light);
+    color: var(--primary);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    border: 1px solid #e0e6ef;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+.map-node:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(15, 43, 70, 0.2);
+}
+
+/* --- FOOTER --- */
+.footer{background:var(--dark);color:#fff;padding:70px 0;}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;}
+.footer h4{color:var(--accent);margin-bottom:15px;}
+.footer a{color:#ccc;font-size:14px;display:block;margin-bottom:8px;}
+.footer a:hover{color:#fff;}
+.footer-bottom{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;font-size:13px;color:#aaa;}
+
+/* --- RESPONSIVE --- */
+@media(max-width:1100px){
+    .mega-dropdown {
+        position: static;
+        display: none;
+        grid-template-columns: 1fr;
+        box-shadow: none;
+        padding: 10px 0 0 0;
+        gap: 20px;
+        min-width: auto;
+        transform: none;
+    }
+    .mega-menu:hover .mega-dropdown { display: grid; }
+    
+    .menu-toggle{display:flex;}
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:#fff;
+        flex-direction:column;
+        padding:20px 0;
+        box-shadow:0 5px 10px rgba(0,0,0,0.1);
+        display:none; 
+    }
+    .nav-links.active{display:flex;}
+    .nav-links li{width:100%;text-align:center;padding:10px 0;}
+    .cta-btn-header{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+<div class="nav">
+    <div class="logo">EAGint</div>
+    
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About EAGint</a></li>
+        <li class="mega-menu">
+            <a href="divisions.html" style="color:var(--accent);">Divisions ▼</a>
+            <div class="mega-dropdown">
+                <div>
+                    <h4>Infrastructure & Logistics</h4>
+                    <a href="#">Marine & Port</a>
+                    <a href="#">Construction</a>
+                    <a href="#">Logistics</a>
+                    <a href="#">Energy</a>
+                </div>
+                <div>
+                    <h4>Institutional & Trade</h4>
+                    <a href="#">Procurement</a>
+                    <a href="#">Trade & Export</a>
+                    <a href="#">Tenders</a>
+                </div>
+                <div>
+                    <h4>Humanitarian & Social</h4>
+                    <a href="#">Humanitarian Services</a>
+                    <a href="#">Camp Management</a>
+                    <a href="#">Education</a>
+                    <a href="#">Agriculture</a>
+                </div>
+            </div>
+        </li>
+        <li><a href="sectors.html">Sectors</a></li>
+        <li><a href="#">ESG</a></li>
+        <li><a href="#">Compliance</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Insights</a></li>
+        <li><a href="#">Contact</a></li>
+        <li style="margin-top:10px;"><a href="#" class="btn btn-primary">Work With Us</a></li>
+    </ul>
+    
+    <a href="#" class="btn btn-primary cta-btn-header" style="margin-left:20px;">Work With Us</a>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="divisions-hero">
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Our 13 Integrated Divisions</h1>
+        <p>EAGint operates as a unified multi-division delivery platform combining infrastructure, logistics, humanitarian services, energy, governance, and digital systems under a single accountable framework.</p>
+    </div>
+</section>
+
+<!-- FILTERABLE GRID SECTION -->
+<section class="divisions-section section">
+    <div class="container">
+        <h2 class="text-center" style="margin-bottom: 40px;">Explore Our Expertise</h2>
+
+        <!-- FILTER BUTTONS -->
+        <div class="filter-buttons text-center">
+            <button data-filter="all" class="active">All Divisions</button>
+            <button data-filter="government">Government & Public</button>
+            <button data-filter="humanitarian">Humanitarian</button>
+            <button data-filter="ppp">Trade & PPP</button>
+            <button data-filter="sdg9">SDG 9: Infrastructure</button>
+            <button data-filter="sdg7">SDG 7: Energy</button>
+        </div>
+
+        <!-- DIVISION GRID -->
+        <div class="division-grid">
+
+            <!-- 1 -->
+            <div class="division-card government ppp sdg9" data-sector="government ppp sdg9">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-anchor division-icon"></i>
+                        <h3>Marine, Port & Aviation</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Infrastructure</span>
+                            <span class="sdg-tag">SDG 9</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Resilient trade and aviation infrastructure supporting governments and humanitarian access.</p>
+                        <a href="division-marine.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="division-card government" data-sector="government">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-building-columns division-icon"></i>
+                        <h3>Capacity & Governance</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Strong Institutions</span>
+                            <span class="sdg-tag">SDG 4 | SDG 16</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Institutional strengthening, localization strategies, and governance reform aligned with donor frameworks.</p>
+                        <a href="division-capacity.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="division-card ppp" data-sector="ppp">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-globe division-icon"></i>
+                        <h3>Trade & Procurement</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Fair Trade</span>
+                            <span class="sdg-tag">SDG 8 | SDG 17</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Compliant international sourcing and cross-border supply coordination for regulated markets.</p>
+                        <a href="division-trade.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="division-card government humanitarian" data-sector="government humanitarian">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-box-open division-icon"></i>
+                        <h3>Commercial Supply</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Integrity</span>
+                            <span class="sdg-tag">SDG 12</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Framework-based institutional procurement and structured multi-location delivery operations.</p>
+                        <a href="division-commercial.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="division-card government ppp sdg9" data-sector="government ppp sdg9">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-hard-hat division-icon"></i>
+                        <h3>Infrastructure & Civil Works</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Sustainable Cities</span>
+                            <span class="sdg-tag">SDG 9 | SDG 11</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>End-to-end civil works and resilient infrastructure delivery aligned with ESG safeguards.</p>
+                        <a href="division-infrastructure.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="division-card humanitarian sdg9" data-sector="humanitarian sdg9">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-truck-fast division-icon"></i>
+                        <h3>Logistics & Supply Chain</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Operational Resilience</span>
+                            <span class="sdg-tag">SDG 9 | SDG 8</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Multimodal logistics ensuring reliable movement of goods across fragile and high-risk environments.</p>
+                        <a href="division-logistics.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="division-card ppp sdg7" data-sector="ppp sdg7">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-bolt division-icon"></i>
+                        <h3>Industrial & Energy</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Clean Energy</span>
+                            <span class="sdg-tag">SDG 7 | SDG 13</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Renewable, hybrid, and industrial energy systems supporting operational continuity and climate resilience.</p>
+                        <a href="division-energy.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="division-card government ppp sdg9" data-sector="government ppp sdg9">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-network-wired division-icon"></i>
+                        <h3>Technology & Telecoms</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Digital Inclusion</span>
+                            <span class="sdg-tag">SDG 9</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Secure ICT, networking, and digital systems tailored for low-infrastructure environments.</p>
+                        <a href="division-tech.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="division-card humanitarian ppp" data-sector="humanitarian ppp">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-wheat-awn division-icon"></i>
+                        <h3>Agriculture & Agro-Vet</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Food Security</span>
+                            <span class="sdg-tag">SDG 2 | SDG 12</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Food systems strengthening, value chain development, and rural economic resilience initiatives.</p>
+                        <a href="division-agri.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="division-card government ppp" data-sector="government ppp">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-file-signature division-icon"></i>
+                        <h3>Tenders & Procurement</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Transparency</span>
+                            <span class="sdg-tag">SDG 16</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Institutional bid management, advisory, and compliance-ready proposal development services.</p>
+                        <a href="division-tenders.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11 -->
+            <div class="division-card humanitarian" data-sector="humanitarian">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-hands-holding-child division-icon"></i>
+                        <h3>Humanitarian Services</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Zero Hunger</span>
+                            <span class="sdg-tag">SDG 2 | SDG 3</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Integrated emergency response, aid distribution, and vital development programming.</p>
+                        <a href="division-humanitarian.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12 -->
+            <div class="division-card humanitarian" data-sector="humanitarian">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-campground division-icon"></i>
+                        <h3>Camp Management</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Safe Settlements</span>
+                            <span class="sdg-tag">SDG 3 | SDG 11</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Life-support services, catering, and facility management for field missions and projects.</p>
+                        <a href="division-camps.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 13 -->
+            <div class="division-card government humanitarian" data-sector="government humanitarian">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="fas fa-school division-icon"></i>
+                        <h3>Education Infrastructure</h3>
+                        <div class="tag-container">
+                            <span class="esg-tag">ESG: Quality Education</span>
+                            <span class="sdg-tag">SDG 4 | SDG 10</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <p>Construction and equipping of safe, inclusive, and sustainable learning facilities.</p>
+                        <a href="division-education.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13px; margin-top: 15px;">View Division</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- GOVERNANCE & OVERSIGHT -->
+<section class="section" style="background:var(--light);">
+    <div class="container text-center">
+        <h2 style="margin-bottom: 40px;">Governance & Oversight Structure</h2>
+        <div class="std-cards">
+            <div class="std-card">
+                <h3>Board of Directors</h3>
+                <p>Strategic oversight, compliance governance, fiduciary responsibility, and long-term vision execution.</p>
+            </div>
+            <div class="std-card">
+                <h3>Executive Leadership</h3>
+                <p>CEO & Executive Management responsible for daily operational execution and cross-division synergy.</p>
+            </div>
+            <div class="std-card">
+                <h3>Compliance & Risk Committee</h3>
+                <p>Ensuring safeguarding, procurement integrity, financial oversight, and active ESG monitoring.</p>
+            </div>
+            <div class="std-card">
+                <h3>Division Directors</h3>
+                <p>Providing technical excellence, sector expertise, and operational leadership across the 13 specialized divisions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ESG DASHBOARD -->
+<section class="section" style="background:#ffffff;">
+    <div class="container text-center">
+        <h2 style="margin-bottom: 40px;">ESG & SDG Alignment Dashboard</h2>
+        <div class="std-cards">
+            <div class="std-card" style="border-top: 4px solid #2e7d32;">
+                <h3>Environmental (E)</h3>
+                <p>Renewable energy integration, waste management systems, emissions reduction, and climate-resilient infrastructure delivery.</p>
+            </div>
+            <div class="std-card" style="border-top: 4px solid var(--accent);">
+                <h3>Social (S)</h3>
+                <p>Safeguarding & PSEA protocols, gender inclusion, local employment generation, humanitarian assistance, and education facilities.</p>
+            </div>
+            <div class="std-card" style="border-top: 4px solid var(--primary);">
+                <h3>Governance (G)</h3>
+                <p>ISO-aligned management systems, strict procurement governance, audit-ready financial reporting, and conflict-of-interest controls.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPLIANCE, CERTIFICATIONS & GLOBAL REGISTRATION -->
+<section class="section" style="background:#ffffff; border-top:1px solid #e5e7eb;">
+    <div class="container">
+        <div style="text-align:center; max-width:1000px; margin:auto;">
+            <h2 style="font-size:32px; margin-bottom:20px; color:var(--primary);">Compliance, Certifications & Global Registration</h2>
+            <p style="font-size:16px; line-height:1.7; color:#555;">
+                EAGint operates under internationally recognized compliance and quality frameworks. 
+                We are registered, audited, and aligned with global standards required by United Nations agencies, 
+                governments, and international partners.
+            </p>
+        </div>
+
+        <!-- Registration Badges -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; margin-top:60px;">
+            <div class="cert-card">
+                <h3>UN Global Marketplace</h3>
+                <p>Registered Vendor – Level 2</p>
+            </div>
+            <div class="cert-card">
+                <h3>IATA</h3>
+                <p>Registered – TIDS Code: 96172915</p>
+            </div>
+            <div class="cert-card">
+                <h3>WHO-GMP</h3>
+                <p>Certified Good Manufacturing Practice</p>
+                <a href="GMP WHO 95 EL ALI GROUP INTERNATIONAL (EAG INT) LTD.pdf" target="_blank">View Certificate</a>
+            </div>
+            <div class="cert-card">
+                <h3>OEM Authorization</h3>
+                <p>Registered Electronic Security & Equipment Provider</p>
+                <a href="OEM - 312 EL ALI GROUP INTERNATIONAL (EAG INT) LTD.pdf" target="_blank">View Certificate</a>
+            </div>
+            <!-- Clickable ISO 18788 Certificate via Modal -->
+            <div class="cert-card" onclick="openModal('ISO 18788.pdf')">
+                <h3>ISO 18788 – Security Operations</h3>
+                <p>Management system for private security operations</p>
+                <a href="javascript:void(0);">View Certificate</a>
+            </div>
+        </div>
+
+        <!-- ISO Systems Grid -->
+        <h3 style="text-align:center; margin-top:80px; color:var(--primary); font-size:24px;">ISO-Aligned Management Systems</h3>
+        <div class="iso-grid">
+            <div class="iso-badge">ISO 9001 – Quality Management</div>
+            <div class="iso-badge">ISO 14001 – Environmental Management</div>
+            <div class="iso-badge">ISO 45001 – Occupational Health & Safety</div>
+            <div class="iso-badge">ISO 22000 – Food Safety</div>
+            <div class="iso-badge">ISO 27001 – Information Security</div>
+            <div class="iso-badge">ISO 18788 – Security Operations</div>
+            <div class="iso-badge">ISO 41001 – Facility Management</div>
+            <div class="iso-badge">ISO 31000 – Risk Management</div>
+            <div class="iso-badge">ISO 37001 – Anti-Bribery</div>
+            <div class="iso-badge">ISO 3961 – Technical Compliance</div>
+            <div class="iso-badge">ISO 23354 – Logistics Visibility</div>
+            <div class="iso-badge">SA 8000 – Social Responsibility</div>
+        </div>
+    </div>
+</section>
+
+<!-- MAP ARCHITECTURE -->
+<section class="division-map section">
+    <div class="container text-center">
+        <h2>Integrated 13-Division Architecture</h2>
+        <p style="max-width: 700px; margin: auto; color: #555;">Centralized governance connecting diverse sectors for unified delivery.</p>
+        
+        <div class="map-wrapper">
+            <div class="map-center">EAGint</div>
+
+            <div class="map-node">Marine & Aviation</div>
+            <div class="map-node">Governance Capacity</div>
+            <div class="map-node">Global Trade</div>
+            <div class="map-node">Commercial Supply</div>
+            <div class="map-node">Infrastructure</div>
+            <div class="map-node">Logistics</div>
+            <div class="map-node">Energy & Industry</div>
+            <div class="map-node">Technology</div>
+            <div class="map-node">Agriculture</div>
+            <div class="map-node">Tenders</div>
+            <div class="map-node">Humanitarian</div>
+            <div class="map-node">Camp Management</div>
+            <div class="map-node">Education Facilities</div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container footer-grid">
+    <div>
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="divisions.html">Divisions</a>
+        <a href="#">Projects</a>
+        <a href="#">Careers</a>
+    </div>
+    <div>
+        <h4>Compliance</h4>
+        <a href="#">Safeguarding</a>
+        <a href="#">ESG & Impact</a>
+        <a href="#">Policies</a>
+        <a href="#">Code of Conduct</a>
+    </div>
+    <div>
+        <h4>Resources</h4>
+        <a href="#">Insights</a>
+        <a href="#">Downloads</a>
+        <a href="#">FAQs</a>
+    </div>
+    <div>
+        <h4>Contact</h4>
+        <a href="#">Email</a>
+        <a href="#">Address</a>
+        <a href="#">LinkedIn</a>
+    </div>
+</div>
+
+<div class="footer-bottom">
+    © 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint) | Privacy Policy | Terms of Use
+</div>
+</footer>
+
+<!-- CERTIFICATE MODAL -->
+<div id="certModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h3 style="color:var(--primary); margin-bottom: 20px;">Certificate Viewer</h3>
+        <p>Viewing document: <strong id="modalDocName"></strong></p>
+        <p style="margin-top: 20px; color: #555; font-size: 14px;">(PDF viewer placeholder - document will open in a real environment)</p>
+        <a id="modalDownloadBtn" href="#" target="_blank" class="btn btn-primary" style="margin-top: 20px;">Open Document</a>
+    </div>
+</div>
+
+<script>
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        nav.classList.toggle('active');
+    }
+
+    // Filter Logic for 3D Cards
+    document.addEventListener("DOMContentLoaded", () => {
+        const buttons = document.querySelectorAll('.filter-buttons button');
+        const cards = document.querySelectorAll('.division-card');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Handle Active State
+                document.querySelector('.filter-buttons .active').classList.remove('active');
+                btn.classList.add('active');
+
+                // Filter Logic
+                const filter = btn.dataset.filter;
+
+                cards.forEach(card => {
+                    if (filter === "all" || card.classList.contains(filter)) {
+                        card.style.display = "block";
+                        // Add a subtle animation when showing
+                        card.style.animation = "fadeIn 0.5s ease forwards";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+
+    // Certificate Modal Logic
+    function openModal(docName) {
+        document.getElementById('modalDocName').textContent = docName;
+        document.getElementById('modalDownloadBtn').href = docName;
+        document.getElementById('certModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('certModal').style.display = 'none';
+    }
+
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('certModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+
+<style>
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+
+</body>
+</html>

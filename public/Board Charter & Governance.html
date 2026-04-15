@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Board Charter & Governance | EL ALI GROUP INTERNATIONAL LTD</title>
+<meta name="description" content="Official Board Charter and Corporate Governance framework for EAGint, outlining strategic oversight, risk management, and ESG accountability.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* --- CORE STYLES --- */
+:root {
+    --primary:#0f2b46;
+    --accent:#00aeef; 
+    --light:#f4f7fb;
+    --dark:#0b1f33;
+    --text:#333;
+    --primary-navy:#0f2b46;
+    --secondary-blue:#0077cc;
+    --accent-olive:#8a8f2a;
+    --gray-light:#f7f9fb;
+    --gray-border:#e5e7eb;
+    --font-main:'Inter', sans-serif;
+    --shadow-soft:0 10px 30px rgba(0,0,0,0.05);
+    --radius-md:8px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+    font-family: var(--font-main);
+    color:var(--text);
+    line-height:1.7;
+    padding-top:75px; 
+    background: var(--gray-light); 
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Accessibility Focus States */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid var(--secondary-blue);
+  outline-offset: 3px;
+}
+
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--primary);}
+a{text-decoration:none;transition:0.3s;}
+
+.container{width:90%;max-width:1200px;margin:auto;}
+.text-center{text-align:center;}
+
+.btn{padding:10px 24px;border-radius:6px;font-weight:600;display:inline-block;transition:transform 0.2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; text-align: center; font-size: 14px;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-outline{border:2px solid var(--primary);color:var(--primary); background: transparent;}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+
+/* --- MAIN HEADER --- */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 5%;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 999;
+  transition: background 0.3s, border-color 0.3s;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  max-width: 1600px;
+  margin: auto;
+  gap: 20px;
+}
+.logo img { height: 45px; }
+.primary-nav ul { list-style: none; display: flex; gap: 15px; align-items: center; flex-wrap: wrap; justify-content: center; margin:0; padding:0;}
+.primary-nav a { text-decoration: none; color: #0f2b46; font-weight: 600; font-size: 13px; transition: 0.3s; }
+.primary-nav a:hover { color: #0077cc; }
+.cta-btn { background: #0077cc; color: white !important; padding: 8px 16px; border-radius: 5px; }
+
+/* --- NAV ANIMATIONS & UTILITIES --- */
+.main-nav { display: none; flex-direction: column; background: white; position: absolute; width: 100%; top: 70px; left: 0; padding: 20px; box-shadow: var(--shadow-soft); }
+.main-nav.open { display: flex; }
+@media(min-width: 1024px) {
+  .main-nav { display: flex; position: static; flex-direction: row; background: none; width: auto; padding: 0; box-shadow: none; }
+  .hamburger { display: none !important; }
+}
+.main-nav a, .main-nav button.mega-btn { position: relative; background: none; border: none; color: var(--primary-navy); font-weight: 600; font-size: 13px; cursor: pointer; padding: 0; font-family: inherit; }
+.main-nav a::after, .main-nav button.mega-btn::after { content: ''; position: absolute; width: 0%; height: 2px; bottom: -4px; left: 0; background: var(--accent); transition: 0.3s; }
+.main-nav a:hover::after, .main-nav button.mega-btn:hover::after { width: 100%; }
+
+.header-utils { display: flex; align-items: center; gap: 15px; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.search-bar { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; outline: none; font-size: 13px; background: var(--light); color: var(--text); }
+.language-switch { padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; outline: none; }
+.dark-toggle { background: none; border: none; font-size: 18px; cursor: pointer; transition: transform 0.2s; }
+.dark-toggle:hover { transform: scale(1.1); }
+
+/* --- MEGA MENU --- */
+.mega-dropdown { position: relative; }
+.mega-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px); width: 900px; background: white; display: grid; padding: 40px; box-shadow: var(--shadow-soft); border-radius: var(--radius-md); z-index: 1000; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: left; opacity: 0; transition: 0.3s ease; pointer-events: none; }
+.mega-dropdown:hover .mega-menu, .mega-dropdown:focus-within .mega-menu { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+.mega-column h4 { margin-bottom: 15px; color: var(--primary-navy); font-size: 15px; border-bottom: 2px solid var(--gray-border); padding-bottom: 8px; }
+.mega-column a { display: block; color: var(--text) !important; padding: 8px 0; font-size: 13px; font-weight: 500; }
+.mega-column a::after { display: none; }
+.mega-column a:hover { color: var(--accent) !important; padding-left: 5px; }
+.hamburger { display: block; font-size: 24px; background: none; border: none; cursor: pointer; color: var(--primary); }
+
+/* --- HERO INNER --- */
+.hero-inner{
+    padding: 100px 0 60px;
+    background:linear-gradient(rgba(15,43,70,0.9),rgba(15,43,70,0.9)),
+    url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+    color:#fff;
+    text-align:center;
+}
+.hero-inner h1{font-size:42px;margin-bottom:15px;color:#fff;}
+.hero-inner p{font-size:18px;font-weight:400;color:#e0e6ef;max-width: 800px; margin: auto;}
+
+/* --- GOVERNANCE PAGES STYLES --- */
+.legal-wrapper {
+    background: var(--gray-light);
+    padding-bottom: 60px;
+}
+
+/* Governance Portal Grid */
+.governance-portal {
+    padding: 60px 5%;
+    background: var(--light);
+    text-align: center;
+}
+.governance-portal h2 { margin-bottom: 30px; font-size: 28px; }
+.portal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.portal-grid a {
+    background: white;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--primary-navy);
+    font-weight: 600;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    transition: 0.3s;
+}
+.portal-grid a:hover {
+    background: var(--primary-navy);
+    color: white;
+    border-color: var(--primary-navy);
+    transform: translateY(-3px);
+}
+
+/* Board Structure Visualizer */
+.board-structure {
+    text-align: center;
+    padding: 60px 5%;
+    max-width: 1000px;
+    margin: auto;
+}
+.board-structure h2 { font-size: 28px; margin-bottom: 30px; }
+.layer {
+    margin: 15px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    background: var(--primary-navy);
+    color: white;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    transition: 0.3s;
+    cursor: default;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.layer:hover {
+    background: var(--accent);
+    transform: scale(1.02);
+}
+.layer.shareholder { background: var(--dark); }
+.layer.board { background: var(--primary-navy); font-size: 18px; }
+.layer.committees { background: #3f5d7d; font-size: 14px; }
+.layer.management { background: #5c7b9c; font-size: 14px; }
+.arrow {
+    font-size: 24px;
+    color: var(--accent);
+    margin: 10px 0;
+    line-height: 1;
+}
+
+/* Legal Pages (Charters & Committees) */
+.legal-page {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 60px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.legal-page h1 { font-size: 32px; color: var(--primary); margin-bottom: 5px; }
+.legal-page h2 { font-size: 22px; color: var(--primary); margin-top: 45px; margin-bottom: 15px; border-bottom: 2px solid var(--gray-border); padding-bottom: 8px; }
+.legal-page h3 { font-size: 18px; margin-top: 25px; color: var(--primary); }
+.legal-page p, .legal-page ul { color: #444; font-size: 15px; line-height: 1.8; margin-bottom: 15px; }
+.legal-page ul { padding-left: 20px; }
+.legal-page li { margin-bottom: 8px; }
+
+.meta-box { background: #eef3f9; padding: 20px; margin-bottom: 40px; margin-top: 20px; border-left: 5px solid var(--primary-navy); border-radius: 4px; font-size: 14.5px; color: #333; }
+
+.committee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; margin-top: 20px; margin-bottom: 20px; }
+.committee-card { background: var(--light); padding: 25px; border-radius: 8px; border: 1px solid var(--gray-border); }
+.committee-card h4 { color: var(--accent); font-size: 16px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif; }
+.committee-card ul { margin-bottom: 0; font-size: 14px; }
+
+.signature { margin-top: 60px; border-top: 1px solid var(--gray-border); padding-top: 30px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; color: #444; }
+
+.legal-version { text-align: center; font-size: 13px; color: #888; margin-top: 50px; padding-bottom: 10px; border-top: 1px solid var(--gray-border); padding-top: 20px; }
+
+/* --- MAIN FOOTER --- */
+.main-footer { background: #0f2b46; color: #ffffff; padding: 60px 8% 0; }
+.footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: auto; }
+.footer-col h4 { margin-bottom: 15px; font-size: 16px; color: var(--accent); }
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col a { color: #d0d7de; text-decoration: none; font-size: 14px; transition: 0.3s; }
+.footer-col a:hover { color: #ffffff; }
+.footer-bottom { text-align: center; margin-top: 40px; font-size: 13px; opacity: 0.7; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+
+/* --- LEGAL FOOTER STRIP --- */
+.footer-legal { background: #0a1c2e; color: #aaa; text-align: center; padding: 20px; font-size: 13px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+.footer-legal a { color: #ccc; text-decoration: none; transition: 0.3s; font-weight: 500; }
+.footer-legal a:hover { color: var(--accent); }
+
+/* --- DARK MODE --- */
+.dark-mode { background: #121212; color: white; }
+.dark-mode .main-header { background: #0f2b46; border-bottom-color: #0f2b46; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.dark-mode .main-nav a, .dark-mode .main-nav button.mega-btn { color: white; }
+.dark-mode .main-nav a:hover, .dark-mode .main-nav button.mega-btn:hover { color: var(--accent); }
+.dark-mode .mega-dropdown { background: #1a1a1a; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 1px solid #333; }
+.dark-mode .mega-column h4 { color: #fff; border-bottom-color: #333; }
+.dark-mode .mega-column a { color: #ccc !important; }
+.dark-mode .mega-column a:hover { color: var(--accent) !important; }
+.dark-mode .search-bar, .dark-mode .language-switch { background: #2a2a2a; color: #fff; border-color: #444; }
+.dark-mode .dark-toggle { color: white; }
+.dark-mode .hamburger { color: #fff; }
+
+/* Dark mode for Governance Pages */
+.dark-mode .legal-wrapper { background: #121212; }
+.dark-mode .governance-portal { background: #1a1a1a; }
+.dark-mode .portal-grid a { background: #1e1e1e; border-color: #333; color: #ccc; }
+.dark-mode .portal-grid a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.dark-mode .legal-page { background: #1e1e1e; box-shadow: 0 6px 18px rgba(0,0,0,0.3); }
+.dark-mode .legal-page h1 { color: #fff; }
+.dark-mode .legal-page h2 { color: #fff; border-bottom-color: #333; }
+.dark-mode .legal-page h3 { color: #fff; }
+.dark-mode .legal-page p, .dark-mode .legal-page ul { color: #bbb; }
+.dark-mode .meta-box { background: #2a2a2a; color: #eee; border-left-color: var(--accent); }
+.dark-mode .committee-card { background: #2a2a2a; border-color: #444; }
+.dark-mode .signature, .dark-mode .legal-version { border-color: #333; color: #888; }
+.dark-mode .footer-legal { background: #081523; }
+.dark-mode .layer.committees { background: #2a3f54; }
+.dark-mode .layer.management { background: #3f5d7d; }
+
+/* --- RESPONSIVE --- */
+@media(max-width: 1200px) {
+  .nav-container { flex-direction: row; flex-wrap: wrap; gap: 15px; padding: 15px 5%; justify-content: space-between; }
+  .header-actions { order: 2; width: 100%; justify-content: space-between; margin-top: 10px; }
+  .hamburger { order: 1; }
+  .mega-menu { position: static; display: none; grid-template-columns: 1fr; box-shadow: none; padding: 10px 0 0 0; gap: 20px; width: 100%; transform: none; opacity: 1; pointer-events: auto; }
+  .mega-dropdown:hover .mega-menu, .mega-dropdown:focus-within .mega-menu { display: grid; transform: none; }
+}
+@media(max-width: 768px) {
+    .legal-page { padding: 30px 20px; margin: 20px auto; width: 95%; }
+    .footer-legal { flex-direction: column; gap: 10px; }
+    .signature { flex-direction: column; gap: 40px; }
+    .layer { width: 95%; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- MAIN HEADER -->
+<header class="main-header">
+  <div class="nav-container">
+    
+    <!-- LEFT: LOGO -->
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none;">
+        <img src="assets/img/EAGint.jpeg" alt="EAGint Logo" onerror="this.src='https://via.placeholder.com/150x50/0f2b46/ffffff?text=EAGint'">
+      </a>
+    </div>
+
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">☰</button>
+
+    <!-- CENTER: MAIN NAVIGATION -->
+    <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About EAGint</a></li>
+
+        <li class="mega-dropdown">
+          <button class="mega-btn" aria-haspopup="true" aria-expanded="false" onclick="window.location.href='divisions.html'">Divisions ▾</button>
+          
+          <div class="mega-menu">
+            <div class="mega-column">
+              <h4>🏗 Infrastructure</h4>
+              <a href="division-marine.html">Marine & Port</a>
+              <a href="division-infrastructure.html">Construction</a>
+              <a href="division-energy.html">Energy & Environment</a>
+              <a href="division-technology.html">Technology & Digital</a>
+            </div>
+            <div class="mega-column">
+              <h4>🚚 Logistics & Trade</h4>
+              <a href="division-logistics.html">Supply Chain</a>
+              <a href="division-trade.html">Global Procurement</a>
+              <a href="division-commercial.html">Commercial Supply</a>
+              <a href="division-tenders.html">Tender Services</a>
+            </div>
+            <div class="mega-column">
+              <h4>🏥 Social & Institutional</h4>
+              <a href="division-humanitarian.html">Humanitarian Services</a>
+              <a href="division-education.html">Education Infrastructure</a>
+              <a href="division-camp.html">Camp Management</a>
+              <a href="division-capacity.html">Capacity Development</a>
+            </div>
+          </div>
+        </li>
+
+        <li><a href="sectors.html">Sectors We Serve</a></li>
+        <li><a href="esg.html">ESG & Impact</a></li>
+        <li><a href="compliance.html">Compliance</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="media.html">Media Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: ACTIONS -->
+    <div class="header-actions">
+        <input type="text" id="globalSearchInput" placeholder="Search site..." class="search-bar" aria-label="Global Search">
+
+        <select class="language-switch" onchange="changeLanguage(this.value)" aria-label="Language Switch">
+          <option value="en">EN</option>
+          <option value="so">SO</option>
+          <option value="tr">TR</option>
+          <option value="zh-CN">ZH</option>
+          <option value="ar">AR</option>
+        </select>
+
+        <div id="google_translate_element" style="display:none;"></div>
+        <button class="dark-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
+        <a href="contact.html" class="cta-btn" style="color:white; text-decoration:none;">Work With Us</a>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-inner" style="padding-top: 150px;">
+    <div class="container">
+        <h1>Board Charter & Governance</h1>
+        <p>Institutional accountability, risk supervision, and strategic oversight driving EAGint's 2060 Vision.</p>
+    </div>
+</section>
+
+<!-- GOVERNANCE CONTENT WRAPPER -->
+<div class="legal-wrapper">
+
+    <!-- COMPLIANCE & GOVERNANCE PORTAL GRID -->
+    <section class="governance-portal">
+        <div class="container">
+            <h2>Compliance & Governance Portal</h2>
+            <div class="portal-grid">
+                <a href="#board-charter">Board Charter</a>
+                <a href="#audit-committee">Audit & Risk Committee</a>
+                <a href="#esg-committee">ESG & Safeguarding Committee</a>
+                <a href="contact.html">Code of Conduct & Ethics</a>
+                <a href="contact.html">Anti-Corruption Policy</a>
+                <a href="contact.html">Safeguarding & PSEA</a>
+                <a href="compliance.html">ISO Certifications</a>
+                <a href="compliance.html">UNGM Registration</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOARD GOVERNANCE STRUCTURE VISUALIZER -->
+    <section class="board-structure">
+        <h2>Board Governance Structure</h2>
+        <div class="layer shareholder">Shareholders</div>
+        <div class="arrow">↓</div>
+        <div class="layer board">Board of Directors</div>
+        <div class="arrow">↓</div>
+        <div class="layer committees">
+            Audit & Risk | ESG & Safeguarding | Governance & Ethics | Investment & Infrastructure
+        </div>
+        <div class="arrow">↓</div>
+        <div class="layer management">
+            CEO → COO → CFO → Chief ESG → Division Heads
+        </div>
+    </section>
+
+    <!-- MAIN BOARD CHARTER -->
+    <section class="legal-page" id="board-charter">
+        <h1>Board Charter</h1>
+        <h3 style="margin-top: 0; color: #555; font-weight: 500;">EL ALI GROUP INTERNATIONAL LTD (EAGint)</h3>
+
+        <div class="meta-box">
+            <strong>Effective Date:</strong> 2026<br>
+            <strong>Approved By:</strong> Board of Directors<br>
+            <strong>Review Cycle:</strong> Every 2 Years
+        </div>
+
+        <h2>1. Purpose of the Board</h2>
+        <p>The Board of Directors is the highest governing authority of EL ALI GROUP INTERNATIONAL LTD (EAGint). The Board provides strategic direction, governance oversight, risk supervision, ESG and safeguarding accountability, and executive performance oversight. Operational management remains the responsibility of executive leadership.</p>
+
+        <h2>2. Board Authority</h2>
+        <ul>
+            <li>Approval of corporate strategy and long-term roadmap</li>
+            <li>Oversight of major capital allocation and PPP participation</li>
+            <li>Infrastructure asset acquisition approval</li>
+            <li>Executive appointment and removal authority</li>
+            <li>Risk tolerance and compliance oversight</li>
+        </ul>
+
+        <h2>3. Board Composition</h2>
+        <ul>
+            <li>Minimum 5 Directors | Maximum 11 Directors</li>
+            <li>Maximum 3 Executive Directors</li>
+            <li>Minimum 2 Independent Non-Executive Directors</li>
+            <li>At least one Financial / Audit expert</li>
+            <li>At least one ESG / Compliance expert</li>
+        </ul>
+
+        <h2>4. Strategic Oversight Responsibilities</h2>
+        <ul>
+            <li>Approval of multi-year strategy</li>
+            <li>Annual business plan review</li>
+            <li>Revenue diversification monitoring</li>
+            <li>Vision 2060 alignment supervision</li>
+        </ul>
+
+        <h2>5. Financial Oversight</h2>
+        <ul>
+            <li>Approval of annual budget</li>
+            <li>Quarterly financial review</li>
+            <li>External auditor appointment</li>
+            <li>Internal control oversight</li>
+            <li>Capital exposure monitoring</li>
+        </ul>
+
+        <h2>6. Risk Management</h2>
+        <ul>
+            <li>Enterprise risk register review</li>
+            <li>Fragile context exposure supervision</li>
+            <li>Political and security risk oversight</li>
+            <li>Approval of high-risk PPP agreements</li>
+        </ul>
+
+        <h2>7. ESG & Safeguarding Oversight</h2>
+        <ul>
+            <li>Zero tolerance SEAH enforcement</li>
+            <li>Environmental compliance integration</li>
+            <li>Whistleblowing independence</li>
+            <li>Grievance redress monitoring</li>
+            <li>Safeguarding escalation to Board Chair</li>
+        </ul>
+
+        <h2>8. Governance & Ethics</h2>
+        <ul>
+            <li>Code of Conduct approval</li>
+            <li>Conflict of interest disclosure review</li>
+            <li>Anti-corruption oversight</li>
+            <li>Transparent procurement supervision</li>
+        </ul>
+
+        <!-- DETAILED COMMITTEES (From Python Specs) -->
+        <h2>9. Board Committees</h2>
+        <p>The Board delegates specialized oversight to the following dedicated committees:</p>
+        
+        <div class="committee-grid">
+            <div class="committee-card">
+                <h4><i class="fas fa-chart-line" style="margin-right: 8px;"></i> Audit & Risk Committee</h4>
+                <ul>
+                    <li>Oversees financial integrity and procurement transparency.</li>
+                    <li>Reviews enterprise risk framework and exposure thresholds.</li>
+                    <li>Supervises internal and external audit processes.</li>
+                    <li>Monitors anti-fraud and anti-corruption systems.</li>
+                    <li>Reports quarterly to the Board.</li>
+                </ul>
+            </div>
+
+            <div class="committee-card">
+                <h4><i class="fas fa-leaf" style="margin-right: 8px;"></i> ESG & Safeguarding Committee</h4>
+                <ul>
+                    <li>Ensures environmental and social safeguard compliance.</li>
+                    <li>Oversees SEAH and child safeguarding systems.</li>
+                    <li>Monitors grievance redress mechanisms.</li>
+                    <li>Reviews annual ESG and SDG reporting.</li>
+                    <li>Maintains zero-tolerance misconduct oversight.</li>
+                </ul>
+            </div>
+
+            <div class="committee-card">
+                <h4><i class="fas fa-balance-scale" style="margin-right: 8px;"></i> Governance & Ethics Oversight</h4>
+                <ul>
+                    <li>Reviews conflict of interest disclosures.</li>
+                    <li>Supervises whistleblowing and ethics cases.</li>
+                    <li>Ensures policy updates and governance maturity.</li>
+                    <li>Manages Board succession planning.</li>
+                </ul>
+            </div>
+
+            <div class="committee-card">
+                <h4><i class="fas fa-hard-hat" style="margin-right: 8px;"></i> Investment & Infrastructure Oversight</h4>
+                <ul>
+                    <li>Approves PPP participation and asset exposure.</li>
+                    <li>Reviews climate-aligned infrastructure investments.</li>
+                    <li>Evaluates concession agreements and risk allocation.</li>
+                    <li>Ensures disciplined capital deployment.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>10. Board Meetings</h2>
+        <ul>
+            <li>Minimum four (4) meetings per year</li>
+            <li>Quorum: 50% + 1 Directors</li>
+            <li>Formal minutes recorded and archived</li>
+        </ul>
+
+        <h2>11. Director Duties</h2>
+        <ul>
+            <li>Act in good faith</li>
+            <li>Exercise independent judgment</li>
+            <li>Avoid conflicts of interest</li>
+            <li>Maintain confidentiality</li>
+            <li>Prioritize long-term institutional interest</li>
+        </ul>
+
+        <h2>12. Chair of the Board</h2>
+        <ul>
+            <li>Leads meetings</li>
+            <li>Ensures independent oversight</li>
+            <li>Acts as escalation authority</li>
+            <li>Chair & CEO roles to be separated by 2035</li>
+        </ul>
+
+        <h2>13. CEO Relationship</h2>
+        <p>The CEO reports directly to the Board and implements approved strategy. Quarterly operational reporting is mandatory. Annual CEO performance evaluation required.</p>
+
+        <h2>14. Succession Planning</h2>
+        <ul>
+            <li>CEO succession plan</li>
+            <li>Executive leadership pipeline</li>
+            <li>Board renewal planning</li>
+        </ul>
+
+        <h2>15. Performance Evaluation</h2>
+        <p>The Board conducts annual self-assessment covering strategy, financial oversight, ESG supervision, and independence integrity. Independent external review recommended every five years.</p>
+
+        <h2>16. Compliance Commitment</h2>
+        <p>The Board commits to operating in alignment with ISO governance principles, UN and IFI procurement standards, ESG frameworks, and international anti-corruption policies.</p>
+
+        <h2>17. Long-Term Governance Principle</h2>
+        <p style="font-size: 18px; font-weight: 600; color: var(--accent); padding-left: 15px; border-left: 4px solid var(--accent); font-style: italic; margin-top: 20px;">
+            "Stability over speed. Integrity over expansion. Governance over opportunistic growth. Institutional continuity over short-term gain."
+        </p>
+
+        <div class="signature">
+            <div>
+                <strong>Approved By:</strong><br><br><br>
+                Chair of the Board: _________________________ <br><br>
+                Date: ___________
+            </div>
+            <div>
+                <br><br><br>
+                CEO: _________________________ <br><br>
+                Date: ___________
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILED AUDIT COMMITTEE PAGE -->
+    <section class="legal-page committee-page" id="audit-committee">
+        <h1>Audit & Risk Committee</h1>
+        <p>The Audit & Risk Committee supports the Board in overseeing financial integrity, enterprise risk exposure, procurement transparency, and compliance systems.</p>
+
+        <h2>Mandate</h2>
+        <ul>
+            <li>Review quarterly and annual financial statements</li>
+            <li>Supervise internal and external audit processes</li>
+            <li>Oversee enterprise risk management framework</li>
+            <li>Monitor anti-fraud and anti-corruption systems</li>
+            <li>Approve procurement integrity controls</li>
+        </ul>
+
+        <h2>Authority</h2>
+        <ul>
+            <li>Access to all financial and operational records</li>
+            <li>Direct reporting from internal audit</li>
+            <li>Independent engagement with external auditors</li>
+        </ul>
+
+        <h2>Meeting Frequency</h2>
+        <p>Minimum quarterly meetings, with additional sessions as required.</p>
+    </section>
+
+    <!-- DETAILED ESG COMMITTEE PAGE -->
+    <section class="legal-page committee-page" id="esg-committee">
+        <h1>ESG & Safeguarding Committee</h1>
+        <p>This committee ensures environmental, social, governance, and safeguarding standards are embedded across all EAGint divisions.</p>
+
+        <h2>Mandate</h2>
+        <ul>
+            <li>Oversee ESG policy implementation</li>
+            <li>Monitor environmental compliance</li>
+            <li>Supervise SEAH and safeguarding cases</li>
+            <li>Ensure grievance redress mechanisms function independently</li>
+            <li>Review annual ESG & SDG performance reporting</li>
+        </ul>
+
+        <h2>Safeguarding Oversight</h2>
+        <ul>
+            <li>Zero tolerance misconduct enforcement</li>
+            <li>Confidential reporting channels supervision</li>
+            <li>Survivor-centered response framework monitoring</li>
+        </ul>
+
+        <h2>Reporting</h2>
+        <p>Annual ESG disclosure summary submitted to the full Board.</p>
+    </section>
+
+    <!-- GOVERNANCE PACK CTA -->
+    <section style="text-align:center; padding:40px 20px;">
+        <h2 style="color: var(--primary); font-size: 24px; margin-bottom: 15px;">Board Governance Pack</h2>
+        <p style="color: #555; margin-bottom: 25px;">Download the official Board Governance Framework (2026 Baseline).</p>
+        <a href="/downloads/EAGint_Board_Governance_Pack_2026.pdf" class="btn btn-primary" style="padding: 15px 30px; font-size: 15px;">
+            <i class="fas fa-file-pdf" style="margin-right: 8px;"></i> Download PDF
+        </a>
+    </section>
+
+    <div class="legal-version">
+        © 2026 EL ALI GROUP INTERNATIONAL LTD (EAGint) | Governance Document | Version 1.0<br>
+        Last updated: March 2026
+    </div>
+
+</div>
+
+<!-- MAIN FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About EAGint</a></li>
+        <li><a href="divisions.html">Divisions</a></li>
+        <li><a href="projects.html">Projects & Experience</a></li>
+        <li><a href="careers.html">Careers & Localization</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Compliance Hub</h4>
+      <ul>
+        <li><a href="compliance.html">Compliance Portal</a></li>
+        <li><a href="governance.html">Board Charter</a></li>
+        <li><a href="iso-certifications.html">ISO Certifications</a></li>
+        <li><a href="ungm-registration.html">UNGM Registration</a></li>
+        <li><a href="safeguarding.html">Safeguarding & PSEA</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="media.html">Media Center</a></li>
+        <li><a href="insights.html">Insights & Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: info@eagint.com</p>
+      <p>Website: www.eagint.com</p>
+      <p>Somalia | East Africa | Global</p>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    © 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint) | All Rights Reserved
+  </div>
+</footer>
+
+<!-- LEGAL FOOTER STRIP -->
+<footer class="footer-legal">
+    <a href="legal.html#privacy-policy">Privacy Policy</a> |
+    <a href="legal.html#cookie-policy">Cookie Policy</a> |
+    <a href="legal.html#terms-of-use">Terms of Use</a> |
+    <a href="legal.html#accessibility">Accessibility</a> |
+    <a href="contact.html">Safeguarding & Ethics</a>
+</footer>
+
+<script>
+    // Mega Menu A11y Focus Logic
+    document.querySelectorAll('.mega-dropdown button.mega-btn').forEach(btn => {
+        btn.addEventListener('focus', () => {
+            btn.setAttribute('aria-expanded', 'true');
+        });
+        btn.addEventListener('blur', () => {
+            setTimeout(() => {
+                const parent = btn.closest('.mega-dropdown');
+                if (!parent.contains(document.activeElement)) {
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            }, 100);
+        });
+    });
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        const nav = document.getElementById('mainNav');
+        nav.classList.toggle('open');
+    }
+
+    // Dark Mode Toggle Logic
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      const btn = document.querySelector('.dark-toggle');
+      btn.innerText = isDark ? "☀️" : "🌙";
+    }
+
+    // Language Change Mock
+    function changeLanguage(val) {
+        console.log("Language changed to: ", val);
+    }
+</script>
+
+</body>
+</html>

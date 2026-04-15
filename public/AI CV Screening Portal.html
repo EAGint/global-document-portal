@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI CV Screening & Scoring | EAGint</title>
+    <meta name="description" content="EAGint Talent Intelligence Lab. Automated CV scoring and decision-support tool for institutional recruitment.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f2b46',
+                        accent: '#00aeef',
+                        dark: '#0b1f33',
+                        light: '#f4f7fb',
+                        safeguarding: '#b30000',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(15, 43, 70, 0.9), rgba(15, 43, 70, 0.95)),
+                        url('https://images.unsplash.com/photo-1454165833767-027ffea7028c?auto=format&fit=crop&q=80') center/cover no-repeat;
+        }
+
+        /* Dark Mode Overrides */
+        body.dark-mode { background-color: #121212 !important; color: #e5e7eb !important; }
+        body.dark-mode .bg-white, body.dark-mode .bg-light, body.dark-mode .bg-gray-50 { background-color: #1e1e1e !important; border-color: #333 !important; color: #e5e7eb !important; }
+        body.dark-mode .text-primary, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 { color: #60a5fa !important; }
+        body.dark-mode header.glass-nav { background: #0f2b46 !important; border-bottom: 1px solid #1a446e; }
+        body.dark-mode header.glass-nav a { color: #ffffff !important; }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #00aeef !important;
+            box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
+        }
+
+        .result-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-light transition-colors duration-300">
+
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 glass-nav bg-white shadow-sm transition-all duration-300">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 gap-4">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html">
+                        <img src="assets/img/EAGint.jpeg" alt="EAGint Logo" class="h-[50px] object-contain rounded-md" onerror="this.outerHTML='<span class=\'font-heading font-extrabold text-2xl text-primary tracking-tight\'>EAG<span class=\'text-accent\'>int</span></span>'">
+                    </a>
+                </div>
+                
+                <nav role="navigation" aria-label="Main Navigation" class="hidden xl:flex space-x-6 items-center text-sm font-semibold">
+                    <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+                    <a href="careers.html" class="hover:text-accent transition-colors">Careers</a>
+                    <a href="esg.html" class="hover:text-accent transition-colors">ESG & Impact</a>
+                    <a href="contact.html" class="hover:text-accent transition-colors">Contact</a>
+                </nav>
+
+                <div class="hidden lg:flex items-center gap-3">
+                    <button onclick="toggleDarkMode()" class="text-primary hover:text-accent p-2 transition-colors">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="careers.html" class="bg-primary hover:bg-dark text-white px-5 py-2 rounded-md shadow-sm transition-all text-xs font-bold whitespace-nowrap">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Careers
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-bg pt-44 pb-24 text-center border-b-4 border-accent relative">
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span class="inline-block bg-accent/20 text-accent font-bold text-[10px] px-4 py-1.5 rounded-full tracking-widest mb-6 border border-accent/30 backdrop-blur-sm uppercase">
+                Talent Intelligence Lab
+            </span>
+            <h1 class="font-heading text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                AI CV Screening & Scoring
+            </h1>
+            <p class="text-lg text-white/90 font-light leading-relaxed max-w-2xl mx-auto">
+                Institutional decision-support tool for standardized candidate evaluation. Final hiring remains subject to human review and compliance verification.
+            </p>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SCREENING TOOL -->
+    <main class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- INPUT FORM -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 opacity-5 text-7xl text-primary"><i class="fas fa-microchip"></i></div>
+                        
+                        <h2 class="font-heading text-2xl font-bold text-primary mb-8 flex items-center gap-3">
+                            <i class="fas fa-file-invoice text-accent"></i> Candidate Assessment Data
+                        </h2>
+                        
+                        <form id="cvForm" class="space-y-6 relative z-10">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Highest Qualification</label>
+                                    <select id="education" class="w-full bg-light border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary cursor-pointer">
+                                        <option value="20">Master’s / Advanced Degree</option>
+                                        <option value="15" selected>Bachelor’s Degree</option>
+                                        <option value="10">Technical Diploma</option>
+                                        <option value="5">Secondary Education</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Years of Experience</label>
+                                    <select id="experience" class="w-full bg-light border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary cursor-pointer">
+                                        <option value="30">10+ Years (Senior)</option>
+                                        <option value="25">5–9 Years (Mid-Level)</option>
+                                        <option value="18">3–4 Years (Associate)</option>
+                                        <option value="10">1–2 Years (Entry)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Technical Skills Match</label>
+                                    <select id="skills" class="w-full bg-light border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary cursor-pointer">
+                                        <option value="20">High Compatibility</option>
+                                        <option value="15">Moderate Compatibility</option>
+                                        <option value="8">Limited Compatibility</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Compliance awareness</label>
+                                    <select id="compliance" class="w-full bg-light border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary cursor-pointer">
+                                        <option value="10">Formal Training / Certified</option>
+                                        <option value="6">Basic Institutional Awareness</option>
+                                        <option value="2">No Prior Exposure</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Localization Priority</label>
+                                    <select id="localization" class="w-full bg-light border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary cursor-pointer">
+                                        <option value="10">Local National (Somalia)</option>
+                                        <option value="5">Regional (East Africa)</option>
+                                        <option value="0">International Applicant</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Leadership Capacity</label>
+                                    <select id="leadership" class="w-full bg-light border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary cursor-pointer">
+                                        <option value="10">Strong Management Track</option>
+                                        <option value="7">Moderate Potential</option>
+                                        <option value="3">Technical Specialist Only</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button type="button" onclick="calculateScore()" class="w-full bg-primary hover:bg-dark text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 text-lg group">
+                                Generate Scoring Matrix <i class="fas fa-bolt text-accent group-hover:scale-125 transition-transform"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Methodology Note -->
+                    <div class="mt-8 p-6 bg-white/50 rounded-xl border border-gray-200 text-gray-500 text-xs leading-relaxed">
+                        <h4 class="font-bold mb-2 uppercase tracking-widest flex items-center gap-2">
+                            <i class="fas fa-info-circle"></i> Assessment Methodology
+                        </h4>
+                        EAGint utilizes a weighted aggregate scoring model ($Total = \sum Weights$). This tool serves as a preliminary filter. Tiers are defined as: 
+                        Tier 1 (85+), Tier 2 (70-84), Tier 3 (60-69), and Tier 4 (<60).
+                    </div>
+                </div>
+
+                <!-- RESULTS DASHBOARD -->
+                <div class="lg:col-span-5">
+                    <div id="outputContainer" class="hidden">
+                        <div class="bg-white rounded-3xl shadow-2xl border-t-8 border-accent overflow-hidden result-fade-in">
+                            <div class="p-8 md:p-10 text-center">
+                                <span class="text-[10px] font-black uppercase text-accent tracking-[0.3em] mb-2 block">Evaluation Result</span>
+                                <div class="text-6xl font-black text-primary mb-2" id="scoreDisplay">0</div>
+                                <div class="text-gray-400 font-bold text-xs uppercase mb-8">Aggregate Score out of 100</div>
+                                
+                                <div id="tierBadge" class="inline-block px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest mb-10 shadow-sm border">
+                                    --
+                                </div>
+
+                                <div class="space-y-4 text-left">
+                                    <div class="flex justify-between items-center bg-light p-4 rounded-xl border border-gray-100">
+                                        <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Internal Ref ID</span>
+                                        <span class="font-mono font-bold text-primary" id="refIDDisplay">--</span>
+                                    </div>
+
+                                    <div class="p-6 bg-light rounded-xl border border-gray-100">
+                                        <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Dimension Breakdown</h4>
+                                        <div id="breakdownContainer" class="space-y-3">
+                                            <!-- Dynamic items -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-10 pt-8 border-t border-gray-100 flex flex-col gap-4">
+                                    <button onclick="window.print()" class="text-gray-400 font-bold text-xs hover:text-primary transition-colors flex items-center justify-center gap-2">
+                                        <i class="fas fa-print"></i> Generate Audit Report (PDF)
+                                    </button>
+                                    <p class="text-[10px] text-gray-400 italic">This evaluation is valid for 90 days from the timestamp of generation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EMPTY STATE -->
+                    <div id="emptyState" class="bg-gray-100/50 border-2 border-dashed border-gray-200 rounded-3xl h-full min-h-[500px] flex flex-col items-center justify-center text-center p-12">
+                        <div class="w-20 h-20 rounded-full bg-white flex items-center justify-center text-gray-300 text-3xl mb-6 shadow-sm">
+                            <i class="fas fa-hourglass-start"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-gray-400 text-xl">Awaiting Data Input</h3>
+                        <p class="text-gray-400 text-sm mt-2">Enter candidate attributes and select 'Generate Scoring Matrix' to view Tier results.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-20 pb-10 border-t-4 border-accent no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">
+                &copy; 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint). All rights reserved.
+            </p>
+            <p class="text-[10px] text-gray-600">Built on delivery, strengthened by systems.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function calculateScore() {
+            const education = parseInt(document.getElementById("education").value);
+            const experience = parseInt(document.getElementById("experience").value);
+            const skills = parseInt(document.getElementById("skills").value);
+            const compliance = parseInt(document.getElementById("compliance").value);
+            const localization = parseInt(document.getElementById("localization").value);
+            const leadership = parseInt(document.getElementById("leadership").value);
+
+            const total = education + experience + skills + compliance + localization + leadership;
+            const ref = "EAG-AI-" + Math.floor(Math.random() * 900000 + 100000);
+
+            // Determine Tier
+            let tier = "";
+            let badgeClass = "";
+            if (total >= 85) {
+                tier = "Tier 1 – Direct Shortlist";
+                badgeClass = "bg-green-100 text-green-700 border-green-200";
+            } else if (total >= 70) {
+                tier = "Tier 2 – Secondary Review";
+                badgeClass = "bg-blue-100 text-blue-700 border-blue-200";
+            } else if (total >= 60) {
+                tier = "Tier 3 – Conditional Review";
+                badgeClass = "bg-amber-100 text-amber-700 border-amber-200";
+            } else {
+                tier = "Tier 4 – Hold / Not Shortlisted";
+                badgeClass = "bg-gray-100 text-gray-500 border-gray-200";
+            }
+
+            // Update UI
+            document.getElementById("emptyState").classList.add("hidden");
+            document.getElementById("outputContainer").classList.remove("hidden");
+            document.getElementById("scoreDisplay").innerText = total;
+            document.getElementById("tierBadge").innerText = tier;
+            document.getElementById("tierBadge").className = "inline-block px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest mb-10 shadow-sm border " + badgeClass;
+            document.getElementById("refIDDisplay").innerText = ref;
+
+            // Render Breakdown
+            const breakdown = [
+                { label: "Education", score: education, max: 20 },
+                { label: "Experience", score: experience, max: 30 },
+                { label: "Technical Skills", score: skills, max: 20 },
+                { label: "Compliance Awareness", score: compliance, max: 10 },
+                { label: "Localization Priority", score: localization, max: 10 },
+                { label: "Leadership Potential", score: leadership, max: 10 }
+            ];
+
+            const breakdownHTML = breakdown.map(item => `
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex justify-between text-[10px] font-bold uppercase">
+                        <span class="text-gray-600">${item.label}</span>
+                        <span class="text-primary">${item.score} / ${item.max}</span>
+                    </div>
+                    <div class="w-full bg-gray-200 h-1 rounded-full overflow-hidden">
+                        <div class="bg-accent h-full transition-all duration-1000" style="width: ${(item.score/item.max)*100}%"></div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById("breakdownContainer").innerHTML = breakdownHTML;
+            
+            // Smooth Scroll to result on mobile
+            if(window.innerWidth < 1024) {
+                document.getElementById("outputContainer").scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            const icons = document.querySelectorAll('button[onclick="toggleDarkMode()"] i');
+            icons.forEach(icon => {
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.className = 'fas fa-sun';
+                } else {
+                    icon.className = 'fas fa-moon';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

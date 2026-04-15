@@ -1,0 +1,113 @@
+# Generate ESG Annual People Report PDF (Institutional Version)
+# Requirements: pip install reportlab
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import inch
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+
+def generate_esg_report():
+    file_path = "EAGint_ESG_Annual_People_Report_2026.pdf"
+    doc = SimpleDocTemplate(file_path)
+    elements = []
+
+    styles = getSampleStyleSheet()
+    
+    # Custom Corporate Styles
+    title_style = ParagraphStyle(
+        'Title',
+        parent=styles['Heading1'],
+        fontSize=24,
+        textColor=colors.HexColor("#0f2b46"),
+        alignment=TA_CENTER,
+        spaceAfter=20
+    )
+    
+    section_style = ParagraphStyle(
+        'Section',
+        parent=styles['Heading2'],
+        fontSize=14,
+        textColor=colors.HexColor("#00aeef"),
+        spaceBefore=15,
+        spaceAfter=10
+    )
+    
+    normal_style = ParagraphStyle(
+        'NormalText',
+        parent=styles['Normal'],
+        fontSize=10,
+        leading=14,
+        alignment=TA_JUSTIFY
+    )
+
+    # 1. HEADER
+    elements.append(Spacer(1, 1 * inch))
+    elements.append(Paragraph("EL ALI GROUP INTERNATIONAL LTD (EAGint)", title_style))
+    elements.append(Paragraph("ESG Annual People & Localization Report – 2026 Baseline", section_style))
+    elements.append(Spacer(1, 0.5 * inch))
+    elements.append(Paragraph("Institutional Workforce Strategy & Compliance Audit", styles["Italic"]))
+    elements.append(Spacer(1, 1 * inch))
+
+    # 2. WORKFORCE SNAPSHOT
+    elements.append(Paragraph("I. Institutional Workforce Snapshot", section_style))
+    elements.append(Spacer(1, 0.2 * inch))
+
+    data = [
+        ["Indicator", "2026 Baseline Value"],
+        ["Total Group Workforce", "300+ Permanent Staff"],
+        ["Local Workforce Ratio", "70%+"],
+        ["Women (Total Workforce)", "25–30%"],
+        ["Women in Strategic Leadership", "15%+"],
+        ["Youth Participation (Under 35)", "40%+"],
+        ["Safeguarding Training Coverage", "100% (Certified)"]
+    ]
+
+    table = Table(data, colWidths=[3.5 * inch, 2.5 * inch])
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#0f2b46")),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('ALIGN', (0,0), (-1,-1), 'LEFT'),
+        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+        ('BOTTOMPADDING', (0,0), (-1,0), 12),
+        ('BACKGROUND', (0,1), (-1,-1), colors.whitesmoke),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.grey),
+        ('FONTSIZE', (0,1), (-1,-1), 10),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+    ]))
+
+    elements.append(table)
+    elements.append(Spacer(1, 0.5 * inch))
+
+    # 3. STRATEGIC TARGETS
+    elements.append(Paragraph("II. Localization & Sustainability Targets (Vision 2060)", section_style))
+    elements.append(Spacer(1, 0.1 * inch))
+    
+    targets = [
+        "2026–2030: Target ≥ 75% Local Workforce integration.",
+        "2030–2040: Target ≥ 80% Local Workforce with focus on technical engineering.",
+        "2040–2050: Target ≥ 85% Local Workforce across senior executive roles.",
+        "Gender Target: 35%+ Women in total workforce by 2030.",
+        "Capacity Goal: 30–40 technical trainees per year across 13 divisions."
+    ]
+    
+    for t in targets:
+        elements.append(Paragraph(f"• {t}", normal_style))
+    
+    elements.append(Spacer(1, 0.5 * inch))
+
+    # 4. ETHICS & SAFEGUARDING
+    elements.append(Paragraph("III. Safeguarding & Ethics Commitment", section_style))
+    elements.append(Paragraph("EAGint maintains a zero-tolerance policy regarding Sexual Exploitation, Abuse, and Harassment (SEAH). Every staff member is required to complete annual Code of Conduct training. Independent whistleblowing channels are established to ensure accountability without retaliation.", normal_style))
+
+    # 5. APPROVAL
+    elements.append(Spacer(1, 1.5 * inch))
+    elements.append(Paragraph("Approved for Institutional Release by:", styles["Heading4"]))
+    elements.append(Spacer(1, 0.1 * inch))
+    elements.append(Paragraph("ESG & Safeguarding Committee – 01 January 2026", normal_style))
+    elements.append(Paragraph("EL ALI GROUP INTERNATIONAL LTD", normal_style))
+
+    doc.build(elements)
+    print(f"Success: {file_path} generated.")
+
+if __name__ == "__main__":
+    generate_esg_report()

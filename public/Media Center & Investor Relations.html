@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Media Center & Investor Relations | EAGint</title>
+<meta name="description" content="Official news, press releases, publications, and investor relations updates from EAGint. A multi-division, ESG-aligned infrastructure and logistics platform.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* --- CORE STYLES --- */
+:root {
+    --primary:#0f2b46;
+    --accent:#00aeef; 
+    --light:#f4f7fb;
+    --dark:#0b1f33;
+    --text:#333;
+    --primary-navy:#0f2b46;
+    --secondary-blue:#0077cc;
+    --accent-olive:#8a8f2a;
+    --gray-light:#f7f9fb;
+    --gray-border:#e5e7eb;
+    --font-main:'Inter', sans-serif;
+    --shadow-soft:0 10px 30px rgba(0,0,0,0.05);
+    --radius-md:8px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+    font-family: var(--font-main);
+    color:var(--text);
+    line-height:1.7;
+    padding-top:75px; 
+    background: var(--gray-light); 
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Accessibility Focus States */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid var(--secondary-blue);
+  outline-offset: 3px;
+}
+
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--primary);}
+h2 {margin-bottom: 20px; font-size: 30px;}
+h3 {margin-bottom: 12px; font-size: 18px;}
+p {margin-bottom: 15px;}
+a{text-decoration:none;transition:0.3s;}
+
+.container{width:90%;max-width:1200px;margin:auto;}
+.text-center{text-align:center;}
+.text-left{text-align:left;}
+.section {padding: 80px 0;}
+.section-alt {padding: 80px 0; background: #ffffff; border-top: 1px solid var(--gray-border); border-bottom: 1px solid var(--gray-border);}
+
+.btn{padding:10px 24px;border-radius:6px;font-weight:600;display:inline-block;transition:transform 0.2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; text-align: center; font-size: 14px;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-outline{border:2px solid var(--primary);color:var(--primary); background: transparent;}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+.btn-dark{background:var(--primary);color:#fff;}
+
+/* --- MAIN HEADER --- */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 5%;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 999;
+  transition: background 0.3s, border-color 0.3s;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  max-width: 1600px;
+  margin: auto;
+  gap: 20px;
+}
+.logo img { height: 45px; }
+.primary-nav ul { list-style: none; display: flex; gap: 15px; align-items: center; flex-wrap: wrap; justify-content: center; margin:0; padding:0;}
+.primary-nav a { text-decoration: none; color: #0f2b46; font-weight: 600; font-size: 13px; transition: 0.3s; }
+.primary-nav a:hover { color: #0077cc; }
+.cta-btn { background: #0077cc; color: white !important; padding: 8px 16px; border-radius: 5px; }
+
+/* --- NAV ANIMATIONS & UTILITIES --- */
+.main-nav { display: none; flex-direction: column; background: white; position: absolute; width: 100%; top: 70px; left: 0; padding: 20px; box-shadow: var(--shadow-soft); }
+.main-nav.open { display: flex; }
+@media(min-width: 1024px) {
+  .main-nav { display: flex; position: static; flex-direction: row; background: none; width: auto; padding: 0; box-shadow: none; }
+  .hamburger { display: none !important; }
+}
+.main-nav a, .main-nav button.mega-btn { position: relative; background: none; border: none; color: var(--primary-navy); font-weight: 600; font-size: 13px; cursor: pointer; padding: 0; font-family: inherit; }
+.main-nav a::after, .main-nav button.mega-btn::after { content: ''; position: absolute; width: 0%; height: 2px; bottom: -4px; left: 0; background: var(--accent); transition: 0.3s; }
+.main-nav a:hover::after, .main-nav button.mega-btn:hover::after { width: 100%; }
+
+.header-utils { display: flex; align-items: center; gap: 15px; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.search-bar { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; outline: none; font-size: 13px; background: var(--light); color: var(--text); }
+.language-switch { padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; outline: none; }
+.dark-toggle { background: none; border: none; font-size: 18px; cursor: pointer; transition: transform 0.2s; }
+.dark-toggle:hover { transform: scale(1.1); }
+
+/* --- MEGA MENU --- */
+.mega-dropdown { position: relative; }
+.mega-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px); width: 900px; background: white; display: grid; padding: 40px; box-shadow: var(--shadow-soft); border-radius: var(--radius-md); z-index: 1000; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: left; opacity: 0; transition: 0.3s ease; pointer-events: none; }
+.mega-dropdown:hover .mega-menu, .mega-dropdown:focus-within .mega-menu { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+.mega-column h4 { margin-bottom: 15px; color: var(--primary-navy); font-size: 15px; border-bottom: 2px solid var(--gray-border); padding-bottom: 8px; }
+.mega-column a { display: block; color: var(--text) !important; padding: 8px 0; font-size: 13px; font-weight: 500; }
+.mega-column a::after { display: none; }
+.mega-column a:hover { color: var(--accent) !important; padding-left: 5px; }
+.hamburger { display: block; font-size: 24px; background: none; border: none; cursor: pointer; color: var(--primary); }
+
+/* --- HERO INNER --- */
+.hero-inner{
+    padding: 120px 0 80px;
+    background:linear-gradient(rgba(15,43,70,0.9),rgba(15,43,70,0.9)),
+    url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+    color:#fff;
+    text-align:center;
+}
+.hero-inner h1{font-size:42px;margin-bottom:15px;color:#fff;}
+.hero-inner p{font-size:18px;font-weight:400;color:#e0e6ef;max-width: 800px; margin: auto;}
+
+/* --- GRIDS & CARDS --- */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;}
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.std-card { background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s; display: flex; flex-direction: column; }
+.std-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+.std-card small { color: #777; display: block; margin-bottom: 10px; font-size: 13px; font-weight: 500; }
+.std-card p { flex-grow: 1; font-size: 14.5px; color: #555;}
+.std-card ul { list-style: none; padding: 0; margin-bottom: 20px;}
+.std-card ul li { margin-bottom: 10px; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
+.std-card ul li i { color: var(--accent); margin-top: 4px; }
+.std-card ul li a { color: var(--primary-navy); font-weight: 600; }
+.std-card ul li a:hover { color: var(--accent); text-decoration: underline; }
+
+/* --- KPIs & MONITOR --- */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px; }
+.kpi-card { background: white; padding: 25px; border-radius: 12px; box-shadow: var(--shadow-soft); text-align: center; border-bottom: 4px solid var(--accent); transition: transform 0.3s; }
+.kpi-card:hover { transform: translateY(-5px); }
+.kpi-card h3 { font-size: 14px; margin-bottom: 5px; color: #555; text-transform: uppercase; letter-spacing: 0.5px;}
+.kpi-card strong { font-size: 28px; color: var(--primary); font-weight: 800; display: block; margin-top: 5px; }
+
+/* --- MEDIA SEARCH --- */
+.media-search-bar {
+    display: flex;
+    gap: 15px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 40px;
+}
+.media-search-bar input, .media-search-bar select {
+    padding: 12px 15px;
+    border: 1px solid var(--gray-border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: var(--font-main);
+    outline: none;
+}
+.media-search-bar input { flex-grow: 1; }
+.media-search-bar input:focus, .media-search-bar select:focus { border-color: var(--secondary-blue); }
+
+/* --- GALLERY --- */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;}
+.gallery-img { 
+    background: #e0e6ef; 
+    height: 200px; 
+    border-radius: 8px; 
+    background-size: cover; 
+    background-position: center; 
+    transition: 0.3s;
+    cursor: pointer;
+}
+.gallery-img:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+/* --- MAIN FOOTER --- */
+.main-footer { background: #0f2b46; color: #ffffff; padding: 60px 8% 30px; }
+.footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: auto; }
+.footer-col h4 { margin-bottom: 15px; font-size: 16px; color: var(--accent); }
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col a { color: #d0d7de; text-decoration: none; font-size: 14px; transition: 0.3s; }
+.footer-col a:hover { color: #ffffff; }
+.footer-bottom { text-align: center; margin-top: 40px; font-size: 13px; opacity: 0.7; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+/* --- DARK MODE --- */
+.dark-mode { background: #121212; color: white; }
+.dark-mode .main-header { background: #0f2b46; border-bottom-color: #0f2b46; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.dark-mode .main-nav a, .dark-mode .main-nav button.mega-btn { color: white; }
+.dark-mode .main-nav a:hover, .dark-mode .main-nav button.mega-btn:hover { color: var(--accent); }
+.dark-mode .mega-dropdown { background: #1a1a1a; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 1px solid #333; }
+.dark-mode .mega-column h4 { color: #fff; border-bottom-color: #333; }
+.dark-mode .mega-column a { color: #ccc !important; }
+.dark-mode .mega-column a:hover { color: var(--accent) !important; }
+.dark-mode .section[style*="background:#ffffff"], .dark-mode .section-alt { background: #1a1a1a !important; border-color: #333; }
+.dark-mode h2, .dark-mode h3 { color: #fff; }
+.dark-mode p, .dark-mode li { color: #bbb !important; }
+.dark-mode .std-card, .dark-mode .kpi-card { background: #1e1e1e; box-shadow: 0 6px 18px rgba(0,0,0,0.3); border-color: #333;}
+.dark-mode .std-card small { color: #aaa; }
+.dark-mode .std-card ul li a { color: #e0e6ef; }
+.dark-mode .kpi-card strong { color: var(--accent); }
+.dark-mode .search-bar, .dark-mode .language-switch { background: #2a2a2a; color: #fff; border-color: #444; }
+.dark-mode .media-search-bar { background: #1e1e1e; border: 1px solid #333; }
+.dark-mode .media-search-bar input, .dark-mode .media-search-bar select { background: #2a2a2a; color: #fff; border-color: #444; }
+.dark-mode .dark-toggle { color: white; }
+.dark-mode .gallery-img { opacity: 0.8; }
+.dark-mode .gallery-img:hover { opacity: 1; }
+.dark-mode .hamburger { color: #fff; }
+
+/* --- RESPONSIVE --- */
+@media(max-width: 1200px) {
+  .nav-container { flex-direction: row; flex-wrap: wrap; gap: 15px; padding: 15px 5%; justify-content: space-between; }
+  .header-actions { order: 2; width: 100%; justify-content: space-between; margin-top: 10px; }
+  .hamburger { order: 1; }
+  .mega-menu { position: static; display: none; grid-template-columns: 1fr; box-shadow: none; padding: 10px 0 0 0; gap: 20px; width: 100%; transform: none; opacity: 1; pointer-events: auto; }
+  .mega-dropdown:hover .mega-menu, .mega-dropdown:focus-within .mega-menu { display: grid; transform: none; }
+}
+@media(max-width: 900px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .media-search-bar { flex-direction: column; }
+}
+</style>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "NewsArticle",
+ "headline": "EAGint Expands Humanitarian Logistics Capacity for 2026",
+ "datePublished": "2026-01-15",
+ "author": {
+   "@type": "Organization",
+   "name": "EL ALI GROUP INTERNATIONAL LTD"
+ },
+ "publisher": {
+   "@type": "Organization",
+   "name": "EAGint",
+   "logo": {
+     "@type": "ImageObject",
+     "url": "https://www.eagint.com/logo.png"
+   }
+ }
+}
+</script>
+
+</head>
+<body>
+
+<!-- MAIN HEADER -->
+<header class="main-header">
+  <div class="nav-container">
+    
+    <!-- LEFT: LOGO -->
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none;">
+        <img src="assets/img/EAGint.jpeg" alt="EAGint Logo" onerror="this.src='https://via.placeholder.com/150x50/0f2b46/ffffff?text=EAGint'">
+      </a>
+    </div>
+
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">☰</button>
+
+    <!-- CENTER: MAIN NAVIGATION -->
+    <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About EAGint</a></li>
+
+        <li class="mega-dropdown">
+          <button class="mega-btn" aria-haspopup="true" aria-expanded="false" onclick="window.location.href='divisions.html'">Divisions ▾</button>
+          
+          <div class="mega-menu">
+            <div class="mega-column">
+              <h4>🏗 Infrastructure</h4>
+              <a href="division-marine.html">Marine & Port</a>
+              <a href="division-infrastructure.html">Construction</a>
+              <a href="division-energy.html">Energy & Environment</a>
+              <a href="division-technology.html">Technology & Digital</a>
+            </div>
+            <div class="mega-column">
+              <h4>🚚 Logistics & Trade</h4>
+              <a href="division-logistics.html">Supply Chain</a>
+              <a href="division-trade.html">Global Procurement</a>
+              <a href="division-commercial.html">Commercial Supply</a>
+              <a href="division-tenders.html">Tender Services</a>
+            </div>
+            <div class="mega-column">
+              <h4>🏥 Social & Institutional</h4>
+              <a href="division-humanitarian.html">Humanitarian Services</a>
+              <a href="division-education.html">Education Infrastructure</a>
+              <a href="division-camp.html">Camp Management</a>
+              <a href="division-capacity.html">Capacity Development</a>
+            </div>
+          </div>
+        </li>
+
+        <li><a href="sectors.html">Sectors We Serve</a></li>
+        <li><a href="esg.html">ESG & Impact</a></li>
+        <li><a href="compliance.html">Compliance</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="media.html" style="color:var(--accent);">Media Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: ACTIONS -->
+    <div class="header-actions">
+        <input type="text" id="globalSearchInput" placeholder="Search site..." class="search-bar" aria-label="Global Search">
+
+        <select class="language-switch" onchange="changeLanguage(this.value)" aria-label="Language Switch">
+          <option value="en">EN</option>
+          <option value="so">SO</option>
+          <option value="tr">TR</option>
+          <option value="zh-CN">ZH</option>
+          <option value="ar">AR</option>
+        </select>
+
+        <button class="dark-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">🌙</button>
+        <a href="contact.html" class="cta-btn" style="color:white; text-decoration:none;">Work With Us</a>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-inner" style="padding-top: 180px;">
+    <div class="container">
+        <h1>Media Center & Investor Relations</h1>
+        <p>EAGint operates as a multi-division, ESG-aligned infrastructure and logistics platform positioned for sustainable growth across fragile and emerging markets.</p>
+    </div>
+</section>
+
+<!-- GLOBAL MEDIA & REPUTATION TRACKER -->
+<section class="section" style="padding-bottom: 40px; padding-top: 60px;">
+    <div class="container">
+        <h2 class="text-center" style="font-size: 24px;">Global Media & Reputation Tracker</h2>
+        <div class="kpi-grid">
+            <div class="kpi-card" style="border-color: var(--accent);">
+                <h3>Press Mentions (30 Days)</h3>
+                <strong>18</strong>
+            </div>
+            <div class="kpi-card" style="border-color: var(--secondary-blue);">
+                <h3>UN Procurement Visibility</h3>
+                <strong>87%</strong>
+            </div>
+            <div class="kpi-card" style="border-color: #4CAF50;">
+                <h3>Reputation Risk Alerts</h3>
+                <strong>0</strong>
+            </div>
+            <div class="kpi-card" style="border-color: #f59e0b;">
+                <h3>2026 Renewable Capacity</h3>
+                <strong>12.4 MW</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MEDIA SEARCH -->
+<section class="section" style="background:var(--light); padding: 60px 0;">
+    <div class="container">
+        <div class="text-center" style="max-width: 800px; margin: 0 auto 30px;">
+            <p>EAGint’s Media Center provides accurate, timely, and transparent information about our operations, partnerships, humanitarian support, and multi-sector activities across Somalia, East Africa, and global corridors.</p>
+        </div>
+
+        <div class="media-search-bar">
+            <input type="text" id="mediaSearchInput" placeholder="Search news, reports, press releases...">
+            <select id="filterCategory">
+                <option value="">All Categories</option>
+                <option value="news">News</option>
+                <option value="press">Press Release</option>
+                <option value="publication">Publication</option>
+            </select>
+        </div>
+    </div>
+</section>
+
+<!-- NEWS & ANNOUNCEMENTS -->
+<section class="section-alt">
+    <div class="container">
+        <h2>News & Announcements</h2>
+        <div class="grid-3" id="media-grid-news">
+            <div class="std-card media-item" data-category="news">
+                <small><i class="far fa-calendar-alt"></i> January 15, 2026</small>
+                <h3>EAGint Expands Humanitarian Logistics Capacity for 2026 Response</h3>
+                <p>EAGint has expanded its nationwide humanitarian logistics network, adding fleets, warehouses, cold-chain capacity, and cross-border trucking routes to support UN and NGO operations.</p>
+                <a href="#" class="btn btn-outline" style="margin-top: auto;">Read Full Article</a>
+            </div>
+
+            <div class="std-card media-item" data-category="news">
+                <small><i class="far fa-calendar-alt"></i> February 02, 2026</small>
+                <h3>EAGint Opens New Regional Office in Nairobi, Kenya</h3>
+                <p>The Nairobi office serves as a procurement and logistics coordination hub supporting regional operations and partnerships across East Africa.</p>
+                <a href="#" class="btn btn-outline" style="margin-top: auto;">Read Full Article</a>
+            </div>
+
+            <div class="std-card media-item" data-category="news">
+                <small><i class="far fa-calendar-alt"></i> February 20, 2026</small>
+                <h3>EAGint Launches Digital Logistics & AI Tracking Platform</h3>
+                <p>An AI-powered logistics system enhances shipment visibility, predictive routing, and real-time monitoring across our multi-sector operations.</p>
+                <a href="#" class="btn btn-outline" style="margin-top: auto;">Read Full Article</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRESS RELEASES -->
+<section class="section">
+    <div class="container">
+        <h2>Press Releases</h2>
+        <div class="grid-3" id="media-grid-press">
+            <div class="std-card media-item" data-category="press">
+                <small><i class="fas fa-bullhorn"></i> January 2026</small>
+                <h3>EAGint & UNICEF Strengthen Supply Chain for Health & Education</h3>
+                <p>EAGint renewed its logistics collaboration to support nationwide health and education supply distribution programs.</p>
+                <a href="#" class="btn btn-outline" style="margin-top: auto;">View Release</a>
+            </div>
+
+            <div class="std-card media-item" data-category="press">
+                <small><i class="fas fa-bullhorn"></i> December 2025</small>
+                <h3>EAGint Signs PPP Agreement for Infrastructure Development</h3>
+                <p>A long-term public–private partnership agreement supports critical healthcare infrastructure modernization through 2060.</p>
+                <a href="#" class="btn btn-outline" style="margin-top: auto;">View Release</a>
+            </div>
+
+            <div class="std-card media-item" data-category="press">
+                <small><i class="fas fa-bullhorn"></i> March 2026</small>
+                <h3>EAGint Joins Global Sustainability Forum 2026</h3>
+                <p>EAGint showcased renewable energy and climate resilience initiatives at the international sustainability forum.</p>
+                <a href="#" class="btn btn-outline" style="margin-top: auto;">View Release</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PUBLICATIONS & INVESTOR VAULT -->
+<section class="section-alt">
+    <div class="container grid-2">
+        
+        <!-- Publications -->
+        <div>
+            <h2>Publications & Reports</h2>
+            <div class="grid-3" style="grid-template-columns: 1fr; gap: 20px;" id="media-grid-pub">
+                <div class="std-card media-item" style="padding: 20px;" data-category="publication">
+                    <h3 style="font-size: 16px;">EAGint Annual Report 2025</h3>
+                    <p style="font-size: 13.5px; margin-bottom: 10px;">Highlights achievements, partnerships, operational impact, and strategic direction.</p>
+                    <a href="annual-report.pdf" class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="trackDownload('Annual Report 2025')"><i class="fas fa-download"></i> Download PDF</a>
+                </div>
+
+                <div class="std-card media-item" style="padding: 20px;" data-category="publication">
+                    <h3 style="font-size: 16px;">ESG & Sustainability Report 2026</h3>
+                    <p style="font-size: 13.5px; margin-bottom: 10px;">Environmental performance, carbon initiatives, governance standards, and impact data.</p>
+                    <a href="esg-report.pdf" class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="trackDownload('ESG Report 2026')"><i class="fas fa-download"></i> Download PDF</a>
+                </div>
+
+                <div class="std-card media-item" style="padding: 20px;" data-category="publication">
+                    <h3 style="font-size: 16px;">Logistics & Supply Chain Outlook</h3>
+                    <p style="font-size: 13.5px; margin-bottom: 10px;">Analysis of logistics corridors, trade systems, and digital transformation in East Africa.</p>
+                    <a href="logistics-outlook.pdf" class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;" onclick="trackDownload('Logistics Outlook 2026')"><i class="fas fa-download"></i> Download PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investor Vault & Press Kit -->
+        <div>
+            <div class="std-card" style="margin-bottom: 30px; border-top: 4px solid var(--primary-navy);">
+                <h2>Investor & Institutional Vault</h2>
+                <p style="font-size: 14px; margin-bottom: 20px;">Secure repository for institutional documentation.</p>
+                <ul>
+                    <li><a href="#" onclick="trackDownload('Corporate Governance')"><i class="fas fa-file-contract"></i> Corporate Governance Framework</a></li>
+                    <li><a href="#" onclick="trackDownload('ISO Certificates')"><i class="fas fa-certificate"></i> ISO & Compliance Certificates</a></li>
+                    <li><a href="#" onclick="trackDownload('Financial Statements')"><i class="fas fa-chart-line"></i> Audited Financial Statements (Access Req.)</a></li>
+                </ul>
+            </div>
+
+            <div class="std-card" style="border-top: 4px solid var(--accent);">
+                <h2>Official Press Kit</h2>
+                <p style="font-size: 14px; margin-bottom: 20px;">Resources for media, partners, and journalists.</p>
+                <ul>
+                    <li><i class="fas fa-file-pdf"></i> Company Overview (PDF)</li>
+                    <li><i class="fas fa-user-tie"></i> CEO Biography</li>
+                    <li><i class="fas fa-image"></i> High-Resolution Logo Pack</li>
+                    <li><i class="fas fa-swatchbook"></i> Brand Guidelines</li>
+                    <li><i class="fas fa-file-alt"></i> Fact Sheet (One Page)</li>
+                </ul>
+                <a href="#" class="btn btn-outline" style="margin-top: 15px;" onclick="trackDownload('Complete Press Kit')"><i class="fas fa-file-archive"></i> Download Complete Press Kit (.ZIP)</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 40px;">
+            <h2>Photo & Video Gallery</h2>
+            <p style="max-width: 800px; margin: auto;">A curated collection showcasing infrastructure projects, humanitarian operations, aviation ground handling, construction sites, digital deployments, training programs, and corporate events.</p>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1541888087611-e7f0800b7d30?q=80&w=600&auto=format&fit=crop');" title="Infrastructure Project"></div>
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1593118247619-e2d6f056869e?q=80&w=600&auto=format&fit=crop');" title="Humanitarian Aid Logistics"></div>
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=600&auto=format&fit=crop');" title="Renewable Energy Installation"></div>
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=600&auto=format&fit=crop');" title="Agricultural Development"></div>
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1581091870627-3b5de0e8d7f3?q=80&w=600&auto=format&fit=crop');" title="Industrial Operations"></div>
+            <div class="gallery-img" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop');" title="Corporate Governance"></div>
+        </div>
+    </div>
+</section>
+
+<!-- MEDIA CONTACT -->
+<section class="section text-center" style="background: var(--primary); color: #fff;">
+    <div class="container">
+        <h2 style="color: #fff;">Media & Press Inquiries</h2>
+        <p style="font-size: 18px; margin-bottom: 20px; color: #e0e6ef;">For interview requests, press materials, and official corporate statements.</p>
+        <p style="font-size: 24px; font-weight: 700; margin-bottom: 30px;"><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i> <a href="mailto:press@eagint.com" style="color: #fff; text-decoration: underline;">press@eagint.com</a></p>
+        <a href="contact.html" class="btn btn-outline" style="border-color: #fff; color: #fff;">View All Contact Channels</a>
+    </div>
+</section>
+
+<!-- MAIN FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About EAGint</a></li>
+        <li><a href="divisions.html">Divisions</a></li>
+        <li><a href="projects.html">Projects & Experience</a></li>
+        <li><a href="careers.html">Careers & Localization</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Compliance Hub</h4>
+      <ul>
+        <li><a href="compliance.html">Compliance Portal</a></li>
+        <li><a href="iso-certifications.html">ISO Certifications</a></li>
+        <li><a href="ungm-registration.html">UNGM Registration</a></li>
+        <li><a href="iata-registration.html">IATA Registration</a></li>
+        <li><a href="safeguarding.html">Safeguarding & PSEA</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="media.html">Media Center</a></li>
+        <li><a href="insights.html">Insights & Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: info@eagint.com</p>
+      <p>Website: www.eagint.com</p>
+      <p>Somalia | East Africa | Global</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint) | Media Center
+  </div>
+</footer>
+
+<script>
+    // Mega Menu A11y Focus Logic
+    document.querySelectorAll('.mega-dropdown button.mega-btn').forEach(btn => {
+        btn.addEventListener('focus', () => {
+            btn.setAttribute('aria-expanded', 'true');
+        });
+        btn.addEventListener('blur', () => {
+            setTimeout(() => {
+                const parent = btn.closest('.mega-dropdown');
+                if (!parent.contains(document.activeElement)) {
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            }, 100);
+        });
+    });
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        const nav = document.getElementById('mainNav');
+        nav.classList.toggle('open');
+    }
+
+    // Dark Mode Toggle Logic
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      const btn = document.querySelector('.dark-toggle');
+      btn.innerText = isDark ? "☀️" : "🌙";
+    }
+
+    // Language Change Mock
+    function changeLanguage(val) {
+        console.log("Language changed to: ", val);
+    }
+
+    // Download Tracking Logic
+    function trackDownload(docName) {
+        console.log("Document Downloaded: ", docName);
+        // Connect to Google Analytics / Custom backend dashboard here
+        // e.g., gtag('event', 'download', { 'event_category': 'Document', 'event_label': docName });
+        alert("Downloading: " + docName + "\n(Tracking event logged to console)");
+    }
+
+    // Media Search & Filter Logic
+    const mediaSearchInput = document.getElementById("mediaSearchInput");
+    const filterCategory = document.getElementById("filterCategory");
+    const mediaItems = document.querySelectorAll(".media-item");
+
+    function filterMedia() {
+        const query = mediaSearchInput.value.toLowerCase();
+        const category = filterCategory.value;
+
+        mediaItems.forEach(item => {
+            const text = item.innerText.toLowerCase();
+            const itemCategory = item.getAttribute('data-category');
+            
+            const matchesSearch = text.includes(query);
+            const matchesCategory = (category === "" || itemCategory === category);
+
+            if (matchesSearch && matchesCategory) {
+                item.style.display = "flex"; // Keep layout structure
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+
+    mediaSearchInput.addEventListener("keyup", filterMedia);
+    filterCategory.addEventListener("change", filterMedia);
+
+</script>
+
+</body>
+</html>

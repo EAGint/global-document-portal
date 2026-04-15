@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark:bg-slate-900">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sectors We Serve | Integrated Delivery | EAGint</title>
+  <meta name="description" content="EAGint delivers sector-focused infrastructure, logistics, and humanitarian services across public, private, and NGO environments.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration for Custom Branding -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#0a1128',
+            }
+          },
+          boxShadow: {
+            'premium': '0 20px 40px -15px rgba(0,0,0,0.05)',
+            'premium-dark': '0 20px 40px -15px rgba(0,0,0,0.4)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Premium Institutional Background Patterns */
+    .bg-grid-pattern {
+      background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    
+    .bg-mesh-light {
+      background-image: radial-gradient(at 0% 0%, hsla(217,100%,97%,1) 0px, transparent 50%),
+                        radial-gradient(at 100% 0%, hsla(210,100%,98%,1) 0px, transparent 50%);
+    }
+
+    .bg-mesh-dark {
+      background-image: radial-gradient(at 0% 0%, hsla(222,47%,11%,1) 0px, transparent 50%),
+                        radial-gradient(at 100% 0%, hsla(222,47%,15%,1) 0px, transparent 50%);
+    }
+
+    /* Advanced Glassmorphism */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    .dark .glass-panel {
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Scroll Animation Classes */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+  </style>
+</head>
+
+<body class="font-sans text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-[#0b1120] bg-mesh-light dark:bg-mesh-dark antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen transition-colors duration-500">
+
+<!-- Floating Theme Toggle -->
+<button id="theme-toggle" class="fixed bottom-8 right-8 z-50 p-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-2xl hover:scale-110 hover:shadow-brand-500/30 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-500/50 group">
+  <i data-lucide="moon" class="w-5 h-5 block dark:hidden group-hover:-rotate-12 transition-transform"></i>
+  <i data-lucide="sun" class="w-5 h-5 hidden dark:block group-hover:rotate-45 transition-transform"></i>
+</button>
+
+<!-- ========================= -->
+<!-- NAVIGATION -->
+<!-- ========================= -->
+<header class="sticky top-0 z-50 glass-panel border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-24">
+      <div class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+        <div class="w-12 h-12 bg-gradient-to-br from-brand-500 to-brand-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg group-hover:shadow-brand-500/40 transition-shadow">E</div>
+        <span class="font-bold text-2xl tracking-tight text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">EAGint</span>
+      </div>
+      <nav class="hidden lg:flex space-x-8 items-center">
+        <a href="index.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Home</a>
+        <a href="about.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">About</a>
+        <a href="divisions.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Divisions</a>
+        <a href="sectors.html" class="text-sm font-bold text-brand-600 dark:text-brand-400 relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-full after:h-0.5 after:bg-brand-600 dark:after:bg-brand-400">Sectors</a>
+        <a href="esg.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">ESG & Impact</a>
+        <a href="compliance.html" class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Compliance</a>
+        <a href="contact.html" class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-7 py-3 rounded-full text-sm font-bold hover:bg-brand-600 dark:hover:bg-brand-500 hover:text-white transition-all shadow-lg hover:shadow-brand-500/25">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ========================= -->
+<!-- PAGE HERO -->
+<!-- ========================= -->
+<section class="relative bg-brand-950 text-white overflow-hidden pt-24 pb-32 border-b border-slate-800">
+  <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+  
+  <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-600/10 rounded-full blur-[120px] mix-blend-screen pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
+  <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-up">
+    <div class="inline-flex items-center justify-center p-3 bg-white/5 rounded-2xl backdrop-blur-md border border-white/10 mb-8 shadow-2xl">
+      <i data-lucide="briefcase" class="w-8 h-8 text-brand-400"></i>
+    </div>
+    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 text-white leading-[1.1]">
+      Sectors We <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-blue-200 to-white">Serve</span>
+    </h1>
+    <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
+      Sector-Focused Delivery Across Public, Humanitarian & Private Environments
+    </p>
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- 4.1 SECTOR-FOCUSED DELIVERY -->
+<!-- ========================= -->
+<section class="py-24 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">Tailored Sector Operations</h2>
+    <div class="w-24 h-1.5 bg-gradient-to-r from-brand-600 to-brand-400 mx-auto rounded-full mb-8"></div>
+    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+      EAGint delivers integrated services across public, humanitarian, and private-sector environments, adapting its delivery model to each sector’s regulatory, operational, and risk profile.
+    </p>
+    <div class="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-brand-50 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-300 font-semibold shadow-sm">
+      <i data-lucide="target" class="w-5 h-5"></i>
+      Our strength lies in aligning technical execution, compliance, and measurable impact for every client type.
+    </div>
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- MAJOR SECTORS GRID -->
+<!-- ========================= -->
+<section class="py-20 bg-slate-100/50 dark:bg-slate-800/20 border-y border-slate-200/50 dark:border-slate-800/50 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    
+    <!-- 4.2 Governments -->
+    <div class="glass-panel shadow-premium dark:shadow-premium-dark p-8 md:p-12 rounded-3xl fade-up group hover:border-brand-500/30 transition-colors">
+      <div class="flex items-center gap-5 mb-8">
+        <div class="w-16 h-16 bg-white dark:bg-slate-800 text-brand-600 dark:text-brand-400 rounded-2xl shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <i data-lucide="landmark" class="w-8 h-8"></i>
+        </div>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Governments & Public Institutions</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 md:gap-16">
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Focus Areas</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Public infrastructure & facilities</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Ports, roads, utilities & logistics corridors</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Education, health & WASH infrastructure</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Institutional capacity & systems support</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Value Delivered</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Compliance with national frameworks</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Long-term sustainability & resilience</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Local workforce & supplier engagement</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4.3 UN & IFIs -->
+    <div class="glass-panel shadow-premium dark:shadow-premium-dark p-8 md:p-12 rounded-3xl fade-up delay-100 group hover:border-brand-500/30 transition-colors">
+      <div class="flex items-center gap-5 mb-8">
+        <div class="w-16 h-16 bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 rounded-2xl shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <i data-lucide="globe-2" class="w-8 h-8"></i>
+        </div>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">United Nations Agencies & IFIs</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 md:gap-16">
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Focus Areas</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Multimodal logistics & transport</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Emergency & humanitarian response</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Infrastructure & facility support</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Life-support & camp management</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Value Delivered</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Donor-ready documentation & controls</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Rapid mobilization in fragile contexts</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Transparent reporting & accountability</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4.4 NGOs -->
+    <div class="glass-panel shadow-premium dark:shadow-premium-dark p-8 md:p-12 rounded-3xl fade-up delay-200 group hover:border-brand-500/30 transition-colors">
+      <div class="flex items-center gap-5 mb-8">
+        <div class="w-16 h-16 bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 rounded-2xl shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+        </div>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">International & National NGOs</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 md:gap-16">
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Focus Areas</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Emergency response & WASH</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Health, nutrition & education support</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Community infrastructure</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Field logistics & supply chains</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Value Delivered</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Speed & reliability in emergencies</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Safeguarding-aligned operations</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Cost-effective & scalable delivery</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4.8 MDBs -->
+    <div class="glass-panel shadow-premium dark:shadow-premium-dark p-8 md:p-12 rounded-3xl fade-up group hover:border-brand-500/30 transition-colors">
+      <div class="flex items-center gap-5 mb-8">
+        <div class="w-16 h-16 bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 rounded-2xl shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <i data-lucide="building-2" class="w-8 h-8"></i>
+        </div>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Multilateral Development Banks & IFIs</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 md:gap-16">
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Focus Areas</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">World Bank & AfDB-financed infrastructure</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Climate adaptation & resilience</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Renewable energy systems</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Institutional reform & capacity development</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Value Delivered</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">IFI-aligned procurement & reporting</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Environmental & social safeguards integration</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Bankable project structuring & risk mitigation</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4.6 Private Sector & PPPs -->
+    <div class="glass-panel shadow-premium dark:shadow-premium-dark p-8 md:p-12 rounded-3xl fade-up delay-100 group hover:border-brand-500/30 transition-colors">
+      <div class="flex items-center gap-5 mb-8">
+        <div class="w-16 h-16 bg-white dark:bg-slate-800 text-amber-600 dark:text-amber-400 rounded-2xl shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <i data-lucide="briefcase" class="w-8 h-8"></i>
+        </div>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Private Sector & PPPs</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 md:gap-16">
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Focus Areas</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Infrastructure & energy projects</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Logistics & supply chain services</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Industrial & commercial facilities</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Value Delivered</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Risk-managed execution</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Regulatory & local-context navigation</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">PPP-ready delivery platforms</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- SPECIALIZED & CROSS-SECTOR GRID -->
+<!-- ========================= -->
+<section class="py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-16 fade-up">
+      <h2 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">Specialized & Cross-Sector Synergy</h2>
+      <p class="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">Operating effectively at the intersection of diverse industries and mandates.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- 4.7 Cross-Sector Advantage -->
+      <div class="glass-panel shadow-premium dark:shadow-premium-dark p-8 rounded-3xl border-t-4 border-t-brand-500 fade-up relative overflow-hidden group">
+        <div class="absolute right-0 top-0 opacity-5 dark:opacity-10 group-hover:scale-110 transition-transform duration-700">
+          <i data-lucide="network" class="w-48 h-48 -mr-10 -mt-10"></i>
+        </div>
+        <div class="w-12 h-12 bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 rounded-xl flex items-center justify-center mb-6 relative z-10">
+          <i data-lucide="network" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 relative z-10">Cross-Sector Advantage</h3>
+        <p class="text-slate-600 dark:text-slate-300 mb-6 relative z-10">Many EAGint projects span multiple sectors simultaneously. Our integrated platform allows us to:</p>
+        <ul class="space-y-3 relative z-10 mb-6">
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Serve government–donor co-financed projects</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Support NGO programs with public-sector assets</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Deliver PPP projects with humanitarian safeguards</span></li>
+        </ul>
+        <p class="font-bold text-brand-600 dark:text-brand-400 relative z-10">This cross-sector capability is a core differentiator.</p>
+      </div>
+
+      <!-- 4.5 Humanitarian & Development -->
+      <div class="glass-panel shadow-premium dark:shadow-premium-dark p-8 rounded-3xl border-t-4 border-t-emerald-500 fade-up delay-100 relative overflow-hidden group">
+        <div class="absolute right-0 top-0 opacity-5 dark:opacity-10 group-hover:scale-110 transition-transform duration-700">
+          <i data-lucide="sprout" class="w-48 h-48 -mr-10 -mt-10"></i>
+        </div>
+        <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mb-6 relative z-10">
+          <i data-lucide="sprout" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 relative z-10">Humanitarian & Development Partners</h3>
+        <p class="text-slate-600 dark:text-slate-300 mb-6 relative z-10">EAGint bridges the humanitarian–development–peace nexus, supporting transitions from emergency response to recovery and long-term development.</p>
+        <ul class="space-y-3 relative z-10">
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Resilience & recovery programs</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Area-based & multi-sector interventions</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Capacity development & localization</span></li>
+        </ul>
+      </div>
+
+      <!-- 4.9 Oil & Gas -->
+      <div class="glass-panel shadow-premium dark:shadow-premium-dark p-8 rounded-3xl fade-up relative overflow-hidden group">
+        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl flex items-center justify-center mb-6">
+          <i data-lucide="flame" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Oil, Gas & Extractives Operators</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Marine & port logistics</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Heavy equipment transport</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Camp construction & life-support</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Energy infrastructure & utilities</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">HSE-aligned operations</span></li>
+        </ul>
+      </div>
+
+      <!-- 4.10 Education & Health -->
+      <div class="glass-panel shadow-premium dark:shadow-premium-dark p-8 rounded-3xl fade-up delay-100 relative overflow-hidden group">
+        <div class="w-12 h-12 bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 rounded-xl flex items-center justify-center mb-6">
+          <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Education & Health Institutions</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">School & university construction</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Hospital & clinical development</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Medical supply chains & cold-chain logistics</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">WASH & sanitation systems</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="arrow-right" class="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5"></i> <span class="text-slate-700 dark:text-slate-300">Facility management & operations</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- CTA -->
+<!-- ========================= -->
+<section class="py-24 relative overflow-hidden bg-brand-50 dark:bg-slate-800/50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up">
+    <h2 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">Sector-Specific Partnerships</h2>
+    <p class="text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+      Explore how our Divisions are tailored to each sector—or contact EAGint to discuss a sector-specific partnership or tender opportunity.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="contact.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-5 bg-brand-600 text-white rounded-full font-bold text-lg hover:bg-brand-500 transition-all shadow-xl hover:shadow-brand-500/40 hover:-translate-y-1">
+        Contact Us <i data-lucide="arrow-right" class="w-5 h-5"></i>
+      </a>
+      <a href="divisions.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-5 bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 rounded-full font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-xl border border-slate-200 dark:border-slate-700 hover:-translate-y-1">
+        Explore Divisions
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+<footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800 mt-auto transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-8">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-inner border border-slate-700">E</div>
+      <span class="font-extrabold text-2xl tracking-tight text-white">EAGint</span>
+    </div>
+    <p class="text-base font-medium text-center">
+      © 2026 EL ALI GROUP INTERNATIONAL LTD (EAGint). Mogadishu, Somalia.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Initialize Lucide Icons
+  lucide.createIcons();
+
+  // Dark Mode Toggle Logic
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const htmlDoc = document.documentElement;
+  
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    htmlDoc.classList.add('dark');
+  } else {
+    htmlDoc.classList.remove('dark');
+  }
+
+  themeToggleBtn.addEventListener('click', () => {
+    htmlDoc.classList.toggle('dark');
+    if (htmlDoc.classList.contains('dark')) {
+      localStorage.theme = 'dark';
+    } else {
+      localStorage.theme = 'light';
+    }
+  });
+
+  // Intersection Observer for Scroll Animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-up').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

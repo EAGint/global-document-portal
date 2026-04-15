@@ -1,0 +1,171 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+
+export default function Header({ locale }: { locale: string }) {
+  const [dark, setDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const currentPath = usePathname() || "";
+
+  const toggleDark = () => {
+    document.documentElement.classList.toggle("dark");
+    setDark(!dark);
+  };
+
+  const linkClass = "hover:text-[#00AEEF] transition font-semibold text-sm whitespace-nowrap flex items-center";
+
+  // Replicating the exact menu structure provided
+  const links = [
+    { name: "Home", to: `/${locale}` },
+    { 
+      name: "About", to: `/${locale}/about`, 
+      mega: [
+        { name: "CEO Message", to: `/${locale}/about/ceo` }, 
+        { name: "Our History", to: `/${locale}/about/history` }, 
+        { name: "Vision & Mission", to: `/${locale}/about/vision` },
+        { name: "Governance", to: `/${locale}/about/leadership` },
+        { name: "Global Presence", to: `/${locale}/about/presence` }
+      ] 
+    },
+    { 
+      name: "Divisions", to: `/${locale}/divisions`,
+      mega: [
+        { name: "Marine, Port & Aviation", to: `/${locale}/divisions/marine` },
+        { name: "Capacity Development", to: `/${locale}/divisions/capacity` },
+        { name: "Trade & Global Procurement", to: `/${locale}/divisions/trade` },
+        { name: "Commercial Supply", to: `/${locale}/divisions/commercial-supply` },
+        { name: "Infrastructure & Construction", to: `/${locale}/divisions/infrastructure` },
+        { name: "Logistics & Supply Chain", to: `/${locale}/divisions/logistics-supply-chain` },
+        { name: "Energy & Environment", to: `/${locale}/divisions/industrial-energy-environmental` },
+        { name: "Technology & Telecom", to: `/${locale}/divisions/technology-telecom-digital` },
+        { name: "Agriculture & Livestock", to: `/${locale}/divisions/agriculture-livestock-agro` },
+        { name: "Tenders & Procurement", to: `/${locale}/divisions/tenders-procurement-services` },
+        { name: "Humanitarian Services", to: `/${locale}/divisions/humanitarian-development-social-services` },
+        { name: "Camp Management", to: `/${locale}/divisions/hospitality-travel-camp-management` },
+        { name: "Education Infrastructure", to: `/${locale}/divisions/education-infrastructure-facilities` }
+      ],
+      columns: true
+    },
+    { 
+      name: "Sectors", to: `/${locale}/sectors`,
+      mega: [
+        { name: "Government", to: `/${locale}/sectors/government` }, 
+        { name: "United Nations", to: `/${locale}/sectors/un` }, 
+        { name: "NGOs", to: `/${locale}/sectors/ngos` }, 
+        { name: "Energy Sector", to: `/${locale}/sectors/energy` },
+        { name: "Infrastructure", to: `/${locale}/sectors/infra` },
+        { name: "Agriculture", to: `/${locale}/sectors/agri` },
+        { name: "Healthcare", to: `/${locale}/sectors/health` },
+        { name: "Education", to: `/${locale}/sectors/education` },
+        { name: "Private Sector", to: `/${locale}/sectors/ppp` }
+      ],
+      columns: true
+    },
+    { name: "Projects", to: `/${locale}/projects` },
+    { name: "ESG & Impact", to: `/${locale}/esg` },
+    { name: "Compliance", to: `/${locale}/compliance` },
+    { name: "Media", to: `/${locale}/media` },
+    { name: "Partners", to: `/${locale}/partners` },
+    { name: "Careers", to: `/${locale}/careers` },
+    { name: "Contact", to: `/${locale}/contact` }
+  ];
+
+  return (
+    <header className="fixed w-full top-0 bg-white dark:bg-[#0B1727] shadow-sm z-50 border-b border-gray-100 dark:border-slate-800 transition-colors duration-300">
+      
+      {/* Top Utility Bar */}
+      <div className="hidden lg:flex justify-center gap-6 items-center bg-[#0a101d] text-slate-300 text-[10px] font-bold py-2.5 tracking-widest uppercase border-b border-slate-800">
+        <span>UN & Donor Ready</span>
+        <span className="text-[#00AEEF]">•</span>
+        <span>24+ Years Experience</span>
+        <span className="text-[#00AEEF]">•</span>
+        <span>9,500+ Projects</span>
+        <span className="text-[#00AEEF]">•</span>
+        <span>ISO-Aligned Systems</span>
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-6 flex justify-between items-center min-h-[80px] py-4 lg:py-0">
+        <Link href={`/${locale}`} className="text-2xl font-black shrink-0 mr-8 text-[#0f2b46] dark:text-white">
+          EAG<span className="text-[#00AEEF]">int</span>
+        </Link>
+
+        {/* Desktop Navigation - Pure CSS Hover State for Mega Menus */}
+        <nav className="hidden xl:flex flex-wrap justify-center gap-x-5 gap-y-2 relative text-sm font-semibold text-gray-800 dark:text-gray-200 items-center h-full">
+          {links.map(link => (
+            link.mega ? (
+              <div key={link.name} className="group relative h-full flex items-center py-4">
+                <Link href={link.to} className={`flex items-center gap-1 hover:text-[#00AEEF] transition-colors ${currentPath.startsWith(link.to) && link.to !== `/${locale}` ? 'text-[#00AEEF]' : ''}`}>
+                  {link.name} <span className="ml-1 text-[10px] group-hover:rotate-180 transition-transform">▾</span>
+                </Link>
+                
+                {/* CSS Hover Dropdown */}
+                <div className={`absolute top-[60px] left-0 hidden group-hover:grid bg-white dark:bg-[#121c2e] shadow-xl p-6 border border-gray-100 dark:border-slate-800 rounded-b-xl z-50 animate-in fade-in slide-in-from-top-2 duration-200 ${link.columns ? 'w-[500px] grid-cols-2 gap-x-8 gap-y-3' : 'w-[220px] grid-cols-1 gap-y-3'}`}>
+                  {link.mega.map((sub) => (
+                    <Link key={sub.name} href={sub.to} className="text-left text-[13px] font-medium transition-colors text-gray-700 dark:text-slate-300 hover:text-[#00AEEF] dark:hover:text-[#00AEEF]">
+                      {sub.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link key={link.name} href={link.to} className={`${linkClass} py-4 ${currentPath === link.to ? 'text-[#00AEEF]' : ''}`}>
+                {link.name}
+              </Link>
+            )
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4 shrink-0 ml-4">
+          <Link
+            href={`/${locale}/contact`}
+            className="hidden lg:block bg-[#00AEEF] hover:bg-sky-500 transition-colors text-white px-5 py-2 rounded text-sm font-semibold shadow-sm"
+          >
+            Work With Us
+          </Link>
+
+          <button
+            onClick={toggleDark}
+            className="border border-gray-300 dark:border-gray-600 px-3 py-1.5 rounded text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition text-gray-800 dark:text-gray-200"
+          >
+            {dark ? "Light" : "Dark"}
+          </button>
+          
+          <button
+            className="xl:hidden text-2xl text-gray-800 dark:text-white"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle Mobile Menu"
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="xl:hidden bg-white dark:bg-[#0B1727] p-6 space-y-4 border-t dark:border-slate-800 transition-colors duration-300 flex flex-col font-semibold text-gray-800 dark:text-gray-200 h-screen overflow-y-auto pb-32">
+          {links.map(link => (
+             <div key={link.name} className="flex flex-col gap-2">
+                <Link href={link.to} onClick={() => setMenuOpen(false)} className="text-left text-lg text-[#00AEEF] border-b border-gray-100 dark:border-slate-800 pb-2">
+                  {link.name}
+                </Link>
+                {link.mega && link.mega.map(sub => (
+                   <Link key={sub.name} href={sub.to} onClick={() => setMenuOpen(false)} className="text-left pl-4 text-sm text-gray-600 dark:text-slate-400 py-1">
+                     {sub.name}
+                   </Link>
+                ))}
+             </div>
+          ))}
+          <Link
+            href={`/${locale}/contact`}
+            onClick={() => setMenuOpen(false)}
+            className="bg-[#00AEEF] text-white px-5 py-3 rounded text-sm font-semibold text-center mt-4"
+          >
+            Work With Us
+          </Link>
+        </div>
+      )}
+    </header>
+  );
+}

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Specialised Delivery Environments | EAGint</title>
+    <meta name="description" content="EAGint operates in complex delivery environments including humanitarian logistics, education-in-emergencies, and climate resilience across fragile states.">
+    <meta name="author" content="EL ALI GROUP INTERNATIONAL LTD">
+
+    <!-- ================= SECURITY HEADERS ================= -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BASE TYPOGRAPHY & COLORS */
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; line-height: 1.6; color: #334155; }
+        h1, h2, h3, h4, .nav-link, .btn { font-family: 'Montserrat', sans-serif; }
+        
+        :root { 
+            --color-primary-navy: #0F2B46; 
+            --color-primary-cyan: #00AEEF; 
+            --color-light-gray: #F8FAFC;
+        }
+
+        /* UTILITIES */
+        .text-navy { color: var(--color-primary-navy); }
+        .bg-navy { background-color: var(--color-primary-navy); }
+        .text-cyan { color: var(--color-primary-cyan); }
+        .bg-cyan { background-color: var(--color-primary-cyan); }
+
+        /* Navigation */
+        .header-sticky { background: #fff; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e2e8f0; }
+        .nav-link { color: var(--color-primary-navy); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.2s; padding: 12px 0; }
+        .nav-link:hover { color: var(--color-primary-cyan); }
+        
+        .nav-item:hover .mega-dropdown { display: block; animation: navFade 0.2s ease-out; }
+        .mega-dropdown { position: absolute; left: 50%; transform: translateX(-50%); top: 48px; width: 1100px; background: white; display: none; padding: 40px; border-radius: 12px; border-top: 4px solid var(--color-primary-cyan); box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
+        @keyframes navFade { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+        /* HERO SECTION */
+        .hero { 
+            height: 60vh; 
+            background: linear-gradient(rgba(15, 43, 70, 0.9), rgba(15, 43, 70, 0.85)), 
+                        url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1920');
+            background-size: cover; background-position: center; display: flex; align-items: center; color: white;
+        }
+
+        /* CARDS */
+        .spec-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; height: 100%; }
+        .spec-card:hover { transform: translateY(-8px); border-color: var(--color-primary-cyan); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .spec-content { padding: 30px; flex-grow: 1; }
+        .spec-footer { padding: 20px 30px; background: var(--color-light-gray); border-top: 1px solid #e2e8f0; font-size: 11px; }
+        .link-list a { color: #64748b; font-weight: 600; transition: 0.2s; display: block; margin-bottom: 4px; }
+        .link-list a:hover { color: var(--color-primary-cyan); }
+
+        .btn-cyan { background: var(--color-primary-cyan); color: white; font-weight: 800; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-cyan:hover { background: #0098d3; transform: translateY(-2px); }
+
+        /* DETAILED SECTIONS */
+        .context-label { font-size: 10px; font-weight: 800; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; margin-bottom: 8px; display: block; }
+        .detail-item { padding-left: 20px; border-left: 1px solid #e2e8f0; margin-bottom: 40px; }
+
+        @media(max-width: 1024px) { .desktop-menu { display: none; } }
+    </style>
+</head>
+<body class="antialiased bg-slate-50">
+
+    <!-- 1️⃣ GLOBAL HEADER -->
+    <header class="header-sticky">
+        <div class="max-w-[1600px] mx-auto px-6">
+            <nav class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-navy text-2xl font-extrabold tracking-tighter">EAGint</a>
+                
+                <ul class="hidden xl:flex items-center space-x-5 desktop-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item relative">
+                        <a href="about.html" class="nav-link">About Us</a>
+                        <div class="mega-dropdown">
+                            <!-- Mega Menu Content (Simplified for brevity, matches index.html) -->
+                            <div class="grid grid-cols-4 gap-10">
+                                <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-4">Identity</h4><ul class="space-y-2 text-sm text-slate-600"><li><a href="about.html">Corporate Overview</a></li></ul></div>
+                                <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-4">Strategy</h4><ul class="space-y-2 text-sm text-slate-600"><li><a href="integrated-delivery.html">Delivery Model</a></li></ul></div>
+                                <div><h4 class="text-[10px] font-bold text-slate-400 uppercase mb-4">Resources</h4><ul class="space-y-2 text-sm text-slate-600"><li><a href="downloads.html">Download Center</a></li></ul></div>
+                                <div class="bg-slate-50 p-6 rounded-lg"><h4 class="text-[10px] font-bold text-navy uppercase mb-2">Founder</h4><p class="text-sm font-bold text-navy mt-2">Ahmed Ahmed</p></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="divisions.html" class="nav-link">Divisions</a></li>
+                    <li><a href="sectors.html" class="nav-link">Sectors</a></li>
+                    <li><a href="esg.html" class="nav-link">ESG & Impact</a></li>
+                    <li><a href="governance.html" class="nav-link">Compliance</a></li>
+                    <li><a href="portfolio.html" class="nav-link">Projects</a></li>
+                    <li><a href="partners.html" class="nav-link">Partners</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <a href="work-with-us.html" class="btn btn-cyan px-6 py-2.5 rounded text-[10px]">Work With Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2️⃣ HERO SECTION -->
+    <section class="hero text-center">
+        <div class="max-w-4xl mx-auto px-6 w-full">
+            <span class="text-cyan font-bold uppercase tracking-[4px] text-xs mb-4 block">Advanced Operational Contexts</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Specialised Delivery Environments</h1>
+            <p class="text-lg md:text-xl font-medium text-slate-200 max-w-3xl mx-auto opacity-90">
+                Operating where infrastructure gaps, institutional complexity, and risk converge. EAGint integrates multiple divisions to solve specific challenges in fragile markets.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3️⃣ SPECIALISED SECTORS GRID -->
+    <section class="py-24 max-w-[1440px] mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Card 1 -->
+            <div class="spec-card">
+                <div class="spec-content">
+                    <div class="w-12 h-12 bg-blue-50 text-cyan rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fas fa-parachute-box"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Humanitarian Life-Support</h3>
+                    <p class="text-sm text-slate-600 mb-6">Integrated rapid-response platform for air, sea, and land humanitarian deployment in fragile environments.</p>
+                    <div class="text-[10px] font-bold text-cyan uppercase tracking-widest">SDG 1 • SDG 2 • SDG 3</div>
+                </div>
+                <div class="spec-footer">
+                    <h4 class="font-bold text-navy mb-2 uppercase text-[10px]">Capabilities</h4>
+                    <div class="link-list">
+                        <a href="#humanitarian">See Operational Context</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="spec-card">
+                <div class="spec-content">
+                    <div class="w-12 h-12 bg-blue-50 text-cyan rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fas fa-road"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Public Infrastructure</h3>
+                    <p class="text-sm text-slate-600 mb-6">Integrated delivery of public assets in transport, utilities, health, and education sectors.</p>
+                    <div class="text-[10px] font-bold text-cyan uppercase tracking-widest">SDG 9 • SDG 11</div>
+                </div>
+                <div class="spec-footer">
+                    <h4 class="font-bold text-navy mb-2 uppercase text-[10px]">Capabilities</h4>
+                    <div class="link-list">
+                        <a href="#public-infra">See Operational Context</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="spec-card">
+                <div class="spec-content">
+                    <div class="w-12 h-12 bg-blue-50 text-cyan rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Education-in-Emergencies</h3>
+                    <p class="text-sm text-slate-600 mb-6">Rapid deployment of learning infrastructure and rehabilitation of schools in crisis-affected communities.</p>
+                    <div class="text-[10px] font-bold text-cyan uppercase tracking-widest">SDG 4 • SDG 5</div>
+                </div>
+                <div class="spec-footer">
+                    <h4 class="font-bold text-navy mb-2 uppercase text-[10px]">Capabilities</h4>
+                    <div class="link-list">
+                         <a href="#education">See Operational Context</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="spec-card">
+                <div class="spec-content">
+                    <div class="w-12 h-12 bg-blue-50 text-cyan rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fas fa-solar-panel"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Renewable Energy Resilience</h3>
+                    <p class="text-sm text-slate-600 mb-6">Climate-aligned infrastructure supporting adaptation, resilience, and low-carbon growth in off-grid areas.</p>
+                    <div class="text-[10px] font-bold text-cyan uppercase tracking-widest">SDG 7 • SDG 13</div>
+                </div>
+                <div class="spec-footer">
+                    <h4 class="font-bold text-navy mb-2 uppercase text-[10px]">Capabilities</h4>
+                    <div class="link-list">
+                        <a href="#energy">See Operational Context</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="spec-card">
+                <div class="spec-content">
+                    <div class="w-12 h-12 bg-blue-50 text-cyan rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fas fa-file-contract"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Institutional Procurement & LTAs</h3>
+                    <p class="text-sm text-slate-600 mb-6">Structured procurement, compliance, and supply frameworks for ministries, UN agencies, and development institutions.</p>
+                    <div class="text-[10px] font-bold text-cyan uppercase tracking-widest">SDG 16 • SDG 17</div>
+                </div>
+                <div class="spec-footer">
+                    <h4 class="font-bold text-navy mb-2 uppercase text-[10px]">Capabilities</h4>
+                    <div class="link-list">
+                        <a href="#procurement">See Operational Context</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="spec-card">
+                <div class="spec-content">
+                    <div class="w-12 h-12 bg-blue-50 text-cyan rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fas fa-campground"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Camp Management</h3>
+                    <p class="text-sm text-slate-600 mb-6">Full-spectrum workforce accommodation and operational camp systems for humanitarian, energy, and infrastructure projects.</p>
+                    <div class="text-[10px] font-bold text-cyan uppercase tracking-widest">SDG 8 • SDG 9</div>
+                </div>
+                <div class="spec-footer">
+                    <h4 class="font-bold text-navy mb-2 uppercase text-[10px]">Capabilities</h4>
+                    <div class="link-list">
+                        <a href="#camp">See Operational Context</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="spec-card">
+                <div class="spec-content">
+                    <div class="w-12 h-12 bg-blue-50 text-cyan rounded-lg flex items-center justify-center text-2xl mb-6"><i class="fas fa-wifi"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Digital Connectivity</h3>
+                    <p class="text-sm text-slate-600 mb-6">Telecom and digital infrastructure solutions enabling public services, humanitarian coordination, and economic growth.</p>
+                    <div class="text-[10px] font-bold text-cyan uppercase tracking-widest">SDG 9 • SDG 17</div>
+                </div>
+                <div class="spec-footer">
+                    <h4 class="font-bold text-navy mb-2 uppercase text-[10px]">Capabilities</h4>
+                    <div class="link-list">
+                        <a href="#digital">See Operational Context</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4️⃣ DETAILED OPERATIONAL PROFILES -->
+    <section class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-[1000px] mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl font-extrabold text-navy uppercase tracking-tight mb-4">How EAGint Operates in Complex Contexts</h2>
+                <div class="h-1 w-20 bg-cyan mx-auto mb-6"></div>
+                <p class="text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+                    This page defines how EL ALI GROUP INTERNATIONAL LTD (EAGint) delivers in fragile, high-risk, infrastructure-deficit, and multi-stakeholder environments. It demonstrates cross-division integration and operational maturity — designed for UN agencies, IFIs, governments, PPP investors, and humanitarian partners.
+                </p>
+            </div>
+
+            <div class="space-y-24">
+                
+                <!-- Item 1: Humanitarian -->
+                <div id="humanitarian" class="scroll-mt-32">
+                    <h3 class="text-2xl font-bold text-navy mb-6 border-l-4 border-cyan pl-6">Humanitarian Life-Support & Emergency Logistics</h3>
+                    <div class="pl-7 detail-item">
+                        <span class="context-label">Operational Context</span>
+                        <p class="text-slate-600 mb-6">Fragile states and disaster-affected environments require immediate, coordinated, and compliance-aligned response systems. Infrastructure may be limited, security volatile, and logistics corridors disrupted. EAGint operates an integrated humanitarian deployment platform capable of rapid mobilization across air, sea, and land corridors.</p>
+                        
+                        <span class="context-label">How We Operate</span>
+                        <ul class="space-y-2 text-slate-600 mb-6 list-disc list-inside text-sm">
+                            <li>Pre-positioned logistics planning and rapid procurement activation.</li>
+                            <li>Multi-modal transport coordination and customs clearance.</li>
+                            <li>Temporary warehousing & staging hubs deployment.</li>
+                            <li><strong>System Integration:</strong> Emergency WASH, cold-chain pharma, shelter deployment, and camp setup.</li>
+                        </ul>
+
+                        <span class="context-label">Control & Compliance</span>
+                        <p class="text-slate-600 text-sm">Operations are conducted under Safeguarding & SEAH zero-tolerance policies, donor-compliant financial tracking, and chain-of-custody documentation. This ensures humanitarian partners receive operational certainty in time-critical environments.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Education -->
+                <div id="education" class="scroll-mt-32">
+                    <h3 class="text-2xl font-bold text-navy mb-6 border-l-4 border-cyan pl-6">Education-in-Emergencies</h3>
+                    <div class="pl-7 detail-item">
+                        <span class="context-label">Operational Context</span>
+                        <p class="text-slate-600 mb-6">Conflict, displacement, and climate shocks frequently disrupt learning systems. Rapid restoration of education access is critical for social stability and child protection.</p>
+                        
+                        <span class="context-label">How We Operate</span>
+                        <ul class="space-y-2 text-slate-600 mb-6 list-disc list-inside text-sm">
+                            <li>Deployment of temporary learning spaces and rapid school rehabilitation.</li>
+                            <li>Integration of Education WASH facilities and furniture supply.</li>
+                            <li>Inclusive and child-safe design standards.</li>
+                        </ul>
+                        <p class="text-slate-600 mb-6 text-sm">We coordinate with ministries and partners to ensure alignment with national curriculum standards, gender-sensitive infrastructure, and accessibility compliance.</p>
+
+                        <span class="context-label">Long-Term Impact</span>
+                        <p class="text-slate-600 text-sm">Our approach bridges emergency response and long-term recovery, ensuring facilities transition from temporary to durable assets.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Camp Management -->
+                <div id="camp" class="scroll-mt-32">
+                    <h3 class="text-2xl font-bold text-navy mb-6 border-l-4 border-cyan pl-6">Camp Management & Field Operations</h3>
+                    <div class="pl-7 detail-item">
+                        <span class="context-label">Operational Context</span>
+                        <p class="text-slate-600 mb-6">Energy projects, humanitarian missions, and infrastructure programs often operate in remote or underdeveloped areas requiring complete life-support ecosystems.</p>
+                        
+                        <span class="context-label">How We Operate</span>
+                        <ul class="space-y-2 text-slate-600 mb-6 list-disc list-inside text-sm">
+                            <li>Site preparation, modular construction, and workforce accommodation.</li>
+                            <li>Catering, food supply systems, and water production.</li>
+                            <li>Waste management, sanitation, and utilities installation (power, water, telecom).</li>
+                        </ul>
+                        <p class="text-slate-600 mb-6 text-sm">Our field operations model integrates health & safety compliance, environmental management, supply chain continuity, and community liaison mechanisms.</p>
+
+                        <span class="context-label">Operational Advantage</span>
+                        <p class="text-slate-600 text-sm">We ensure operational continuity while minimizing environmental and social risk exposure.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Digital Connectivity -->
+                <div id="digital" class="scroll-mt-32">
+                    <h3 class="text-2xl font-bold text-navy mb-6 border-l-4 border-cyan pl-6">Digital Connectivity in Fragile Contexts</h3>
+                    <div class="pl-7 detail-item">
+                        <span class="context-label">Operational Context</span>
+                        <p class="text-slate-600 mb-6">Public services, humanitarian coordination, and economic growth increasingly depend on reliable digital infrastructure — often absent in fragile regions.</p>
+                        
+                        <span class="context-label">How We Operate</span>
+                        <ul class="space-y-2 text-slate-600 mb-6 list-disc list-inside text-sm">
+                            <li>Fiber optic network installation and wireless/satellite connectivity.</li>
+                            <li>Secure IT infrastructure and temporary/permanent telecom towers.</li>
+                            <li>Data hosting and digital systems support.</li>
+                        </ul>
+                        <p class="text-slate-600 mb-6 text-sm">We coordinate regulatory approvals and spectrum compliance while ensuring cybersecurity protocols are integrated.</p>
+
+                        <span class="context-label">Impact</span>
+                        <p class="text-slate-600 text-sm">Digital connectivity strengthens governance, enables humanitarian coordination, and supports private sector growth.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Procurement -->
+                <div id="procurement" class="scroll-mt-32">
+                    <h3 class="text-2xl font-bold text-navy mb-6 border-l-4 border-cyan pl-6">Institutional Procurement & Long-Term Agreements (LTAs)</h3>
+                    <div class="pl-7 detail-item">
+                        <span class="context-label">Operational Context</span>
+                        <p class="text-slate-600 mb-6">Large institutions require structured procurement systems capable of managing multi-year frameworks, vendor compliance, and audit transparency.</p>
+                        
+                        <span class="context-label">How We Operate</span>
+                        <ul class="space-y-2 text-slate-600 mb-6 list-disc list-inside text-sm">
+                            <li>Management of framework agreements and vendor-managed inventory.</li>
+                            <li>Cross-border sourcing and export/import documentation.</li>
+                            <li>Audit-ready reporting systems and digital procurement tracking.</li>
+                        </ul>
+                        <p class="text-slate-600 mb-6 text-sm">Our model integrates anti-corruption controls, financial transparency, supplier vetting, and risk mitigation protocols.</p>
+
+                        <span class="context-label">Strategic Advantage</span>
+                        <p class="text-slate-600 text-sm">This enables governments, UN agencies, and donors to reduce operational delays and maintain supply continuity.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Energy -->
+                <div id="energy" class="scroll-mt-32">
+                    <h3 class="text-2xl font-bold text-navy mb-6 border-l-4 border-cyan pl-6">Renewable Energy & Climate Resilience</h3>
+                    <div class="pl-7 detail-item">
+                        <span class="context-label">Operational Context</span>
+                        <p class="text-slate-600 mb-6">Climate vulnerability and infrastructure deficits require low-carbon, resilient energy and water systems.</p>
+                        
+                        <span class="context-label">How We Operate</span>
+                        <ul class="space-y-2 text-slate-600 mb-6 list-disc list-inside text-sm">
+                            <li>Solar PV & hybrid mini-grids, Battery energy storage systems (BESS).</li>
+                            <li>Solar-powered water pumping and climate-resilient public infrastructure.</li>
+                            <li>Flood mitigation & coastal protection systems.</li>
+                        </ul>
+                        <p class="text-slate-600 mb-6 text-sm">We align projects with climate financing standards and environmental safeguards.</p>
+
+                        <span class="context-label">Impact</span>
+                        <p class="text-slate-600 text-sm">Reduced carbon emissions, improved energy access, strengthened climate resilience, and long-term operational savings.</p>
+                    </div>
+                </div>
+
+                <!-- Item 7: Public Infra -->
+                <div id="public-infra" class="scroll-mt-32">
+                    <h3 class="text-2xl font-bold text-navy mb-6 border-l-4 border-cyan pl-6">Public Infrastructure & Social Assets</h3>
+                    <div class="pl-7 detail-item">
+                        <span class="context-label">Operational Context</span>
+                        <p class="text-slate-600 mb-6">Post-conflict and emerging markets require accelerated infrastructure delivery while maintaining compliance and sustainability standards.</p>
+                        
+                        <span class="context-label">How We Operate</span>
+                        <ul class="space-y-2 text-slate-600 mb-6 list-disc list-inside text-sm">
+                            <li>Transport corridors, roads, port & marine infrastructure.</li>
+                            <li>Hospitals, health facilities, schools, and public buildings.</li>
+                            <li>Water treatment & sanitation plants.</li>
+                        </ul>
+                        <p class="text-slate-600 mb-6 text-sm">Projects are implemented under structured risk management and regulatory compliance frameworks.</p>
+
+                        <span class="context-label">Institutional Strength</span>
+                        <p class="text-slate-600 text-sm">We align with national development plans, donor safeguards, and PPP frameworks to ensure assets remain durable, operational, and fiscally sustainable.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Closing Statement -->
+            <div class="mt-20 p-10 bg-slate-50 border border-slate-200 rounded-xl text-center">
+                <p class="text-lg text-navy font-medium italic leading-relaxed">
+                    "Specialised Delivery Environments demonstrate EAGint’s ability to operate where complexity, risk, and institutional accountability intersect. This page reflects not only technical capability — but structured governance, cross-division integration, and development-aligned execution."
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4️⃣ FOOTER -->
+    <footer class="bg-[#0F2B46] text-slate-500 py-20 border-t border-white/5 font-sans">
+        <div class="max-w-[1600px] mx-auto px-6 text-center text-[10px] uppercase font-bold tracking-[2px]">
+            &copy; 2002–2026 EL ALI GROUP INTERNATIONAL LTD.
+        </div>
+    </footer>
+
+</body>
+</html>

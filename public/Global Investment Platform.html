@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Relations | EAGint</title>
+    <meta name="description" content="Global Infrastructure Investment Platform. Structured execution in high-growth frontier markets.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f2b46',
+                        accent: '#00aeef',
+                        dark: '#0b1f33',
+                        light: '#f4f7fb',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(15, 43, 70, 0.85), rgba(15, 43, 70, 0.90)),
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-light selection:bg-accent selection:text-white">
+
+    <!-- HEADER (Simplified for Investor Page) -->
+    <header class="fixed w-full top-0 z-50 glass-nav shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="font-heading font-extrabold text-2xl text-primary tracking-tight">EAG<span class="text-accent">int</span> <span class="text-gray-400 font-light text-xl ml-2">| Capital</span></a>
+                </div>
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <a href="index.html" class="text-sm font-semibold text-gray-500 hover:text-primary transition-colors">Corporate Home</a>
+                    <a href="#focus" class="text-sm font-semibold text-primary hover:text-accent transition-colors">Investment Focus</a>
+                    <a href="mailto:investors@eagint.com" class="bg-primary hover:bg-dark text-white px-5 py-2.5 rounded shadow-md transition-all font-semibold text-sm">
+                        Contact Investor Relations
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- INVESTOR HERO -->
+    <section class="hero-bg pt-40 pb-32 text-center border-b-4 border-accent relative">
+        <div class="absolute inset-0 bg-primary/80 z-0"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-accent/20 text-accent font-bold text-xs tracking-widest mb-6 border border-accent/30 backdrop-blur-sm uppercase">
+                Private Equity & PPPs
+            </span>
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-md">
+                Global Infrastructure Investment Platform
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-200 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+                Structured execution, risk-managed delivery, and measurable returns in high-growth frontier markets.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#focus" class="bg-accent hover:bg-sky-500 text-white px-8 py-3.5 rounded shadow-lg transition-all font-bold text-lg">
+                    Explore Our Focus
+                </a>
+                <a href="#" class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white px-8 py-3.5 rounded shadow-lg transition-all font-bold text-lg">
+                    Download Prospectus
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTMENT FOCUS -->
+    <section id="focus" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-accent font-bold tracking-wider uppercase text-sm mb-2">Strategic Portfolios</h2>
+                <h3 class="font-heading text-3xl md:text-4xl font-extrabold text-primary mb-4">Investment Focus</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Targeting sustainable, bankable infrastructure assets aligned with global ESG frameworks.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-light p-8 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow group">
+                    <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center text-accent text-2xl mb-6 shadow-sm group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-primary mb-3">Renewable Energy</h4>
+                    <p class="text-gray-600 leading-relaxed">Utility-scale solar, hybrid power grids, and climate-resilient energy infrastructure designed for high-yield, long-term power purchase agreements (PPAs).</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-light p-8 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow group">
+                    <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center text-accent text-2xl mb-6 shadow-sm group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-primary mb-3">Port & Logistics Corridors</h4>
+                    <p class="text-gray-600 leading-relaxed">Strategic investments in maritime infrastructure, dry ports, and multimodal transport corridors facilitating international trade and supply chain security.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-light p-8 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow group">
+                    <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center text-accent text-2xl mb-6 shadow-sm group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-primary mb-3">Urban Infrastructure</h4>
+                    <p class="text-gray-600 leading-relaxed">Smart city developments, municipal water systems (WASH), and public facilities structured via secure Public-Private Partnerships (PPPs).</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-light p-8 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow group">
+                    <div class="w-14 h-14 bg-white rounded-lg flex items-center justify-center text-accent text-2xl mb-6 shadow-sm group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-primary mb-3">Industrial Development</h4>
+                    <p class="text-gray-600 leading-relaxed">Agro-processing zones, manufacturing hubs, and specialized economic zones driving local value addition and export capabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS -->
+    <section class="py-20 bg-primary text-white border-t-4 border-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="font-heading text-2xl md:text-3xl font-bold mb-12">Executive Summary & Pipeline</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/20">
+                <div>
+                    <p class="text-4xl font-extrabold text-accent mb-2">24</p>
+                    <p class="text-sm font-bold uppercase tracking-wider text-gray-300">Total Active Projects</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-accent mb-2">$42M</p>
+                    <p class="text-sm font-bold uppercase tracking-wider text-gray-300">Pipeline Value</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-accent mb-2">63%</p>
+                    <p class="text-sm font-bold uppercase tracking-wider text-gray-300">Tender Win Rate</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-green-400 mb-2">100%</p>
+                    <p class="text-sm font-bold uppercase tracking-wider text-gray-300">Compliance Status</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

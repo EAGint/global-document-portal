@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Charter | EAGint Governance</title>
+    <meta name="description" content="Official Board Charter of EL ALI GROUP INTERNATIONAL LTD (EAGint). Defining authority, composition, and strategic oversight responsibilities.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f2b46',
+                        accent: '#00aeef',
+                        dark: '#0b1f33',
+                        light: '#f4f7fb',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(15, 43, 70, 0.92), rgba(15, 43, 70, 0.95)),
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') center/cover no-repeat;
+        }
+
+        /* Dark Mode Overrides */
+        body.dark-mode { background-color: #121212 !important; color: #e5e7eb !important; }
+        body.dark-mode .bg-white, body.dark-mode .bg-light, body.dark-mode .bg-gray-50 { background-color: #1e1e1e !important; border-color: #333 !important; color: #e5e7eb !important; }
+        body.dark-mode .text-primary, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 { color: #60a5fa !important; }
+        body.dark-mode .text-gray-600, body.dark-mode .text-gray-800 { color: #9ca3af !important; }
+        body.dark-mode header.glass-nav { background: #0f2b46 !important; border-bottom: 1px solid #1a446e; }
+        body.dark-mode header.glass-nav a { color: #ffffff !important; }
+        
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background: #00aeef;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        /* Document Styling */
+        .charter-content h2 { 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #0f2b46;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        body.dark-mode .charter-content h2 { color: #60a5fa; }
+        .charter-content p { margin-bottom: 1.25rem; line-height: 1.8; color: #4b5563; }
+        body.dark-mode .charter-content p { color: #9ca3af; }
+        .charter-content ul { margin-bottom: 2rem; }
+        .charter-content li { 
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: #4b5563;
+            font-weight: 500;
+        }
+        body.dark-mode .charter-content li { color: #9ca3af; }
+        .charter-content li::before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #00aeef;
+        }
+
+        @media print {
+            header, footer, .no-print { display: none !important; }
+            .charter-container { margin: 0 !important; box-shadow: none !important; border: none !important; }
+            body { background: white; }
+            aside { display: none !important; }
+            .lg\:col-span-3 { width: 100% !important; }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-light selection:bg-accent selection:text-white transition-colors duration-300">
+
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 glass-nav bg-white shadow-sm transition-all duration-300">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 gap-4">
+                <div class="flex-shrink-0">
+                    <a href="index.html">
+                        <img src="assets/img/EAGint.jpeg" alt="EAGint Logo" class="h-[50px] object-contain rounded-md" onerror="this.outerHTML='<span class=\'font-heading font-extrabold text-2xl text-primary tracking-tight\'>EAG<span class=\'text-accent\'>int</span></span>'">
+                    </a>
+                </div>
+                
+                <nav role="navigation" aria-label="Main Navigation" class="hidden xl:flex space-x-4 2xl:space-x-6 items-center text-sm font-semibold">
+                    <a href="index.html" class="nav-link text-primary transition-colors">Home</a>
+                    <a href="about.html" class="nav-link text-primary transition-colors">About</a>
+                    <a href="divisions.html" class="nav-link text-primary transition-colors">Divisions</a>
+                    <a href="governance.html" class="nav-link active text-accent transition-colors">Governance</a>
+                    <a href="contact.html" class="nav-link text-primary transition-colors">Contact</a>
+                </nav>
+
+                <div class="hidden lg:flex items-center gap-3">
+                    <button onclick="toggleDarkMode()" class="text-primary hover:text-accent p-2 transition-colors no-print">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="governance.html" class="bg-primary hover:bg-dark text-white px-5 py-2 rounded-md shadow-sm transition-all text-xs font-bold whitespace-nowrap">
+                        Governance Portal
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-bg pt-44 pb-24 text-center border-b-4 border-accent relative">
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-accent/20 text-accent font-bold text-[10px] tracking-widest mb-4 border border-accent/30 backdrop-blur-sm uppercase">
+                Institutional Framework
+            </span>
+            <h1 class="font-heading text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+                EAGint Board Charter
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 font-light max-w-2xl mx-auto">
+                Defining the principles, authority, and accountability of the highest governing body of EL ALI GROUP INTERNATIONAL LTD.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTENT LAYOUT -->
+    <main class="py-16 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+                
+                <!-- STICKY SIDEBAR NAV -->
+                <aside class="lg:col-span-1 no-print">
+                    <div class="sticky top-40 space-y-1">
+                        <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4 px-4">Charter Contents</h3>
+                        <nav class="flex flex-col">
+                            <a href="#purpose" class="px-4 py-2.5 rounded-lg text-xs font-bold text-primary hover:bg-white border-l-2 border-transparent hover:border-accent transition-all">1. Purpose</a>
+                            <a href="#authority" class="px-4 py-2.5 rounded-lg text-xs font-bold text-primary hover:bg-white border-l-2 border-transparent hover:border-accent transition-all">2. Authority</a>
+                            <a href="#composition" class="px-4 py-2.5 rounded-lg text-xs font-bold text-primary hover:bg-white border-l-2 border-transparent hover:border-accent transition-all">3. Composition</a>
+                            <a href="#structure" class="px-4 py-2.5 rounded-lg text-xs font-bold text-primary hover:bg-white border-l-2 border-transparent hover:border-accent transition-all font-black text-accent">NEW: Structure Map</a>
+                            <a href="#committees" class="px-4 py-2.5 rounded-lg text-xs font-bold text-primary hover:bg-white border-l-2 border-transparent hover:border-accent transition-all">9. Committee Mandates</a>
+                            <a href="#principles" class="px-4 py-2.5 rounded-lg text-xs font-bold text-primary hover:bg-white border-l-2 border-transparent hover:border-accent transition-all">17. Governance Principles</a>
+                        </nav>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-200">
+                            <button onclick="window.print()" class="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-lg text-[10px] font-bold hover:bg-dark transition-all uppercase tracking-wider">
+                                <i class="fas fa-file-pdf"></i> Export 2026 Baseline
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- CHARTER CONTENT -->
+                <div class="lg:col-span-3 charter-container">
+                    <div class="bg-white p-8 md:p-16 rounded-2xl shadow-sm border border-gray-100 charter-content relative overflow-hidden">
+                        
+                        <!-- Header Meta -->
+                        <div class="flex flex-col md:flex-row justify-between gap-6 bg-light p-6 rounded-xl border border-gray-100 mb-12 border-l-4 border-l-primary">
+                            <div class="space-y-1">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Baseline Year</p>
+                                <p class="text-sm font-bold text-primary">2026</p>
+                            </div>
+                            <div class="space-y-1 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Institutional Status</p>
+                                <p class="text-sm font-bold text-accent">Active & Approved</p>
+                            </div>
+                            <div class="space-y-1 text-right">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Version</p>
+                                <p class="text-sm font-bold text-primary">V 1.2 (Revised March 2026)</p>
+                            </div>
+                        </div>
+
+                        <section id="purpose">
+                            <h2>1. Purpose of the Board</h2>
+                            <p>The Board of Directors is the highest governing authority of EL ALI GROUP INTERNATIONAL LTD (EAGint). The Board provides strategic direction, governance oversight, risk supervision, ESG and safeguarding accountability, and executive performance oversight. Operational management remains the responsibility of executive leadership, while the Board ensures institutional continuity and fiduciary integrity.</p>
+                        </section>
+
+                        <section id="structure" class="py-8 my-8 border-y border-gray-50 bg-gray-50/50 rounded-xl p-6 no-print">
+                            <h3 class="text-center font-heading font-extrabold text-primary mb-8 uppercase tracking-widest text-xs">Visual Governance Hierarchy</h3>
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-full max-w-xs bg-dark text-white p-4 rounded-lg font-bold text-center text-xs">Shareholders</div>
+                                <div class="h-6 w-0.5 bg-accent/30"></div>
+                                <div class="w-full max-w-sm bg-primary text-white p-5 rounded-lg font-bold text-center border-b-4 border-accent">Board of Directors</div>
+                                <div class="h-6 w-0.5 bg-accent/30"></div>
+                                <div class="flex flex-wrap justify-center gap-3">
+                                    <div class="bg-white border border-gray-200 px-4 py-2 rounded shadow-sm text-[10px] font-black uppercase text-primary">Audit & Risk</div>
+                                    <div class="bg-white border border-gray-200 px-4 py-2 rounded shadow-sm text-[10px] font-black uppercase text-primary">ESG & Safeguard</div>
+                                    <div class="bg-white border border-gray-200 px-4 py-2 rounded shadow-sm text-[10px] font-black uppercase text-primary">Gov & Ethics</div>
+                                </div>
+                                <div class="h-6 w-0.5 bg-accent/30"></div>
+                                <div class="w-full max-w-md bg-white border-2 border-primary p-4 rounded-lg font-bold text-center text-xs text-primary">CEO & Executive Leadership Team</div>
+                            </div>
+                        </section>
+
+                        <section id="committees">
+                            <h2>9. Committee Mandates</h2>
+                            <p>Standing committees provide specialized oversight on behalf of the Board:</p>
+                            
+                            <div class="space-y-8 mt-6">
+                                <!-- Audit & Risk -->
+                                <div class="p-6 bg-light rounded-xl border border-gray-100">
+                                    <h3 class="text-lg font-extrabold text-primary flex items-center gap-2 mb-4">
+                                        <i class="fas fa-file-invoice-dollar text-accent"></i> Audit & Risk Committee
+                                    </h3>
+                                    <ul class="text-sm list-none">
+                                        <li>Oversees financial integrity and procurement transparency across all 13 divisions.</li>
+                                        <li>Reviews enterprise risk management framework and exposure thresholds in fragile markets.</li>
+                                        <li>Supervises independent internal and external audit processes.</li>
+                                        <li>Monitors anti-fraud, anti-corruption, and AML/KYC systems.</li>
+                                    </ul>
+                                </div>
+
+                                <!-- ESG & Safeguarding -->
+                                <div class="p-6 bg-light rounded-xl border border-gray-100">
+                                    <h3 class="text-lg font-extrabold text-primary flex items-center gap-2 mb-4">
+                                        <i class="fas fa-user-shield text-accent"></i> ESG & Safeguarding Committee
+                                    </h3>
+                                    <ul class="text-sm list-none">
+                                        <li>Ensures environmental and social safeguard compliance (ESMF) in IFI/Donor projects.</li>
+                                        <li>Oversees SEAH and child safeguarding systems and survivor-centered responses.</li>
+                                        <li>Monitors grievance redress mechanisms (GRM) for operational independence.</li>
+                                        <li>Reviews annual ESG metrics, carbon reduction, and SDG alignment reports.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="principles">
+                            <h2>17. Long-Term Governance Principle</h2>
+                            <div class="bg-primary text-white p-10 rounded-2xl text-center italic shadow-xl relative overflow-hidden">
+                                <div class="absolute inset-0 bg-white/5 pointer-events-none"></div>
+                                <p class="text-2xl font-light mb-0 relative z-10 leading-relaxed">
+                                    "Stability over speed. Integrity over expansion. Governance over opportunistic growth. Institutional continuity over short-term gain."
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Endorsement Section -->
+                        <div class="mt-20 pt-10 border-t-2 border-dashed border-gray-200">
+                            <h3 class="font-heading font-extrabold text-primary mb-8 text-center uppercase tracking-widest text-sm">Institutional Endorsement</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                                <div class="space-y-8">
+                                    <div class="border-b border-gray-300 pb-2">
+                                        <p class="text-[10px] text-gray-400 uppercase font-bold">Approved By (Board Chair)</p>
+                                    </div>
+                                    <div class="border-b border-gray-300 pb-2">
+                                        <p class="text-[10px] text-gray-400 uppercase font-bold">Date</p>
+                                    </div>
+                                </div>
+                                <div class="space-y-8">
+                                    <div class="border-b border-gray-300 pb-2">
+                                        <p class="text-[10px] text-gray-400 uppercase font-bold">Endorsed By (CEO)</p>
+                                    </div>
+                                    <div class="border-b border-gray-300 pb-2">
+                                        <p class="text-[10px] text-gray-400 uppercase font-bold">Date</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Note -->
+                        <div class="mt-16 text-center">
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                                © 2026 EL ALI GROUP INTERNATIONAL LTD (EAGint) | Governance Reference V1.2
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-20 pb-10 border-t-4 border-accent no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-gray-500 font-bold uppercase tracking-widest">
+            <p>&copy; 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint). Built on delivery, strengthened by systems.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            const icons = document.querySelectorAll('button[onclick="toggleDarkMode()"] i');
+            icons.forEach(icon => {
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.className = 'fas fa-sun';
+                } else {
+                    icon.className = 'fas fa-moon';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safeguarding & SEAH Reporting | EAGint</title>
+    <meta name="description" content="Confidential Safeguarding and SEAH reporting portal for EAGint. Survivor-centered, professional, and secure reporting channel.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f2b46',
+                        accent: '#00aeef',
+                        dark: '#0b1f33',
+                        light: '#f4f7fb',
+                        safeguarding: '#7a0019', // Designated Red for Safeguarding
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .hero-safeguarding {
+            background: linear-gradient(rgba(122, 0, 25, 0.92), rgba(122, 0, 25, 0.95)),
+                        url('https://images.unsplash.com/photo-1573164067047-0ad2c18a20ee?auto=format&fit=crop&q=80') center/cover no-repeat;
+        }
+
+        /* Dark Mode Overrides */
+        body.dark-mode { background-color: #121212 !important; color: #e5e7eb !important; }
+        body.dark-mode .bg-white, body.dark-mode .bg-light, body.dark-mode .bg-gray-50 { background-color: #1e1e1e !important; border-color: #333 !important; color: #e5e7eb !important; }
+        body.dark-mode header.glass-nav { background: #0f2b46 !important; border-bottom: 1px solid #1a446e; }
+        body.dark-mode header.glass-nav a { color: #ffffff !important; }
+        
+        /* Form Focus Styles */
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #7a0019 !important;
+            box-shadow: 0 0 0 3px rgba(122, 0, 25, 0.1);
+        }
+
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background: #00aeef;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    </style>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPoint",
+        "contactType": "Safeguarding and PSEA Reporting",
+        "email": "safeguarding@eagint.com",
+        "availableLanguage": ["English", "Somali", "Arabic"],
+        "areaServed": "Somalia"
+    }
+    </script>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,so,tr,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-light transition-colors duration-300">
+
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 glass-nav bg-white shadow-sm transition-all duration-300">
+        <div class="bg-primary text-white py-1.5 px-4 sm:px-6 lg:px-8 flex justify-end items-center gap-4 sm:gap-6 border-b border-white/10 relative z-20">
+            <div id="google_translate_element" class="text-xs"></div>
+            <button onclick="toggleDarkMode()" class="text-white hover:text-accent transition-colors text-sm" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 gap-4">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html">
+                        <img src="assets/img/EAGint.jpeg" alt="EAGint Logo" class="h-[50px] object-contain rounded-md">
+                    </a>
+                </div>
+                
+                <nav role="navigation" aria-label="Main Navigation" class="hidden xl:flex space-x-4 2xl:space-x-6 items-center">
+                    <a href="index.html" class="nav-link text-[13px] 2xl:text-sm font-semibold text-primary transition-colors">Home</a>
+                    <a href="about.html" class="nav-link text-[13px] 2xl:text-sm font-semibold text-primary transition-colors">About EAGint</a>
+                    <a href="divisions.html" class="nav-link text-[13px] 2xl:text-sm font-semibold text-primary transition-colors">Divisions</a>
+                    <a href="sectors.html" class="nav-link text-[13px] 2xl:text-sm font-semibold text-primary transition-colors">Sectors</a>
+                    <a href="contact.html" class="nav-link text-[13px] 2xl:text-sm font-semibold text-primary transition-colors">Contact</a>
+                    <a href="contact.html" class="bg-safeguarding hover:bg-red-800 text-white px-5 py-2 rounded-md shadow-sm transition-all font-semibold text-sm whitespace-nowrap">
+                        Report a Concern
+                    </a>
+                </nav>
+
+                <div class="xl:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-accent focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-safeguarding pt-40 pb-24 text-center border-b-4 border-white/20 relative">
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-white/20 text-white font-bold text-xs tracking-widest mb-6 border border-white/30 backdrop-blur-sm uppercase">
+                Ethical Accountability Portal
+            </span>
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-md">
+                Safeguarding & SEAH Reporting
+            </h1>
+            <p class="text-lg sm:text-xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
+                <strong>Confidential • Survivor-Centered • No Retaliation</strong><br>
+                EAGint maintains a zero-tolerance policy regarding any misconduct. Reports are handled with absolute confidentiality by designated officers.
+            </p>
+        </div>
+    </section>
+
+    <!-- REPORTING FORM SECTION -->
+    <main class="py-20 bg-light">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                <div class="bg-safeguarding p-1 bg-gradient-to-r from-safeguarding to-red-900"></div>
+                
+                <form id="safeguardingForm" class="p-8 md:p-12 space-y-8">
+                    
+                    <!-- Anonymous Toggle -->
+                    <div class="bg-red-50 border border-red-100 p-6 rounded-xl flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-safeguarding shadow-sm">
+                                <i class="fas fa-user-secret text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-safeguarding">Submit Anonymously</h3>
+                                <p class="text-xs text-red-700">Checking this will hide identity fields.</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="anonymousToggle" class="sr-only peer">
+                            <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-safeguarding"></div>
+                        </label>
+                    </div>
+
+                    <!-- Personal Details -->
+                    <div id="personalDetails" class="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Full Name</label>
+                            <input type="text" id="reporterName" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Email Address</label>
+                            <input type="email" id="reporterEmail" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Concern Details -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Type of Concern <span class="text-red-500">*</span></label>
+                            <select required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary transition-all cursor-pointer">
+                                <option value="">Select Category...</option>
+                                <option>Sexual Exploitation</option>
+                                <option>Sexual Abuse</option>
+                                <option>Sexual Harassment</option>
+                                <option>Child Protection Concern</option>
+                                <option>Forced Labor / Human Trafficking</option>
+                                <option>Discrimination / Exclusion</option>
+                                <option>Other Safeguarding Concern</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Location of Incident</label>
+                            <input type="text" placeholder="City / Project Site" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Date of Incident</label>
+                            <input type="date" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm font-semibold text-primary transition-all">
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Description of Incident <span class="text-red-500">*</span></label>
+                            <textarea rows="6" required placeholder="Please describe the incident in as much detail as you feel comfortable sharing. All information is secure." class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm font-medium text-primary transition-all resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Confirmation -->
+                    <div class="space-y-4">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" required class="mt-1 h-4 w-4 rounded border-gray-300 text-safeguarding focus:ring-safeguarding">
+                            <span class="text-xs text-gray-600 leading-relaxed font-medium">I confirm that the information provided is accurate to the best of my knowledge and that I am submitting this report in good faith.</span>
+                        </label>
+                    </div>
+
+                    <!-- Submit -->
+                    <div>
+                        <button type="submit" class="w-full bg-safeguarding hover:bg-red-800 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 text-lg">
+                            <i class="fas fa-shield-alt"></i> Submit Confidential Report
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Guidance Notice -->
+                <div class="bg-gray-50 p-8 border-t border-gray-100">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-primary flex items-center gap-2">
+                                <i class="fas fa-info-circle text-accent"></i> Handling Guidelines
+                            </h4>
+                            <ul class="text-xs text-gray-500 space-y-2 leading-relaxed">
+                                <li class="flex items-start gap-2"><span class="text-safeguarding font-bold">&bull;</span> Reports are reviewed ONLY by designated Safeguarding Officers.</li>
+                                <li class="flex items-start gap-2"><span class="text-safeguarding font-bold">&bull;</span> Retaliation against whistleblowers is strictly prohibited.</li>
+                                <li class="flex items-start gap-2"><span class="text-safeguarding font-bold">&bull;</span> We utilize a survivor-centered approach for all SEAH cases.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm text-center">
+                            <p class="text-xs font-bold text-red-600 mb-1 uppercase tracking-widest">Emergency Assistance</p>
+                            <p class="text-[11px] text-gray-500 leading-normal">If you are in immediate danger or need medical help, please contact local authorities or your nearest medical center immediately.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back Link -->
+            <div class="mt-12 text-center">
+                <a href="contact.html" class="text-sm font-bold text-primary hover:text-accent transition-colors flex items-center justify-center gap-2">
+                    <i class="fas fa-arrow-left"></i> Back to Contact Hub
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-20 pb-10 border-t-4 border-safeguarding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 text-left">
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6 text-white relative inline-block">Company<span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-accent -mb-2"></span></h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-accent">About Us</a></li>
+                        <li><a href="divisions.html" class="hover:text-accent">Divisions</a></li>
+                        <li><a href="sectors.html" class="hover:text-accent">Sectors</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6 text-white relative inline-block">Compliance<span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-accent -mb-2"></span></h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="safeguarding-report.html" class="text-white font-bold underline decoration-safeguarding decoration-2 underline-offset-4">Safeguarding</a></li>
+                        <li><a href="esg.html" class="hover:text-accent">ESG & Impact</a></li>
+                        <li><a href="contact.html" class="hover:text-accent">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6 text-white relative inline-block">Policies<span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-accent -mb-2"></span></h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-accent">PSEA Policy</a></li>
+                        <li><a href="#" class="hover:text-accent">Whistleblowing</a></li>
+                        <li><a href="#" class="hover:text-accent">GDPR Compliance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6 text-white relative inline-block">Contact<span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-accent -mb-2"></span></h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="mailto:safeguarding@eagint.com" class="hover:text-accent flex items-center gap-2 font-bold"><i class="fas fa-envelope"></i> safeguarding@eagint.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint). All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            const icons = document.querySelectorAll('.dark-toggle');
+            icons.forEach(icon => {
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.innerHTML = '☀️';
+                } else {
+                    icon.innerHTML = '🌙';
+                }
+            });
+        }
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if(btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
+
+        // Anonymous Toggle Logic
+        const anonToggle = document.getElementById('anonymousToggle');
+        const personalSection = document.getElementById('personalDetails');
+        const reporterName = document.getElementById('reporterName');
+        const reporterEmail = document.getElementById('reporterEmail');
+
+        anonToggle.addEventListener('change', () => {
+            if(anonToggle.checked) {
+                personalSection.classList.add('opacity-40', 'pointer-events-none', 'grayscale');
+                reporterName.value = '';
+                reporterEmail.value = '';
+            } else {
+                personalSection.classList.remove('opacity-40', 'pointer-events-none', 'grayscale');
+            }
+        });
+
+        // Form Submit Simulation
+        document.getElementById('safeguardingForm').onsubmit = (e) => {
+            e.preventDefault();
+            // In a production environment, this would be a secure POST request
+            alert("This is a demonstration. In the live environment, this report would be encrypted and sent securely to EAGint's confidential Safeguarding Team.");
+        };
+    </script>
+</body>
+</html>

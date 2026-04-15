@@ -1,0 +1,569 @@
+"use client";
+
+import React, { useEffect, useState } from 'react';
+import { 
+  Building2, Truck, Anchor, HeartHandshake, Zap, Laptop, 
+  Landmark, Globe2, Briefcase, FileSignature, LayoutGrid, ArrowRight,
+  Calendar, Layers, Globe, Plane, ClipboardCheck, ShieldCheck, User,
+  Image as ImageIcon, Droplet, ShieldAlert, Lock, CheckCircle2, Shield,
+  Download, Target, Eye, Settings, Users, BookOpen, MapPin, Mail, Leaf
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+
+// --- INLINE COMPONENTS FOR CANVAS DEMO (Normally imported from @/components) ---
+const Link = ({ href, children, className, ...props }: any) => (
+  <a href={href} className={className} {...props}>{children}</a>
+);
+
+const Reveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-50px" }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+// -----------------------------------------------------------------------------
+
+export default function HomePage() {
+  return (
+    <main className="flex-grow bg-white dark:bg-[#0b1120] transition-colors duration-500 pb-0 pt-20">
+      
+      {/* ========================= */}
+      {/* 1. HERO SECTION */}
+      {/* ========================= */}
+      <section className="relative bg-[#0a1128] text-white overflow-hidden pt-32 pb-40 lg:pt-40 lg:pb-48 border-b border-slate-800">
+        <div className="absolute inset-0 bg-[url('linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)')] bg-[size:60px_60px] opacity-40"></div>
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <Reveal>
+            <div className="inline-flex items-center justify-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-md border border-white/20 mb-8 shadow-2xl text-sm font-bold tracking-widest uppercase text-blue-200">
+              <ShieldCheck className="w-4 h-4 mr-2 text-emerald-400" /> Tier-1 Delivery Platform
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-[70px] font-extrabold tracking-tight mb-8 text-white leading-[1.1] max-w-5xl mx-auto">
+              Integrated Infrastructure, Logistics & Humanitarian Solutions <br className="hidden lg:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-200 to-white">for Complex Environments</span>
+            </h1>
+          </Reveal>
+          
+          <Reveal delay={0.15}>
+            <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed font-medium mb-12">
+              EAGint delivers end-to-end infrastructure, logistics, supply chain, and humanitarian services across Somalia, East Africa, and global operational corridors. With over 24 years of experience, we support governments, UN agencies, donors, and private partners in fragile and high-risk contexts.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/contact" className="w-full sm:w-auto px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-xl hover:shadow-blue-500/40 hover:-translate-y-1 flex items-center justify-center gap-2">
+                Work With Us <FileSignature className="w-5 h-5" />
+              </Link>
+              <Link href="/divisions" className="w-full sm:w-auto px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all hover:-translate-y-1 flex items-center justify-center gap-2">
+                View Our Divisions <LayoutGrid className="w-5 h-5" />
+              </Link>
+              <Link href="/downloads/EAGint_Company_Profile_2026.pdf" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 transition-all shadow-xl hover:shadow-white/20 hover:-translate-y-1 flex items-center justify-center gap-2" download="true">
+                Download Company Profile <Download className="w-5 h-5" />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 2. TRUST STRIP */}
+      {/* ========================= */}
+      <div className="bg-slate-900 py-6 border-b border-slate-800 relative z-20 shadow-lg">
+        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center items-center gap-x-6 lg:gap-x-10 gap-y-4 text-xs md:text-sm font-bold tracking-wider uppercase text-blue-50">
+            <span className="flex items-center gap-2"><Globe2 className="w-4 h-4 text-blue-400" /> UN & Donor Ready</span>
+            <span className="hidden lg:block text-slate-700">•</span>
+            <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-blue-400" /> 24+ Years Experience</span>
+            <span className="hidden lg:block text-slate-700">•</span>
+            <span className="flex items-center gap-2"><Layers className="w-4 h-4 text-blue-400" /> 13 Integrated Divisions</span>
+            <span className="hidden lg:block text-slate-700">•</span>
+            <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-blue-400" /> ISO-Aligned Systems</span>
+            <span className="hidden lg:block text-slate-700">•</span>
+            <span className="flex items-center gap-2"><HeartHandshake className="w-4 h-4 text-blue-400" /> Safeguarding & Do No Harm</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ========================= */}
+      {/* 3. KEY VALUE PROPOSITIONS */}
+      {/* ========================= */}
+      <section className="py-24 relative overflow-hidden bg-[#F4F7FA] dark:bg-[#0b1120] border-b border-slate-200/50 dark:border-slate-800/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">Key Value Propositions</h2>
+            <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-emerald-400 mx-auto rounded-full"></div>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Reveal delay={0.1}>
+              <div className="bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 rounded-3xl h-full flex flex-col group hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Layers className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Integrated 13-Division Delivery Model</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Unlike single-service contractors, EAGint integrates logistics, infrastructure, services, and governance—reducing risk, cost, and delivery time.</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 rounded-3xl h-full flex flex-col group hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                <div className="w-12 h-12 bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Globe2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Donor-Compliant & UN-Registered</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Fully verified at UNGM Level 2 and compliant with stringent international donor and IFI procurement regulations.</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <div className="bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 rounded-3xl h-full flex flex-col group hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <ShieldAlert className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Proven Performance in Fragile States</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Over two decades of established operational capacity navigating security, access, and logistical challenges in complex environments.</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.4}>
+              <div className="bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 rounded-3xl h-full flex flex-col group hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Leaf className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Localized, Ethical & Sustainable</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Deep commitment to localization, ESG alignment, safeguarding, and Do No Harm principles across all operations.</p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 4. ABOUT EAGINT (Who We Are, Vision, Mission) */}
+      {/* ========================= */}
+      <section className="py-24 relative overflow-hidden bg-white dark:bg-[#0b1120]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">Who We Are</h2>
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium mb-6">
+                <strong className="text-slate-900 dark:text-white">EL ALI GROUP INTERNATIONAL LTD (EAGint)</strong> is a diversified international services group established in 2002. 
+              </p>
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium mb-8">
+                We operate as an integrated delivery partner, combining engineering, logistics, humanitarian response, and governance support under one coordinated platform.
+              </p>
+              <Link href="/about" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold hover:text-blue-800 dark:hover:text-blue-300 transition-colors text-lg group">
+                More About EAGint <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="space-y-6">
+                <div className="bg-[#F4F7FA] dark:bg-slate-800/40 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden group">
+                  <div className="absolute right-0 top-0 w-24 h-24 bg-blue-500/5 rounded-bl-full pointer-events-none"></div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
+                    <Eye className="w-6 h-6 text-blue-500" /> Vision (2026–2060)
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                    To become a globally recognized, Africa-rooted integrated services group enabling resilient infrastructure, sustainable development, and humanitarian effectiveness.
+                  </p>
+                </div>
+                
+                <div className="bg-[#F4F7FA] dark:bg-slate-800/40 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm relative overflow-hidden group">
+                  <div className="absolute right-0 top-0 w-24 h-24 bg-emerald-500/5 rounded-bl-full pointer-events-none"></div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-3">
+                    <Target className="w-6 h-6 text-emerald-500" /> Mission
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                    To deliver reliable, compliant, and high-impact services that create long-term value for partners and communities.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 5. DIVISIONS OVERVIEW */}
+      {/* ========================= */}
+      <section className="py-24 bg-[#F4F7FA] dark:bg-slate-800/20 border-y border-slate-200/50 dark:border-slate-800/50 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <Reveal className="text-center mb-16">
+            <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">Our 13 Integrated Divisions</h2>
+            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-3xl mx-auto">
+              EAGint operates through specialized but interconnected divisions, enabling seamless project execution from planning to delivery.
+            </p>
+          </Reveal>
+
+          {/* Core 6 featured for visual balance on home */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <Reveal delay={0.1}>
+              <Link href="/divisions/marine-port-aviation-infrastructure" className="block bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 p-8 rounded-2xl group hover:-translate-y-1 hover:border-blue-500 hover:shadow-xl transition-all duration-300 h-full">
+                <Anchor className="w-8 h-8 text-sky-500 mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Marine, Port & Aviation</h3>
+              </Link>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <Link href="/divisions/infrastructure-construction-real-estate" className="block bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 p-8 rounded-2xl group hover:-translate-y-1 hover:border-blue-500 hover:shadow-xl transition-all duration-300 h-full">
+                <Building2 className="w-8 h-8 text-blue-600 dark:text-blue-400 mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Infrastructure & Construction</h3>
+              </Link>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <Link href="/divisions/logistics-transport-supply-chain" className="block bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 p-8 rounded-2xl group hover:-translate-y-1 hover:border-blue-500 hover:shadow-xl transition-all duration-300 h-full">
+                <Truck className="w-8 h-8 text-indigo-500 mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Logistics & Supply Chain</h3>
+              </Link>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Link href="/divisions/humanitarian-development-social" className="block bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 p-8 rounded-2xl group hover:-translate-y-1 hover:border-blue-500 hover:shadow-xl transition-all duration-300 h-full">
+                <HeartHandshake className="w-8 h-8 text-emerald-500 mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Humanitarian & Social</h3>
+              </Link>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <Link href="/divisions/industrial-energy-environmental" className="block bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 p-8 rounded-2xl group hover:-translate-y-1 hover:border-blue-500 hover:shadow-xl transition-all duration-300 h-full">
+                <Zap className="w-8 h-8 text-amber-500 mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Industrial & Energy</h3>
+              </Link>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <Link href="/divisions/capacity-development-governance" className="block bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 p-8 rounded-2xl group hover:-translate-y-1 hover:border-blue-500 hover:shadow-xl transition-all duration-300 h-full">
+                <Landmark className="w-8 h-8 text-rose-500 mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Capacity Dev & Governance</h3>
+              </Link>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.4} className="text-center">
+            <Link href="/divisions" className="inline-flex items-center gap-2 px-8 py-3 rounded-full border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 font-bold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-slate-900 transition-colors group">
+              Explore All 13 Divisions <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 6. SECTORS WE SERVE */}
+      {/* ========================= */}
+      <section className="py-24 relative overflow-hidden bg-white dark:bg-[#0b1120]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-16">
+            <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">Sectors We Serve</h2>
+          </Reveal>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Reveal delay={0.1}>
+              <Link href="/sectors/government" className="block bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 rounded-3xl border-t-4 border-t-blue-600 hover:-translate-y-1 hover:shadow-lg transition-all h-full group">
+                <Landmark className="w-8 h-8 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 transition-colors">Government & Public Institutions</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Supporting national infrastructure, service delivery, and institutional capacity.</p>
+              </Link>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <Link href="/sectors/un-ifi" className="block bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 rounded-3xl border-t-4 border-t-sky-500 hover:-translate-y-1 hover:shadow-lg transition-all h-full group">
+                <Globe2 className="w-8 h-8 text-sky-500 mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-sky-500 transition-colors">United Nations & Organizations</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Logistics, infrastructure, and operations aligned with UN procurement frameworks.</p>
+              </Link>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <Link href="/sectors/ngos" className="block bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 rounded-3xl border-t-4 border-t-emerald-500 hover:-translate-y-1 hover:shadow-lg transition-all h-full group">
+                <HeartHandshake className="w-8 h-8 text-emerald-500 mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors">NGOs & Humanitarian Actors</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Rapid response, WASH, health, and life-support logistics in emergencies.</p>
+              </Link>
+            </Reveal>
+
+            <Reveal delay={0.4}>
+              <Link href="/sectors/private-ppp" className="block bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 rounded-3xl border-t-4 border-t-amber-500 hover:-translate-y-1 hover:shadow-lg transition-all h-full group">
+                <Briefcase className="w-8 h-8 text-amber-500 mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-amber-500 transition-colors">Private Sector & PPPs</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Infrastructure, energy, logistics, and service delivery through structured partnerships.</p>
+              </Link>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 7. ESG & IMPACT */}
+      {/* ========================= */}
+      <section className="py-24 bg-slate-900 text-white relative overflow-hidden border-y border-slate-800">
+        <div className="absolute inset-0 bg-[url('linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)')] bg-[size:60px_60px] opacity-20"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6 tracking-tight">Our ESG Commitment</h2>
+              <div className="w-20 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full mb-8"></div>
+              <p className="text-lg text-slate-300 leading-relaxed mb-8">
+                EAGint embeds Environmental, Social, and Governance principles across all operations. We are dedicated to creating measurable, sustainable impact.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10"><CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" /> <span className="font-medium text-sm">Climate-resilient infrastructure</span></div>
+                <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10"><CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" /> <span className="font-medium text-sm">Ethical procurement</span></div>
+                <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10"><CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" /> <span className="font-medium text-sm">Local employment & SMEs</span></div>
+                <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10"><CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" /> <span className="font-medium text-sm">Gender & inclusion</span></div>
+                <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10 sm:col-span-2"><CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" /> <span className="font-medium text-sm">Community engagement</span></div>
+              </div>
+              <Link href="/esg" className="inline-flex items-center gap-2 text-emerald-400 font-bold hover:text-emerald-300 transition-colors group">
+                Explore ESG Framework <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="bg-white/5 backdrop-blur-md p-10 rounded-3xl border border-white/10">
+                <h3 className="text-2xl font-bold mb-6 tracking-tight flex items-center gap-3"><Globe className="w-6 h-6 text-blue-400" /> SDG Alignment</h3>
+                <div className="flex flex-wrap gap-3">
+                  {['4', '5', '6', '7', '8', '9', '11', '13', '16', '17'].map((sdg) => (
+                    <span key={sdg} className="inline-flex items-center justify-center w-12 h-12 bg-white/10 rounded-lg border border-white/20 font-bold text-lg hover:bg-brand-600 hover:border-brand-500 transition-colors cursor-default">
+                      {sdg}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+          
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 8. COMPLIANCE & SAFEGUARDING */}
+      {/* ========================= */}
+      <section className="py-24 relative overflow-hidden bg-[#F4F7FA] dark:bg-[#0b1120]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <Reveal className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">Compliance & Safeguarding</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+              All policies are board-approved and donor-aligned.
+            </p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
+            {/* Zero Tolerance */}
+            <Reveal delay={0.1}>
+              <div className="bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 md:p-10 rounded-3xl h-full relative overflow-hidden group">
+                <div className="absolute right-0 top-0 opacity-5 pointer-events-none">
+                  <ShieldAlert className="w-64 h-64 -mr-10 -mt-10 text-rose-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-6 flex items-center gap-3">
+                  <ShieldAlert className="w-7 h-7 text-rose-500" /> Safeguarding & Do No Harm
+                </h3>
+                <p className="text-slate-700 dark:text-slate-300 font-medium mb-6 relative z-10">EAGint applies strict zero tolerance to:</p>
+                <ul className="space-y-4 relative z-10">
+                  <li className="flex items-start gap-3"><Lock className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" /> <span className="text-slate-700 dark:text-slate-300">Sexual exploitation, abuse & harassment (SEAH)</span></li>
+                  <li className="flex items-start gap-3"><Lock className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" /> <span className="text-slate-700 dark:text-slate-300">Child abuse</span></li>
+                  <li className="flex items-start gap-3"><Lock className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" /> <span className="text-slate-700 dark:text-slate-300">Human trafficking</span></li>
+                  <li className="flex items-start gap-3"><Lock className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" /> <span className="text-slate-700 dark:text-slate-300">Discrimination</span></li>
+                </ul>
+              </div>
+            </Reveal>
+
+            {/* Policies Available */}
+            <Reveal delay={0.2}>
+              <div className="bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-8 md:p-10 rounded-3xl h-full flex flex-col group">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-6 flex items-center gap-3">
+                  <ClipboardCheck className="w-7 h-7 text-brand-600 dark:text-brand-400" /> Policies Available
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-300">Code of Conduct & Ethics</div>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-300">Safeguarding & Child Protection</div>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-300">PSEA / SEAH Policy</div>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-300">Anti-Fraud & Anti-Corruption</div>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-300">Whistleblowing & Complaints</div>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-300">Environmental & Social Policy</div>
+                </div>
+                <div className="mt-8">
+                  <Link href="/compliance" className="text-sm font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform w-max">
+                    Visit Compliance Center <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 9. PROJECTS & EXPERIENCE */}
+      {/* ========================= */}
+      <section className="py-24 bg-white dark:bg-[#0b1120] relative overflow-hidden border-y border-slate-200/50 dark:border-slate-800/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <Reveal className="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div>
+              <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-2 tracking-tight">Our Track Record</h2>
+              <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl">EAGint has delivered multi-sector projects across logistics, infrastructure, WASH, health, education, and emergency response.</p>
+            </div>
+            <Link href="/projects" className="text-blue-600 dark:text-blue-400 font-bold hover:underline mt-4 md:mt-0 flex items-center gap-1 group">
+              View All Projects <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Reveal>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <Reveal delay={0.1}>
+              <div className="bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-6 rounded-2xl text-center h-full">
+                <Building2 className="w-8 h-8 text-brand-500 mx-auto mb-4" />
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm">Infrastructure & Construction</h3>
+              </div>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-6 rounded-2xl text-center h-full">
+                <Truck className="w-8 h-8 text-brand-500 mx-auto mb-4" />
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm">Logistics & Transportation</h3>
+              </div>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <div className="bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-6 rounded-2xl text-center h-full">
+                <HeartHandshake className="w-8 h-8 text-brand-500 mx-auto mb-4" />
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm">Humanitarian Response</h3>
+              </div>
+            </Reveal>
+            <Reveal delay={0.4}>
+              <div className="bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-6 rounded-2xl text-center h-full">
+                <Zap className="w-8 h-8 text-brand-500 mx-auto mb-4" />
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm">Energy & Water Systems</h3>
+              </div>
+            </Reveal>
+            <Reveal delay={0.5}>
+              <div className="bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-6 rounded-2xl text-center h-full">
+                <Users className="w-8 h-8 text-brand-500 mx-auto mb-4" />
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm">Capacity Development</h3>
+              </div>
+            </Reveal>
+          </div>
+          
+          <Reveal delay={0.6} className="mt-8 text-center">
+            <p className="text-sm font-medium text-slate-500 dark:text-slate-400 italic">Detailed case studies available on request or via donor portals.</p>
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 10. PARTNERS */}
+      {/* ========================= */}
+      <section className="py-24 relative overflow-hidden bg-[#F4F7FA] dark:bg-slate-900/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">Who We Work With</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">We build long-term, transparent, and accountable partnerships.</p>
+          </Reveal>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <Reveal delay={0.1}><div className="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full font-bold text-slate-800 dark:text-slate-200 shadow-sm">UN agencies</div></Reveal>
+            <Reveal delay={0.2}><div className="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full font-bold text-slate-800 dark:text-slate-200 shadow-sm">International NGOs</div></Reveal>
+            <Reveal delay={0.3}><div className="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full font-bold text-slate-800 dark:text-slate-200 shadow-sm">National & local governments</div></Reveal>
+            <Reveal delay={0.4}><div className="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full font-bold text-slate-800 dark:text-slate-200 shadow-sm">Engineering & logistics firms</div></Reveal>
+            <Reveal delay={0.5}><div className="px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full font-bold text-slate-800 dark:text-slate-200 shadow-sm">Technology providers</div></Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 11 & 12. CAREERS & INSIGHTS */}
+      {/* ========================= */}
+      <section className="py-24 bg-white dark:bg-[#0b1120] relative overflow-hidden border-t border-slate-200/50 dark:border-slate-800/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12">
+            
+            {/* Careers */}
+            <Reveal delay={0.1}>
+              <div className="bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-10 rounded-3xl h-full flex flex-col">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight flex items-center gap-3">
+                  <Users className="w-6 h-6 text-brand-600 dark:text-brand-400" /> Our People & Localization
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-6">EAGint invests in skilled national and international professionals, with a strong focus on localization.</p>
+                <div className="grid sm:grid-cols-2 gap-6 flex-grow">
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-3 border-b border-slate-200 dark:border-slate-700 pb-2">Opportunities</h4>
+                    <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                      <li>• Technical & operational roles</li>
+                      <li>• Project & field positions</li>
+                      <li>• Internships & training</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-3 border-b border-slate-200 dark:border-slate-700 pb-2">Localization Commitment</h4>
+                    <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                      <li>• Local hiring</li>
+                      <li>• Capacity building</li>
+                      <li>• Community participation</li>
+                    </ul>
+                  </div>
+                </div>
+                <Link href="/careers" className="mt-8 text-sm font-bold text-brand-600 dark:text-brand-400 flex items-center gap-1 hover:translate-x-1 transition-transform w-max">Explore Careers <ArrowRight className="w-4 h-4"/></Link>
+              </div>
+            </Reveal>
+
+            {/* Insights */}
+            <Reveal delay={0.2}>
+              <div className="bg-[#F4F7FA] dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 shadow-sm p-10 rounded-3xl h-full flex flex-col">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight flex items-center gap-3">
+                  <BookOpen className="w-6 h-6 text-brand-600 dark:text-brand-400" /> Insights & Resources
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-6">Knowledge Hub sharing practical experience and official documentation.</p>
+                <div className="grid grid-cols-2 gap-4 flex-grow">
+                  <Link href="/insights/articles" className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors font-medium text-sm text-slate-800 dark:text-slate-200 flex items-center justify-between group">
+                    Articles & Insights <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-brand-500 transition-colors"/>
+                  </Link>
+                  <Link href="/compliance/policies" className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors font-medium text-sm text-slate-800 dark:text-slate-200 flex items-center justify-between group">
+                    Policy Summaries <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-brand-500 transition-colors"/>
+                  </Link>
+                  <Link href="/esg" className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors font-medium text-sm text-slate-800 dark:text-slate-200 flex items-center justify-between group">
+                    ESG Updates <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-brand-500 transition-colors"/>
+                  </Link>
+                  <Link href="/downloads" className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors font-medium text-sm text-slate-800 dark:text-slate-200 flex items-center justify-between group">
+                    Download Center <Download className="w-4 h-4 text-slate-400 group-hover:text-brand-500 transition-colors"/>
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/* 13. FINAL CONTACT / CTA */}
+      {/* ========================= */}
+      <section className="py-24 relative overflow-hidden bg-brand-600 text-white">
+        <div className="absolute inset-0 bg-[url('linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)')] bg-[size:60px_60px] opacity-20"></div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <Reveal>
+            <h2 className="text-4xl font-extrabold mb-6 tracking-tight">Get in Touch</h2>
+            <p className="text-xl text-brand-100 mb-10 leading-relaxed font-medium">
+              For partnerships, tenders, and collaboration across infrastructure and humanitarian sectors.
+            </p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
+              <div className="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-full border border-white/20"><Mail className="w-5 h-5"/> info@eagint.com</div>
+              <div className="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-full border border-white/20"><Globe className="w-5 h-5"/> www.eagint.com</div>
+              <div className="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-full border border-white/20"><MapPin className="w-5 h-5"/> Somalia (HQ) & Int'l</div>
+            </div>
+            <Link href="/contact" className="inline-flex items-center gap-2 px-12 py-5 bg-white text-brand-600 rounded-full font-bold text-lg hover:bg-slate-100 transition-all shadow-xl hover:shadow-white/20 hover:-translate-y-1">
+              Contact Our Team <ArrowRight className="w-5 h-5" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+    </main>
+  );
+}

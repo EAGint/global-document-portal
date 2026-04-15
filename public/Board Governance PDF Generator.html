@@ -1,0 +1,106 @@
+# EAGint Board Governance PDF Generator (Institutional Version)
+# Requirements: pip install reportlab
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, ListFlowable, ListItem, PageBreak
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib import colors
+from reportlab.lib.units import inch
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+
+def generate_governance_pack():
+    file_path = "EAGint_Board_Governance_Pack_2026.pdf"
+    doc = SimpleDocTemplate(file_path)
+    elements = []
+
+    styles = getSampleStyleSheet()
+    
+    # Custom Styles
+    title_style = ParagraphStyle(
+        'MainTitle',
+        parent=styles['Heading1'],
+        fontSize=24,
+        textColor=colors.HexColor('#0f2b46'),
+        spaceAfter=12,
+        alignment=TA_CENTER
+    )
+    
+    section_style = ParagraphStyle(
+        'SectionHeader',
+        parent=styles['Heading2'],
+        fontSize=14,
+        textColor=colors.HexColor('#00aeef'),
+        spaceBefore=20,
+        spaceAfter=10,
+        borderPadding=(0, 0, 5, 0),
+        borderWidth=0,
+        borderStyle=None
+    )
+    
+    normal_style = ParagraphStyle(
+        'NormalText',
+        parent=styles['Normal'],
+        fontSize=10,
+        leading=14,
+        alignment=TA_JUSTIFY
+    )
+
+    # 1. COVER PAGE
+    elements.append(Spacer(1, 2 * inch))
+    elements.append(Paragraph("EL ALI GROUP INTERNATIONAL LTD", title_style))
+    elements.append(Paragraph("EAGint", title_style))
+    elements.append(Spacer(1, 0.5 * inch))
+    elements.append(Paragraph("Board Governance Pack – 2026 Baseline", styles["Heading2"]))
+    elements.append(Spacer(1, 0.2 * inch))
+    elements.append(Paragraph("Institutional Reference Document v1.2", normal_style))
+    elements.append(Spacer(1, 3 * inch))
+    elements.append(Paragraph("CONFIDENTIAL | BOARD OF DIRECTORS USE ONLY", normal_style))
+    elements.append(PageBreak())
+
+    # 2. COMMITTEE OVERVIEW
+    elements.append(Paragraph("Committee Mandates & Fiduciary Oversight", section_style))
+    
+    sections = {
+        "Audit & Risk Committee": [
+            "Oversees financial integrity and procurement transparency across all 13 integrated divisions.",
+            "Reviews enterprise risk framework (ERM) and exposure thresholds in fragile markets.",
+            "Supervises independent internal and external audit processes.",
+            "Monitors anti-fraud, anti-corruption, and AML/KYC systems.",
+            "Reports quarterly to the Board on institutional fiduciary health."
+        ],
+        "ESG & Safeguarding Committee": [
+            "Ensures environmental and social safeguard compliance (ESMF) in IFI/Donor projects.",
+            "Oversees SEAH and child safeguarding systems and survivor-centered responses.",
+            "Monitors grievance redress mechanisms (GRM) for operational independence.",
+            "Reviews annual ESG and SDG alignment reporting.",
+            "Maintains zero-tolerance misconduct oversight and escalation."
+        ],
+        "Governance & Ethics Oversight": [
+            "Reviews conflict of interest disclosures for Board and Executive levels.",
+            "Supervises the corporate whistleblowing and ethics reporting channel.",
+            "Ensures policy updates and maintains governance maturity benchmarks.",
+            "Manages Board succession planning and independent director recruitment."
+        ],
+        "Investment & Infrastructure Oversight": [
+            "Approves PPP participation, concession agreements, and major capital allocation.",
+            "Reviews climate-aligned infrastructure investments and long-term asset exposure.",
+            "Evaluates risk allocation in large-scale frontier market projects.",
+            "Ensures disciplined capital deployment aligned with Vision 2060."
+        ]
+    }
+
+    for section, points in sections.items():
+        elements.append(Paragraph(section, section_style))
+        elements.append(Spacer(1, 0.1 * inch))
+        bullet_points = [ListItem(Paragraph(point, normal_style)) for point in points]
+        elements.append(ListFlowable(bullet_points, bulletType='bullet', leftIndent=20))
+        elements.append(Spacer(1, 0.2 * inch))
+
+    # 3. CLOSING
+    elements.append(Spacer(1, 1 * inch))
+    elements.append(Paragraph("Approved by the Board of Directors – 01 January 2026", normal_style))
+    elements.append(Paragraph("Last Updated: 02 March 2026", normal_style))
+
+    doc.build(elements)
+    print(f"Success: {file_path} generated.")
+
+if __name__ == "__main__":
+    generate_governance_pack()

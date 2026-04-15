@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Compliance, Certifications & Governance | EAGint</title>
+<meta name="description" content="EAGint operates under ISO-aligned systems, UN registration, anti-bribery, safeguarding, and donor-compliant governance frameworks.">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* --- CORE STYLES --- */
+:root{
+    --primary:#0f2b46;
+    --accent:#00aeef;
+    --light:#f4f7fb;
+    --dark:#0b1f33;
+    --text:#333;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Open Sans',sans-serif;color:var(--text);line-height:1.7;padding-top:70px; background: #f7f9fb; transition: background 0.3s, color 0.3s;}
+
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--primary);}
+h2 {margin-bottom: 20px; font-size: 32px;}
+h3 {margin-bottom: 15px; font-size: 20px;}
+p {margin-bottom: 15px;}
+a{text-decoration:none;transition:0.3s;}
+
+.container{width:90%;max-width:1200px;margin:auto;}
+.text-center{text-align:center;}
+.section {padding: 90px 0;}
+
+.btn{padding:12px 28px;border-radius:4px;font-weight:600;display:inline-block;transition:transform 0.2s;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-outline{border:2px solid var(--primary);color:var(--primary);}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+.btn-dark{background:var(--primary);color:#fff;}
+
+/* --- MAIN HEADER --- */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 999;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  max-width: 1600px;
+  margin: auto;
+  gap: 20px;
+}
+
+.logo img {
+  height: 45px;
+}
+
+.primary-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primary-nav a {
+  text-decoration: none;
+  color: #0f2b46;
+  font-weight: 600;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.primary-nav a:hover {
+  color: #0077cc;
+}
+
+.cta-btn {
+  background: #0077cc;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+/* --- UTILITIES (Search, Translate, Dark Mode) --- */
+.header-utils {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.search-box input {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  font-size: 13px;
+  background: var(--light);
+  color: var(--text);
+}
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+}
+/* Google Translate Widget Overrides */
+.goog-te-gadget-simple {
+  background-color: #fff !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  padding: 4px !important;
+  font-family: 'Inter', 'Open Sans', sans-serif !important;
+}
+
+/* --- MEGA MENU STYLES --- */
+.mega-menu { position: relative; }
+.mega-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  background: white;
+  display: none;
+  padding: 40px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  z-index: 1000;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: left;
+}
+.mega-menu:hover .mega-dropdown { 
+  display: grid; 
+}
+.mega-column h4 {
+  margin-bottom: 15px;
+  color: #0f2b46;
+  font-size: 15px;
+  border-bottom: 2px solid var(--light);
+  padding-bottom: 8px;
+}
+.mega-column a { 
+  display: block; 
+  color: var(--text) !important; 
+  padding: 8px 0; 
+  font-size: 13px; 
+  font-weight: 500; 
+}
+.mega-column a:hover { color: var(--accent) !important; padding-left: 5px; }
+
+/* --- HERO INNER --- */
+.hero-inner{
+    padding: 120px 0 80px;
+    background:linear-gradient(rgba(15,43,70,0.9),rgba(15,43,70,0.9)),
+    url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop') center/cover no-repeat;
+    color:#fff;
+    text-align:center;
+}
+.hero-inner h1{font-size:42px;margin-bottom:20px;color:#fff;}
+.hero-inner p{font-size:18px;font-weight:400;color:#e0e6ef;max-width: 800px; margin: auto;}
+
+/* --- GRIDS & CARDS --- */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+.std-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+}
+.std-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.std-card h3 { color: var(--primary); font-size: 18px; }
+.std-card p { color: #555; font-size: 14.5px; margin-bottom: 0; }
+
+/* --- ISO CAROUSEL --- */
+.iso-carousel-wrapper {
+    background: #fff;
+    padding: 30px 0;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background 0.3s;
+}
+.iso-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.iso-carousel::-webkit-scrollbar { display: none; }
+.iso-carousel div {
+    min-width: 200px;
+    background: var(--light);
+    color: var(--primary);
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid #e0e6ef;
+    transition: 0.3s;
+}
+.iso-carousel div:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(15, 43, 70, 0.2);
+}
+
+/* --- CERTIFICATION GALLERY --- */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+.cert-item {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    border-left: 4px solid var(--accent);
+    text-align: left;
+}
+.cert-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+.cert-item h4 { color: var(--primary); margin-bottom: 8px; font-size: 16px; transition: color 0.3s; }
+.cert-item p { font-size: 13px; color: #666; margin-bottom: 0; transition: color 0.3s; }
+.cert-icon { float: right; color: var(--accent); font-size: 20px; opacity: 0.5; }
+.cert-card {
+    background:#f9fafb;
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.04);
+    transition:0.3s;
+    cursor:pointer;
+}
+.cert-card:hover { transform:translateY(-6px); box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+.cert-card h3 { color:var(--primary); margin-bottom:10px; font-size: 18px; }
+.cert-card p { font-size: 14px; color: #555; margin-bottom: 0; }
+.cert-card a { display:inline-block; margin-top:10px; color:var(--accent); font-weight:600; text-decoration:none; font-size: 14px; }
+
+/* --- DOWNLOAD CENTER --- */
+.download-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.download-card i {
+    font-size: 36px;
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+.download-card a {
+    margin-top: 20px;
+    padding: 8px 20px;
+    font-size: 13px;
+}
+
+/* --- MODAL --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: #fff;
+    width: 90%;
+    max-width: 800px;
+    height: 85vh;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+.modal-header h3 { margin: 0; color: var(--primary); }
+.close-modal {
+    font-size: 30px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+}
+.close-modal:hover { color: var(--primary); }
+.modal iframe {
+    flex-grow: 1;
+    width: 100%;
+    border: none;
+    background: #f4f7fb;
+    border-radius: 4px;
+}
+
+/* --- MAIN FOOTER --- */
+.main-footer {
+  background: #0f2b46;
+  color: #ffffff;
+  padding: 60px 8% 30px;
+}
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+.footer-col h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: var(--accent);
+}
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+.footer-col a {
+  color: #d0d7de;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+.footer-col a:hover {
+  color: #ffffff;
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  opacity: 0.7;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --- DARK MODE --- */
+.dark-mode {
+  background: #121212;
+  color: white;
+}
+.dark-mode .main-header {
+  background: #1a1a1a;
+  border-bottom-color: #333;
+}
+.dark-mode .primary-nav a { color: #f0f0f0; }
+.dark-mode .primary-nav a:hover { color: var(--accent); }
+.dark-mode .mega-dropdown {
+  background: #1a1a1a;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  border: 1px solid #333;
+}
+.dark-mode .mega-column h4 { color: #fff; border-bottom-color: #333; }
+.dark-mode .mega-column a { color: #ccc !important; }
+.dark-mode .mega-column a:hover { color: var(--accent) !important; }
+
+.dark-mode .section[style*="background:#ffffff"] { background: #121212 !important; }
+.dark-mode .section[style*="background:var(--light)"] { background: #1a1a1a !important; }
+.dark-mode .iso-carousel-wrapper { background: #121212; border-color: #333; }
+
+.dark-mode h2, .dark-mode h3, .dark-mode .cert-item h4 { color: #fff; }
+.dark-mode p { color: #bbb !important; }
+
+.dark-mode .std-card, 
+.dark-mode .cert-card, 
+.dark-mode .cert-item,
+.dark-mode .modal-content {
+  background: #1e1e1e;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.dark-mode .iso-carousel div {
+  background: #1e1e1e;
+  color: #fff;
+  border-color: #333;
+}
+.dark-mode .search-box input {
+  background: #2a2a2a;
+  color: #fff;
+  border-color: #444;
+}
+
+/* Handle SVG in Dark Mode */
+.dark-mode svg rect[fill="var(--primary)"] { fill: #2a3f54; }
+.dark-mode svg text { fill: #ffffff; }
+
+/* --- RESPONSIVE --- */
+@media(max-width: 1200px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 5%;
+  }
+  .mega-dropdown {
+    position: static;
+    display: none;
+    grid-template-columns: 1fr;
+    box-shadow: none;
+    padding: 10px 0 0 0;
+    gap: 20px;
+    width: 100%;
+    transform: none;
+  }
+  .mega-menu:hover .mega-dropdown { display: grid; }
+}
+</style>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "EL ALI GROUP INTERNATIONAL LTD",
+    "alternateName": "EAGint",
+    "url": "https://www.eagint.com",
+    "foundingDate": "2002-02-10",
+    "areaServed": ["Somalia", "East Africa", "International"],
+    "memberOf": [
+        { "@type": "Organization", "name": "UN Global Marketplace (UNGM)" },
+        { "@type": "Organization", "name": "International Air Transport Association (IATA)" }
+    ],
+    "hasCredential": [
+        "ISO 9001", "ISO 14001", "ISO 45001", "ISO 22000", "ISO 27001", "ISO 18788", "ISO 41001", "ISO 37001", "ISO 31000", "SA 8000", "WHO-GMP"
+    ]
+}
+</script>
+
+</head>
+<body>
+
+<!-- MAIN HEADER -->
+<header class="main-header">
+  <div class="nav-container">
+    
+    <!-- Logo -->
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none;">
+        <h2 style="margin:0; color:var(--primary); font-weight:800; font-size: 24px;">EAGint</h2>
+      </a>
+    </div>
+
+    <!-- Primary Menu -->
+    <nav class="primary-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About EAGint</a></li>
+        <li class="mega-menu">
+          <a href="divisions.html">Divisions ▾</a>
+          <div class="mega-dropdown">
+            <div class="mega-column">
+              <h4>Infrastructure & Industrial</h4>
+              <a href="division-infrastructure.html">Infrastructure & Construction</a>
+              <a href="division-marine.html">Marine & Port</a>
+              <a href="division-energy.html">Energy & Environmental</a>
+              <a href="division-technology.html">Technology & Digital</a>
+            </div>
+            <div class="mega-column">
+              <h4>Logistics & Trade</h4>
+              <a href="division-logistics.html">Logistics & Supply Chain</a>
+              <a href="division-trade.html">Trade & Global Procurement</a>
+              <a href="division-commercial.html">Commercial Supply</a>
+              <a href="division-tenders.html">Tender Services</a>
+            </div>
+            <div class="mega-column">
+              <h4>Humanitarian & Social</h4>
+              <a href="division-humanitarian.html">Humanitarian Services</a>
+              <a href="division-agriculture.html">Agriculture</a>
+              <a href="division-education.html">Education Infrastructure</a>
+              <a href="division-camp.html">Camp Management</a>
+              <a href="division-capacity.html">Capacity Development</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="sectors.html">Sectors</a></li>
+        <li><a href="esg.html">ESG</a></li>
+        <li><a href="compliance.html" style="color:var(--accent);">Compliance</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="contact.html" class="cta-btn">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Utilities -->
+    <div class="header-utils">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchSite()">
+        </div>
+        <div id="google_translate_element"></div>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-inner" style="padding-top: 180px;">
+    <div class="container">
+        <h1>Compliance, Certifications & Governance</h1>
+        <p>Institutional-grade systems aligned with UN, donor, and international regulatory standards across fragile and complex environments.</p>
+    </div>
+</section>
+
+<!-- ISO CAROUSEL -->
+<div class="iso-carousel-wrapper">
+    <div class="container">
+        <h3 style="font-size: 14px; text-transform: uppercase; color: #888; margin-bottom: 10px; text-align: center;">Our Certified Frameworks</h3>
+        <div class="iso-carousel">
+            <div>ISO 9001 - Quality</div>
+            <div>ISO 14001 - Environment</div>
+            <div>ISO 45001 - OHS</div>
+            <div>ISO 22000 - Food Safety</div>
+            <div>ISO 27001 - InfoSec</div>
+            <div>ISO 18788 - Security Ops</div>
+            <div>ISO 41001 - Facility Mgmt</div>
+            <div>ISO 37001 - Anti-Bribery</div>
+            <div>ISO 31000 - Risk Mgmt</div>
+            <div>SA 8000 - Social Accountability</div>
+            <div>ISO 3961 - Technical</div>
+            <div>ISO 23354 - Logistics</div>
+        </div>
+    </div>
+</div>
+
+<!-- GLOBAL REGISTRATIONS -->
+<section class="section">
+    <div class="container">
+        <h2 class="text-center">Global Registrations & Credentials</h2>
+        <p class="text-center" style="max-width: 800px; margin: auto;">EAGint operates under internationally recognized compliance and quality frameworks. We are registered, audited, and aligned with global standards required by international partners.</p>
+        
+        <div class="grid-3">
+            <div class="std-card text-center" style="border-top: 4px solid var(--accent);">
+                <i class="fas fa-globe-americas" style="font-size: 40px; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3>UNGM – Level 2</h3>
+                <p>Registered Vendor on the United Nations Global Marketplace. Eligible for UN procurement across all core sectors.</p>
+            </div>
+            <div class="std-card text-center" style="border-top: 4px solid var(--accent);">
+                <i class="fas fa-plane-departure" style="font-size: 40px; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3>IATA Accreditation</h3>
+                <p><strong>TIDS Code: 96172915</strong><br>Authorized aviation and travel service provider complying with global aviation standards.</p>
+            </div>
+            <div class="std-card text-center" style="border-top: 4px solid var(--accent);">
+                <i class="fas fa-notes-medical" style="font-size: 40px; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3>WHO-GMP Certified</h3>
+                <p>Certified Good Manufacturing Practice ensuring safety and integrity for regulated pharmaceutical and supply operations.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATION GALLERY (MODALS) -->
+<section class="section" style="background:var(--light);">
+    <div class="container">
+        <h2 class="text-center">Certification Gallery</h2>
+        <p class="text-center">Click to view our core operational certificates.</p>
+
+        <div class="cert-grid">
+            <div class="cert-item" onclick="openModal('ISO 18788 - Security Operations.pdf', 'ISO 18788')">
+                <i class="fas fa-search cert-icon"></i>
+                <h4>ISO 18788</h4>
+                <p>Security Operations Management</p>
+            </div>
+            <div class="cert-item" onclick="openModal('ISO 37001 - Anti-Bribery.pdf', 'ISO 37001')">
+                <i class="fas fa-search cert-icon"></i>
+                <h4>ISO 37001</h4>
+                <p>Anti-Bribery & Corruption</p>
+            </div>
+            <div class="cert-item" onclick="openModal('ISO 31000 - Risk Management.pdf', 'ISO 31000')">
+                <i class="fas fa-search cert-icon"></i>
+                <h4>ISO 31000</h4>
+                <p>Enterprise Risk Framework</p>
+            </div>
+            <div class="cert-item" onclick="openModal('EAGint ISO 22000-2018.pdf', 'ISO 22000')">
+                <i class="fas fa-search cert-icon"></i>
+                <h4>ISO 22000</h4>
+                <p>Food Safety Management</p>
+            </div>
+            <div class="cert-item" onclick="openModal('SA 8000 - Social Accountability.pdf', 'SA 8000')">
+                <i class="fas fa-search cert-icon"></i>
+                <h4>SA 8000</h4>
+                <p>Social & Labor Accountability</p>
+            </div>
+            <div class="cert-item" onclick="openModal('OEM Authorization.pdf', 'OEM Registration')">
+                <i class="fas fa-search cert-icon"></i>
+                <h4>OEM Authorization</h4>
+                <p>Electronic Security & Equipment</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ESG DASHBOARD -->
+<section class="section" style="background:#ffffff;">
+    <div class="container text-center">
+        <h2>ESG Performance Dashboard</h2>
+        <p style="max-width: 800px; margin: auto; margin-bottom: 40px;">Measuring impact and ensuring sustainable operations in alignment with the United Nations Sustainable Development Goals (SDGs).</p>
+        
+        <div class="grid-3">
+            <div class="std-card text-left">
+                <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 15px;">
+                    <div style="background: #e6f4ea; color: #2e7d32; width: 50px; height: 50px; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size: 24px; font-weight: 800;">E</div>
+                    <h3 style="margin:0;">Environmental</h3>
+                </div>
+                <ul style="text-align:left; font-size: 14px; margin-left: 20px;">
+                    <li style="margin-bottom: 8px;">Renewable Energy Projects</li>
+                    <li style="margin-bottom: 8px;">Climate-Resilient Infrastructure</li>
+                    <li style="margin-bottom: 8px;">Waste & Environmental Safeguards</li>
+                </ul>
+            </div>
+
+            <div class="std-card text-left">
+                <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 15px;">
+                    <div style="background: #e3f2fd; color: #1565c0; width: 50px; height: 50px; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size: 24px; font-weight: 800;">S</div>
+                    <h3 style="margin:0;">Social</h3>
+                </div>
+                <ul style="text-align:left; font-size: 14px; margin-left: 20px;">
+                    <li style="margin-bottom: 8px;">Local Employment & Capacity Building</li>
+                    <li style="margin-bottom: 8px;">Safeguarding & PSEA Compliance</li>
+                    <li style="margin-bottom: 8px;">Education & Health Infrastructure</li>
+                </ul>
+            </div>
+
+            <div class="std-card text-left">
+                <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 15px;">
+                    <div style="background: #f3e5f5; color: #0f2b46; width: 50px; height: 50px; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size: 24px; font-weight: 800;">G</div>
+                    <h3 style="margin:0;">Governance</h3>
+                </div>
+                <ul style="text-align:left; font-size: 14px; margin-left: 20px;">
+                    <li style="margin-bottom: 8px;">ISO-Aligned Management Systems</li>
+                    <li style="margin-bottom: 8px;">Risk & Anti-Bribery Controls</li>
+                    <li style="margin-bottom: 8px;">Audit-Ready Financial Reporting</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BOARD & GOVERNANCE STRUCTURE (SVG/CSS) -->
+<section class="section" style="background:var(--light);">
+    <div class="container text-center">
+        <h2 style="margin-bottom: 10px;">Board & Governance Structure</h2>
+        <p style="margin-bottom: 50px;">Clear separation of duties ensuring fiduciary accountability and ethical execution.</p>
+
+        <!-- Responsive SVG Governance Tree -->
+        <div style="max-width: 800px; margin: auto; overflow-x: auto;">
+            <svg viewBox="0 0 800 350" width="100%" height="100%" style="min-width: 600px;">
+                <!-- Connections -->
+                <line x1="400" y1="70" x2="400" y2="130" stroke="var(--primary)" stroke-width="3"/>
+                <line x1="400" y1="180" x2="200" y2="250" stroke="var(--primary)" stroke-width="3"/>
+                <line x1="400" y1="180" x2="600" y2="250" stroke="var(--primary)" stroke-width="3"/>
+
+                <!-- Board -->
+                <rect x="250" y="20" width="300" height="50" rx="6" fill="var(--primary)"/>
+                <text x="400" y="52" fill="white" font-weight="bold" font-size="18" text-anchor="middle" font-family="Montserrat, sans-serif">Board of Directors</text>
+
+                <!-- CEO -->
+                <rect x="250" y="130" width="300" height="50" rx="6" fill="var(--accent)"/>
+                <text x="400" y="162" fill="white" font-weight="bold" font-size="18" text-anchor="middle" font-family="Montserrat, sans-serif">CEO / Executive Leadership</text>
+
+                <!-- Compliance -->
+                <rect x="50" y="250" width="300" height="50" rx="6" fill="#2e7d32"/>
+                <text x="200" y="282" fill="white" font-weight="bold" font-size="18" text-anchor="middle" font-family="Montserrat, sans-serif">Compliance & Risk Committee</text>
+
+                <!-- Directors -->
+                <rect x="450" y="250" width="300" height="50" rx="6" fill="var(--primary)"/>
+                <text x="600" y="282" fill="white" font-weight="bold" font-size="18" text-anchor="middle" font-family="Montserrat, sans-serif">13 Division Directors</text>
+            </svg>
+        </div>
+
+        <div class="grid-3" style="margin-top: 50px;">
+            <div class="std-card text-left" style="padding: 20px;">
+                <h4 style="color:var(--primary); font-size:15px;"><i class="fas fa-file-contract" style="color:var(--accent); width:20px;"></i> Code of Conduct</h4>
+            </div>
+            <div class="std-card text-left" style="padding: 20px;">
+                <h4 style="color:var(--primary); font-size:15px;"><i class="fas fa-balance-scale" style="color:var(--accent); width:20px;"></i> Conflict of Interest Policy</h4>
+            </div>
+            <div class="std-card text-left" style="padding: 20px;">
+                <h4 style="color:var(--primary); font-size:15px;"><i class="fas fa-shield-alt" style="color:var(--accent); width:20px;"></i> Anti-Fraud & Corruption</h4>
+            </div>
+            <div class="std-card text-left" style="padding: 20px;">
+                <h4 style="color:var(--primary); font-size:15px;"><i class="fas fa-bullhorn" style="color:var(--accent); width:20px;"></i> Whistleblowing Mechanism</h4>
+            </div>
+            <div class="std-card text-left" style="padding: 20px;">
+                <h4 style="color:var(--primary); font-size:15px;"><i class="fas fa-hands-helping" style="color:var(--accent); width:20px;"></i> Safeguarding & PSEA</h4>
+            </div>
+            <div class="std-card text-left" style="padding: 20px;">
+                <h4 style="color:var(--primary); font-size:15px;"><i class="fas fa-book" style="color:var(--accent); width:20px;"></i> Procurement & Finance Manual</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DOWNLOAD CENTER -->
+<section class="section" style="background:#ffffff;">
+    <div class="container text-center">
+        <h2>UN & Donor Due Diligence Download Center</h2>
+        <p style="margin-bottom: 50px;">Verified documentation available for partners, donors, and regulatory bodies.</p>
+
+        <div class="grid-3">
+            <div class="std-card download-card">
+                <div>
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Company Registration</h3>
+                    <p>Official legal incorporation documents.</p>
+                </div>
+                <a href="#" class="btn btn-outline">Download File</a>
+            </div>
+
+            <div class="std-card download-card">
+                <div>
+                    <i class="fas fa-file-archive" style="color:var(--primary);"></i>
+                    <h3>ISO Certificates Pack</h3>
+                    <p>Comprehensive ZIP file of all active ISO certifications.</p>
+                </div>
+                <a href="#" class="btn btn-outline">Download All (.zip)</a>
+            </div>
+
+            <div class="std-card download-card">
+                <div>
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Safeguarding & PSEA</h3>
+                    <p>Full policy on protection from sexual exploitation and abuse.</p>
+                </div>
+                <a href="#" class="btn btn-outline">Download Policy</a>
+            </div>
+
+            <div class="std-card download-card">
+                <div>
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Anti-Corruption Policy</h3>
+                    <p>Risk management and anti-bribery frameworks.</p>
+                </div>
+                <a href="#" class="btn btn-outline">Download Policy</a>
+            </div>
+
+            <div class="std-card download-card">
+                <div>
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>UNGM Registration Proof</h3>
+                    <p>Current verification of UN Level 2 vendor status.</p>
+                </div>
+                <a href="#" class="btn btn-outline">Download Proof</a>
+            </div>
+
+            <div class="std-card download-card">
+                <div>
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>ESG & SDG Alignment</h3>
+                    <p>Annual statement on environmental and social impact.</p>
+                </div>
+                <a href="#" class="btn btn-outline">Download Report</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN FOOTER -->
+<footer class="main-footer">
+  <div class="footer-container">
+    <!-- Company Column -->
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About EAGint</a></li>
+        <li><a href="divisions.html">Divisions</a></li>
+        <li><a href="projects.html">Projects & Experience</a></li>
+        <li><a href="careers.html">Careers & Localization</a></li>
+      </ul>
+    </div>
+
+    <!-- Compliance Hub -->
+    <div class="footer-col">
+      <h4>Compliance Hub</h4>
+      <ul>
+        <li><a href="compliance.html">Compliance Portal</a></li>
+        <li><a href="iso-certifications.html">ISO Certifications</a></li>
+        <li><a href="ungm-registration.html">UNGM Registration</a></li>
+        <li><a href="iata-registration.html">IATA Registration</a></li>
+        <li><a href="safeguarding.html">Safeguarding & PSEA</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="media.html">Media Center</a></li>
+        <li><a href="insights.html">Insights & Resources</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Email: info@eagint.com</p>
+      <p>Website: www.eagint.com</p>
+      <p>Somalia | East Africa | Global</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2002–2026 EL ALI GROUP INTERNATIONAL LTD (EAGint)
+  </div>
+</footer>
+
+<!-- CERTIFICATE MODAL -->
+<div id="certModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Certificate Viewer</h3>
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+        </div>
+        <!-- Iframe acts as a PDF viewer -->
+        <iframe id="certFrame" src=""></iframe>
+        <div style="text-align: right; margin-top: 15px;">
+            <a id="modalDownloadBtn" href="#" target="_blank" class="btn btn-primary" style="padding: 8px 20px; font-size: 13px;">Open in New Tab</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Search Box Logic
+    function searchSite() {
+      let input = document.getElementById("searchInput").value.toLowerCase();
+      let content = document.body.innerText.toLowerCase();
+      // Simple visual cue logic for mockup purposes
+      if(input.length > 2 && content.includes(input)){
+        document.getElementById("searchInput").style.borderColor = "var(--accent)";
+      } else {
+        document.getElementById("searchInput").style.borderColor = "#ccc";
+      }
+    }
+
+    // Google Translate Initialization
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,so,tr,zh-CN,ar',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    // Dark Mode Toggle Logic
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      const btn = document.querySelector('.dark-mode-toggle');
+      btn.innerText = isDark ? "☀️" : "🌙";
+    }
+
+    // Modal Logic
+    function openModal(filePath, title) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('certFrame').src = filePath;
+        document.getElementById('modalDownloadBtn').href = filePath;
+        document.getElementById('certModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('certModal').style.display = 'none';
+        document.getElementById('certFrame').src = ""; // Clear iframe to stop loading
+    }
+
+    // Close modal if clicked outside of modal-content
+    window.onclick = function(event) {
+        const modal = document.getElementById('certModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+<!-- Google Translate Script -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
