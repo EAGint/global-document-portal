@@ -28,13 +28,10 @@ export default function DocumentUpload() {
       <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-12 bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer relative">
         <UploadCloud className="w-12 h-12 text-blue-500 mb-4" />
         <p className="text-gray-600 font-medium">{file ? file.name : t('fileLabel')}</p>
-        <input 
-          type="file" 
-          onChange={(e) => setFile(e.target.files?. || null)}
-            }
-          }}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-        />
+        <input
+            type="file"
+            onChange={(e) => setFile(e.target.files?. || null)}
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"/>
       </div>
       <div className="mt-6 text-left rtl:text-right">
         <label className="block text-sm font-bold text-gray-700 mb-2">{t('category')}</label>
