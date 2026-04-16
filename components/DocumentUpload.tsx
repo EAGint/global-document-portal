@@ -30,7 +30,7 @@ export default function DocumentUpload() {
         <p className="text-gray-600 font-medium">{file ? file.name : t('fileLabel')}</p>
         <input
             type="file"
-            onChange={(e) => setFile(e.target.files?. || null)}
+            onChange={(e) => setFile(e.target.files?.[0] || null)}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"/>
       </div>
       <div className="mt-6 text-left rtl:text-right">
