@@ -28,7 +28,7 @@ const DivisionContent = () => {
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6 uppercase tracking-wide">Our Capabilities</h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                As part of EAGint's integrated delivery model, the {title} division 
+                As part of EAGint&apos;s integrated delivery model, the {title} division 
                 specializes in providing high-impact solutions for government and 
                 international institutional partners.
               </p>

@@ -12,7 +12,13 @@ const translations: Record<string, Record<string, string>> = {
   DE: { title: "Globales Dokumentenportal", upload: "Dokument hochladen", category: "Kategorie wählen", submit: "Dokument einreichen", fileLabel: "Datei auswählen...", home: "Startseite", about: "Über EAGint", divisions: "Abteilungen", sectors: "Branchen", esg: "ESG", compliance: "Compliance", contact: "Kontakt" }
 };
 
-const LanguageContext = createContext<any>(null);
+interface LanguageContextType {
+  lang: string;
+  setLang: (lang: string) => void;
+  t: (key: string) => string;
+}
+
+const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
   const [lang, setLang] = useState('EN');
@@ -32,4 +38,10 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   );
 };
 
-export const useLanguage = () => useContext(LanguageContext);
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+};
